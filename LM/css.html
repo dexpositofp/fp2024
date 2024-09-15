@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenguaje de Marcas</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Importando las fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="arriba">
+        <h1>Lenguaje de Marcas</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./lmarcas.html">L.Marcas</a></li>
+                <li><a href="./html.html">HTML</a></li>
+                <li><a href="./css.html">CSS</a></li>
+                <li><a href="./js.html">JavaScript</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+<section id="introduccion-css">
+            <h2>Introducción a CSS</h2>
+	    <p>CSS (Cascading Style Sheets) es un lenguaje utilizado para describir la presentación de un documento HTML.</p>
+	    <p>Con CSS, podemos controlar el diseño, la disposición y la apariencia de los elementos en una página web.</p>
+        </section>
+
+        <section id="sintaxis-css">
+            <h2>Sintaxis de CSS</h2>
+	    <p>La sintaxis de CSS está compuesta por selectores y declaraciones.</p>
+	    <p>Un selector apunta al elemento HTML que quieres estilizar. Una declaración es una propiedad y su valor.</p>
+
+	    <div class=codigo">
+            <pre><code>
+/* Ejemplo de sintaxis CSS */
+selector {
+    propiedad: valor;
+}
+            </code></pre>
+	    </div>
+        </section>
+
+        <section id="selectores-css">
+            <h2>Selectores en CSS</h2>
+            <p>CSS ofrece una variedad de selectores para apuntar a los elementos HTML que queremos estilizar:</p>
+            <ul>
+                <li><strong>Selector de etiqueta:</strong> Selecciona todos los elementos de un tipo específico. Ej: <code>p { color: red; }</code></li>
+                <li><strong>Selector de clase:</strong> Selecciona elementos con una clase específica. Ej: <code>.clase { color: blue; }</code></li>
+                <li><strong>Selector de ID:</strong> Selecciona un elemento con un ID específico. Ej: <code>#id { color: green; }</code></li>
+                <li><strong>Selector de atributo:</strong> Selecciona elementos con un atributo específico. Ej: <code>[type="text"] { color: purple; }</code></li>
+                <li><strong>Selector de pseudo-clase:</strong> Selecciona elementos en un estado específico. Ej: <code>a:hover { color: orange; }</code></li>
+                <li><strong>Selector de pseudo-elemento:</strong> Selecciona una parte específica de un elemento. Ej: <code>p::first-line { color: pink; }</code></li>
+            </ul>
+        </section>
+
+	<section id="propiedades-css">
+            <h2>Propiedades CSS</h2>
+            <h3>Propiedades Relativas a las Fuentes</h3>
+            <ul>
+                <li><a class="resaltar">font-family</a>: Define la familia de la fuente.  <code>font-family: 'Arial', sans-serif;</code></li>
+                <li><a class="resaltar">font-size</a>: Define el tamaño de la fuente. <code>font-size: 16px;</code></li>
+                <li><a class="resaltar">font-weight</a>: Define el grosor de la fuente. <code>font-weight: bold;</code></li>
+                <li><a class="resaltar">font-style</a>: Define el estilo de la fuente (normal, cursiva, etc.). <code>font-style: italic;</code></li>
+                <li><a class="resaltar">line-height</a>: Define la altura de la línea. Ej: <code>line-height: 1.5;</code></li>
+		<li><a class="resaltar">text-align</a>: Alinea el texto. <code>text-align: center;</code></li>
+                <li><a class"resaltar">text-decoration</a>: Define la decoración del texto (subrayado, tachado, etc.). <code>text-decoration: underline;</code></li>
+                <li><a class="resaltar">text-transform</a>: Controla la capitalización del texto. <code>text-transform: uppercase;</code></li>
+            </ul>
+
+            <h3>Propiedades Relativas al Fondo</h3>
+            <ul>
+		<li><a class="resaltar">background-color</a>: Define el color de fondo. <code>background-color: lightblue;</code></li>
+                <li><a class="resaltar">background-image</a>: Define una imagen de fondo. <code>background-image: url('imagen.jpg');</code></li>
+                <li><a class="resaltar">background-repeat</a>: Define cómo se repite la imagen de fondo. <code>background-repeat: no-repeat;</code></li>
+		<li><a class="resaltar">background-size</a>: Define el tamaño de la imagen de fondo. Ej: <code>background-size: cover;</code></li>
+		<li><a class="resaltar">background-position</a>: Define la posición de la imagen de fondo. Ej: <code>background-position: center;</code></li>
+            </ul>
+	   <h3>Otras propiedades CSS</h3>
+		<p>Existen muchas otras propiedades CSS que todavía no hemos comentado, la lista es enorme, es por eso, que lo mejor es que tengáis una lista completa y actualizada de todas las propiedades CSS, consultando la página oficial de la W3C en el siguiente enlace:</p>
+		<p><a href="https://www.w3.org/TR/CSS/#properties" target="_blank" rel="noopener noreferrer">Lista completa de propiedades CSS en W3C</a></p>
+
+        </section>
+
+	 <section id="enlazar-html-css">
+            <h2>Cómo Enlazar HTML y CSS</h2>
+            <p>Para aplicar estilos CSS a un documento HTML, necesitamos enlazar ambos archivos. Hay varias formas de hacerlo:</p>
+
+            <h3>1. Usando la Etiqueta &lt;link&gt;en el &lt;head&gt;</h3>
+            <p>La forma más común y recomendada es incluir una hoja de estilos externa usando la etiqueta &lt;link&gt; en la sección lt;head&gt;de tu documento HTML. Esto permite mantener el HTML y CSS separados, facilitando el mantenimiento y la gestión de los estilos.</p>
+            <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Página Web&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bienvenido a mi página web&lt;/h1&gt;
+    &lt;p&gt;Este es un ejemplo de cómo enlazar HTML y CSS.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+
+	    <h3>2. Usando la Etiqueta &lt;style&gt; en el &lt;head&gt;</h3>
+            <p>Otra forma de añadir estilos CSS es mediante la etiqueta &lt;style&gt; directamente en el &lt;head&gt; del documento HTML. Esta técnica es útil para aplicar estilos rápidos o específicos que no justifiquen la creación de un archivo CSS separado.</p>
+            <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Página Web&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bienvenido a mi página web&lt;/h1&gt;
+    &lt;p&gt;Este es un ejemplo de cómo usar la etiqueta &lt;style&gt; para CSS en el HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+
+            <h3>3. Usando Atributos de Estilo en las Etiquetas HTML</h3>
+            <p>También puedes aplicar estilos CSS directamente a los elementos HTML usando el atributo &lt;style&gt; Esta práctica se conoce como estilos en línea y no se recomienda para grandes proyectos debido a la dificultad para mantener y modificar los estilos.</p>
+            <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Página Web&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 style="color: blue;"&gt;Bienvenido a mi página web&lt;/h1&gt;
+    &lt;p style="font-size: 16px;"&gt;Ejemplo de  estilos en línea en HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+
+            <h3>Ejercicios Prácticos</h3>
+            <ol>
+                <li>Crea un archivo HTML que incluya un título y un párrafo.</li>
+                <li>Aplica estilos al título y al párrafo usando cada uno de los métodos mencionados (archivo CSS externo, etiqueta &lt;style&gt;, y estilos en línea).</li>
+                <li>Reflexiona sobre cuál de estos métodos prefieres y por qué.</li>
+            </ol>
+
+        </section>
+		
+	<section id="model-box-css">
+            <h2>El Modelo de Caja en CSS</h2>
+            <p>El modelo de caja es un concepto fundamental en CSS que describe cómo los elementos HTML son representados en la página web. </p>
+            <p>Cada elemento es una caja que tiene márgenes, bordes, rellenos y contenido.</p>
+            <pre><code>
+/* Ejemplo de modelo de caja */
+elemento {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+}
+            </code></pre>
+        </section>
+
+	<section id="posicionamiento">
+  	  <h2>Posicionamiento en CSS</h2>
+   	 <p>El posicionamiento en CSS es crucial para controlar cómo se colocan los elementos en una página web. Existen varios métodos de posicionamiento, cada uno con su propio uso y comportamiento.</p>
+
+   	 <h3>1. Posicionamiento Estático (Static)</h3>
+	 <p>El posicionamiento estático es el valor por defecto para todos los elementos.</p>
+	 <p>Los elementos con <a class="resaltar">position: static</a> se colocan en el flujo normal del documento, y las propiedades <a class="resaltar">top</a>, <a class="resaltar">right</a>, <a class="resaltar">bottom</a> y <a class="resaltar">left</a> no tienen efecto.</p>
+    <pre><code class="language-css">
+    .static-box {
+        position: static;
+        width: 200px;
+        height: 100px;
+        background-color: lightblue;
+    }
+    </code></pre>
+    <p><a class="resaltar">Consejo:</a> Utiliza el posicionamiento estático cuando no necesites ajustar la posición del elemento de forma específica. Es útil para la mayoría de los elementos en el flujo normal del documento.</p>
+
+    <h3>2. Posicionamiento Relativo (Relative)</h3>
+    <p>Con <a class="resaltar">position: relative</a>, el elemento se posiciona en relación con su posición original en el flujo del documento. Las propiedades <a class="resaltar">top</a>, <a class="resaltar">right</a>, <a class="resaltar">bottom</a> y <a class="resaltar">left</a> desplazan al elemento desde su posición original.</p>
+    <pre><code class="language-css">
+    .relative-box {
+        position: relative;
+        top: 20px;
+        left: 30px;
+        width: 200px;
+        height: 100px;
+        background-color: lightcoral;
+    }
+    </code></pre>
+    <p><a class="resaltar">Consejo:</a> Usa el posicionamiento relativo para ajustar ligeramente la posición de un elemento sin sacarlo del flujo normal del documento. Es útil cuando necesitas un pequeño desplazamiento respecto a su ubicación original.</p>
+
+    <h3>3. Posicionamiento Absoluto (Absolute)</h3>
+    <p>El <a class="resaltar">position: absolute</a> saca al elemento del flujo normal del documento y lo posiciona en relación con el elemento padre más cercano que tenga un posicionamiento distinto de <a class="resaltar">static</a>. Si no hay tal elemento, se posiciona en relación con el documento.</p>
+    <pre><code class="language-css">
+    .absolute-container {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        background-color: lightgrey;
+    }
+    
+    .absolute-box {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 150px;
+        height: 80px;
+        background-color: lightgreen;
+    }
+    </code></pre>
+    <p><a class="resaltar">Consejo:</a> El posicionamiento absoluto es ideal para colocar elementos en una ubicación específica dentro de un contenedor. Úsalo para elementos flotantes o modales que deben estar en una posición fija dentro de su contenedor padre.</p>
+
+    <h3>4. Posicionamiento Fijo (Fixed)</h3>
+    <p>El <a class="resaltar">position: fixed</a> posiciona el elemento en relación con la ventana del navegador. El elemento permanece en la misma posición incluso cuando el usuario se desplaza por la página.</p>
+    <pre><code class="language-css">
+    .fixed-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 150px;
+        height: 80px;
+        background-color: lightpink;
+    }
+    </code></pre>
+    <p><a class:"resaltar">Consejo:</a> Utiliza el posicionamiento fijo para elementos que deben permanecer visibles en todo momento, como botones de navegación o barras de herramientas, sin importar el desplazamiento de la página.</p>
+
+    <h3>5. Posicionamiento Pegajoso (Sticky)</h3>
+    <p>El <a class="resaltar>"position: sticky</a> es una combinación de <a class="resaltar">relative</a> y <a class="resaltar">fixed</a>. El elemento se comporta como <a class="resaltar">relative</a> hasta que se desplaza a una posición específica en la ventana, momento en el cual se comporta como <a class="resaltar">fixed</a>.</p>
+    <pre><code class="language-css">
+    .sticky-box {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 50px;
+        background-color: lightgoldenrodyellow;
+    }
+    </code></pre>
+    <p><a class="resaltar">Consejo:</a> El posicionamiento pegajoso es útil para elementos como encabezados de secciones que deben permanecer visibles mientras se navega por una sección larga, pero que no deben estar fijos en la pantalla en todo momento.</p>
+
+
+    <h3>Ejercicios de posicionamiento</h3>
+    <h4>Ejercicio 1: Menú de Navegación Fijo</h4>
+        <p> <a class="resaltar">Descripción:</a> Crea una página con un menú de navegación que permanezca fijo en la parte superior de la página mientras te desplazas hacia abajo.</p>
+        <p><a class="resaltar"> Instrucciones:</a></p>
+        <ul>
+            <li>Crea una estructura básica de HTML con un menú de navegación en la parte superior.</li>
+            <li>Usa <a class="resaltar">position: fixed;</a> para hacer que el menú se mantenga en la parte superior de la página.</li>
+            <li>Añade algunos enlaces de ejemplo en el menú y contenido debajo para permitir el desplazamiento.</li>
+        </ul>
+
+     <h4>Ejercicio 2: Caja Flotante en una Esquina</h4>
+     <p><a class="resaltar">Descripción:</a> Crea una caja que se mantenga en la esquina inferior derecha de la pantalla y permanezca visible al desplazarse.</p>
+     <p> <a class="resaltar">Instrucciones:</a></p>
+        <ul>
+            <li>Crea una caja con un contenido básico.</li>
+	    <li>Usa <a class="resaltar">position: fixed;</a> para posicionar la caja en la esquina inferior derecha de la pantalla.</li>
+            <li>Ajusta el tamaño y el color de la caja según tu preferencia.</li>
+        </ul>
+   
+	<h4>Ejercicio 3: Caja Dentro de un Contenedor</h4>
+	<p> <a class="resaltar">Descripción:</a> Crea un contenedor con posición relativa y dentro de él, coloca una caja con posición absoluta.</p>
+        <p> <a class="resaltar">Instrucciones:</a></p>
+        <ul>
+            <li>Crea un contenedor con un tamaño específico y posición relativa.</li>
+            <li>Dentro del contenedor, añade una caja con posición absoluta.</li>
+            <li>Asegúrate de que la caja esté posicionada en una ubicación específica dentro del contenedor.</li>
+        </ul>
+
+	<h4>Ejercicio 4: Encabezado Pegajoso (Sticky Header)</h4>
+	<p><a class="resaltar">Descripción:</a> Crea un encabezado que se quede pegado en la parte superior de la ventana cuando el usuario se desplaza hacia abajo.</p>
+        <p><a class="resaltar">Instrucciones:</a></p>
+        <ul>
+            <li>Crea un encabezado con un tamaño específico y usa <code>position: sticky;</code></li>
+            <li>Ajusta la propiedad <code>top</code> para que el encabezado se quede en la parte superior de la ventana.</li>
+            <li>Añade contenido debajo del encabezado para permitir el desplazamiento.</li>
+        </ul>
+
+	<h4>Ejercicio 5: Diseño de una Tarjeta con Posicionamiento Relativo y Absoluto</h4>
+        <p><a class="resaltar">Descripción:</a> Diseña una tarjeta con una imagen y texto, y usa <code>position: relative;</code> para la tarjeta y <code>position: absolute;</code> para un elemento dentro de la tarjeta.</p>
+        <p><a class="resaltar">Instrucciones:</a></p>
+        <ul>
+            <li>Crea una tarjeta con una imagen de fondo y texto superpuesto.</li>
+            <li>Usa <code>position: relative;</code> en la tarjeta para poder posicionar el texto con <code>position: absolute;</code></li>
+            <li>Ajusta el texto para que esté centrado en la parte inferior de la tarjeta.</li>
+        </ul>
+    </div>
+	</section>
+
+
+
+
+
+        <section id="pseudoclases-css">
+            <h2>Pseudo-clases en CSS</h2>
+            <p>Las pseudo-clases se utilizan para definir el estado especial de un elemento.</p>
+            <ul>
+		    <li><a class="resaltar">hover:</a> Se activa cuando el usuario pasa el ratón sobre un elemento. Ej: <code>a:hover { color: red; }</code></li>
+                <li><a class="resaltar">focus:</a> Se activa cuando un elemento recibe el foco. Ej: <code>input:focus { border-color: blue; }</code></li>
+                <li><a class="resaltar">nth-child(n):</a> Selecciona el n-ésimo hijo de su padre. Ej: <code>li:nth-child(2) { color: green; }</code></li>
+                <li><a class="resaltar">first-child:</a> Selecciona el primer hijo de su padre. Ej: <code>p:first-child { font-weight: bold; }</code></li>
+                <li><a class="resaltar">last-child:</a> Selecciona el último hijo de su padre. Ej: <code>p:last-child { font-weight: bold; }</code></li>
+                <li><a class="resaltar">not(selector):</a> Selecciona todos los elementos que no coinciden con el selector dado. Ej: <code>input:not([type="text"]) { display: none; }</code></li>
+            </ul>
+        </section>
+
+        <section id="contexto-css">
+            <h2>Definiciones en Función del Contexto</h2>
+            <p>Las definiciones en función del contexto permiten aplicar estilos basados en la posición de los elementos dentro de la estructura HTML.</p>
+            <ul>
+                <li><a class="resaltar">Selector descendiente:</a> Selecciona los elementos dentro de un contenedor específico. Ej: <code>div p { color: blue; }</code></li>
+                <li><a class="resaltar">Selector hijo:</a> Selecciona los elementos que son hijos directos de un contenedor específico. Ej: <code>div > p { color: green; }</code></li>
+                <li><a class="resaltar">Selector hermano adyacente:</a> Selecciona un elemento que es el siguiente hermano inmediato de otro. Ej: <code>h1 + p { margin-top: 0; }</code></li>
+                <li><a class="resaltar">Selector hermano general:</a> Selecciona todos los elementos hermanos de un elemento anterior. Ej: <code>h1 ~ p { color: red; }</code></li>
+            </ul>
+        </section>
+
+	<section id="flexbox-css">
+    		<h2>Flexbox en CSS</h2>
+   		<p>Flexbox, o "Flexible Box Layout", es un sistema de diseño en CSS que permite crear interfaces responsivas y alineadas de manera eficiente. Es especialmente útil para distribuir espacio entre elementos y alinearlos dentro de contenedores, incluso cuando el tamaño de los elementos es dinámico o desconocido.</p>
+
+    		<h3>¿Cómo funciona Flexbox?</h3>
+    		<p>El sistema Flexbox consta de dos componentes principales:</p>
+    		<ul>
+        		<li><a class="resaltar">Contenedor flexible (flex container):</a> El elemento padre que contiene a los elementos flexibles.</li>
+        		<li><a class="resaltar">Elementos flexibles (flex items):</a> Los elementos hijos que se alinearán y distribuirán según las reglas de Flexbox.</li>
+    		</ul>
+
+    		<h3>Propiedades Principales de Flexbox</h3>
+    		<p>Flexbox cuenta con varias propiedades clave para controlar la distribución y alineación de los elementos flexibles:</p>
+    		<ul>
+        		<li><a class="resaltar">display: flex; o display: inline-flex;</a> Convierte el contenedor en un contenedor flexible.</li>
+        		<li><a class="resaltar">flex-direction:</a> Define la dirección en la que se distribuyen los elementos.</li>
+        		<li><a class="resaltar">justify-content:</a> Controla la alineación de los elementos a lo largo del eje principal.</li>
+        		<li><a class="resaltar">align-items:</a> Controla la alineación de los elementos a lo largo del eje transversal.</li>
+        		<li><a class="resaltar">flex-wrap:</a> Permite ajustar los elementos a una nueva línea si no caben en una sola.</li>
+        		<li><a class="resaltar">align-content:</a> Controla la alineación de múltiples líneas de elementos flexibles si hay espacio extra.</li>
+    		</ul>
+
+    		<h3>Ejemplo Práctico de Flexbox</h3>
+    		<p>A continuación, se muestra un ejemplo de cómo se puede aplicar Flexbox en un contenedor con varios elementos:</p>
+
+    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ejemplo Flexbox&lt;/title&gt;
+    &lt;style&gt;
+        .contenedor {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 300px;
+            border: 2px solid #3498db;
+        }
+        .item {
+            background-color: #e74c3c;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+            font-size: 18px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="contenedor"&gt;
+        &lt;div class="item"&gt;Elemento 1&lt;/div&gt;
+        &lt;div class="item"&gt;Elemento 2&lt;/div&gt;
+        &lt;div class="item"&gt;Elemento 3&lt;/div&gt;
+        &lt;div class="item"&gt;Elemento 4&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    		<h3>Recursos Adicionales para Aprender Flexbox</h3>
+  		  <p>Aquí tienes algunos enlaces útiles para estudiar Flexbox con mayor profundidad:</p>
+    		<ul>
+        		<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank">Guía Completa de CSS Flexbox - MDN</a></li>
+        		<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS Tricks - Una guía visual de Flexbox</a></li>
+        		<li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy - Juego interactivo para aprender Flexbox</a></li>
+		</ul>
+	</section>
+
+
+	<section id="grid-layout-css">
+   		<h2>CSS Grid Layout</h2>
+    		<p>El CSS Grid Layout es un sistema de diseño en CSS que permite crear estructuras complejas y responsivas de una manera mucho más intuitiva. Mientras que Flexbox se enfoca en la distribución de elementos en un eje (horizontal o vertical), Grid permite trabajar en dos dimensiones (filas y columnas) simultáneamente.</p>
+
+    		<h3>¿Cómo funciona Grid Layout?</h3>
+    		<p>El sistema Grid Layout se basa en un <a class="resaltar">contenedor grid</a> que organiza su contenido en una cuadrícula de filas y columnas. Los elementos hijos dentro de este contenedor son los <a class="resaltar">items grid</a>, los cuales pueden ser ubicados en posiciones específicas dentro de la cuadrícula.</p>
+
+   		 <h3>Propiedades Principales de Grid Layout</h3>
+   		 <p>El Grid Layout tiene varias propiedades clave para controlar la estructura y distribución de los elementos:</p>
+    		<ul>
+        		<li><a class="resaltar">display: grid;</a> o <a class="resaltar">display: inline-grid;</a> Convierte un contenedor en un contenedor de cuadrícula.</li>
+        		<li><a class="resaltar">grid-template-columns:</a> Define las columnas en la cuadrícula.</li>
+        		<li><a class="resaltar">grid-template-rows:</a> Define las filas en la cuadrícula.</li>
+        		<li><a class="resaltar">grid-gap:</a> Establece el espacio entre filas y columnas.</li>
+        		<li><a class="resaltar">grid-template-areas:</a> Permite organizar áreas específicas de la cuadrícula usando nombres.</li>
+        		<li><a class="resaltar">justify-items:</a> Controla la alineación de los elementos dentro de sus celdas a lo largo del eje horizontal.</li>
+        		<li><a class="resaltar">align-items:</a> Controla la alineación de los elementos dentro de sus celdas a lo largo del eje vertical.</li>
+   		 </ul>
+
+   		 <h3>Ejemplo Práctico de Grid Layout</h3>
+    		 <p>A continuación, se muestra un ejemplo básico de cómo aplicar CSS Grid para organizar un layout simple:</p>
+
+    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Ejemplo Grid Layout&lt;/title&gt;
+    &lt;style&gt;
+        .contenedor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            grid-gap: 20px;
+            padding: 20px;
+            border: 2px solid #2ecc71;
+        }
+        .item-grid {
+            background-color: #9b59b6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="contenedor-grid"&gt;
+        &lt;div class="item-grid"&gt;Elemento 1&lt;/div&gt;
+        &lt;div class="item-grid"&gt;Elemento 2&lt;/div&gt;
+        &lt;div class="item-grid"&gt;Elemento 3&lt;/div&gt;
+        &lt;div class="item-grid"&gt;Elemento 4&lt;/div&gt;
+        &lt;div class="item-grid"&gt;Elemento 5&lt;/div&gt;
+        &lt;div class="item-grid"&gt;Elemento 6&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    		<h3>Recursos Adicionales para Aprender Grid Layout</h3>
+  		<p>Si deseas aprender más sobre Grid Layout, estos enlaces pueden ser útiles:</p>
+   		<ul>
+        		<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout" target="_blank">Guía Completa de CSS Grid Layout - MDN</a></li>
+        		<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">CSS Tricks - Guía visual completa para Grid Layout</a></li>
+        		<li><a href="https://gridbyexample.com/" target="_blank">Grid by Example - Ejemplos prácticos de Grid Layout</a></li>
+   		</ul>
+	</section>
+
+
+
+
+<section id="ejercicios-css">
+            <h2>Ejercicios básicos de CSS</h2>
+
+            <h3>Ejercicio 1: Estilización de Texto</h3>
+            <ol>
+                <li>Crea una página HTML con un párrafo y un título.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Cambiar el color del título a un tono de azul.</li>
+                        <li>Establecer una fuente serif para el título y una fuente sans-serif para el párrafo.</li>
+                        <li>Ajustar el tamaño del título a 24px y el del párrafo a 16px.</li>
+                        <li>Aplicar una decoración de subrayado al título y cursiva al texto del párrafo.</li>
+                        <li>Aumentar el espaciado entre letras del título a 2px.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Ejercicio 2: Estilos de Fondo</h3>
+            <ol>
+		    <li>Crea una página HTML con varias secciones (<a class="resaltar">&lt;div&gt;</a>) de contenido.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Asignar un color de fondo diferente a cada sección.</li>
+                        <li>Añadir una imagen de fondo a una de las secciones y hacer que no se repita.</li>
+                        <li>Ajustar la posición de la imagen de fondo al centro de la sección.</li>
+                        <li>Establecer la imagen de fondo para que cubra toda la sección (<a class="resaltar">background-size: cover</a>).</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Ejercicio 3: Modelo de Caja y Bordes</h3>
+            <ol>
+                <li>Crea una página HTML con varios <a class="resaltar">&lt;div&gt;</a> que contengan texto.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Establecer un ancho de 300px y una altura de 200px para cada <a class="resaltar">&lt;div&gt;</a>.</li>
+                        <li>Añadir un borde de 2px de grosor, sólido y de color negro a cada <a class="resaltar">&lt;div&gt;</a>.</li>
+                        <li>Añadir un relleno (padding) de 20px dentro de cada <a class="resaltar">&lt;div&gt;</a>.</li>
+                        <li>Asignar un margen de 15px alrededor de cada <a class="resaltar">&lt;div&gt;</a>.</li>
+                        <li>Aplicar una sombra de caja a los <a class="resaltar">&lt;div&gt;</a>.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Ejercicio 4: Posicionamiento de Elementos</h3>
+            <ol>
+                <li>Crea una página HTML con un menú de navegación y un contenido principal.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Hacer que el menú de navegación se posicione de manera fija en la parte superior de la pantalla.</li>
+                        <li>Hacer que el contenido principal tenga un margen superior para no quedar oculto tras el menú.</li>
+                        <li>Posicionar un <a class="resaltar">&lt;div&gt;</a> con un estilo diferente en la esquina inferior derecha de la pantalla.</li>
+                        <li>Utilizar <a class="resaltar">z-index</a> para asegurarse de que el menú siempre esté por encima de otros elementos.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Ejercicio 5: Flexbox y Grid Layout</h3>
+            <ol>
+                <li>Crea una página HTML con una galería de imágenes.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Crear un contenedor con <a class="resaltar">display: flex</a> y organizar las imágenes en filas.</li>
+                        <li>Usar <a class="resaltar">justify-content</a> para alinear las imágenes en el centro.</li>
+                        <li>Cambiar a <a class="resaltar">display: grid</a> y definir una cuadrícula con columnas de tamaño fijo.</li>
+                        <li>Ajustar el espacio entre las imágenes usando <a class="resaltar">grid-gap</a> o <a class="resaltar">column-gap</a>.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Ejercicio 6: Pseudoclases e Interacción</h3>
+            <ol>
+                <li>Crea una página HTML con un botón y una lista de enlaces.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Cambiar el color de fondo del botón cuando el cursor pasa sobre él (<a class="resaltar">:hover</a>).</li>
+                        <li>Cambiar el estilo del texto de los enlaces cuando se visitan (<a class="resaltar">:visited</a>).</li>
+                        <li>Aplicar un estilo diferente a los enlaces que están actualmente activos (<a class="resaltar">:active</a>).</li>
+                        <li>Utilizar <a class="resaltar">:focus</a> para cambiar el estilo del botón cuando se enfoca mediante el teclado.</li>
+                    </ul>
+                </li>
+            </ol>
+
+	    <h3>Ejercicio 7: Bordes y Espaciado</h3>
+            <p>Usa CSS para aplicar estilos a un cuadro de texto. En tu archivo HTML:</p>
+            <ul>
+		    <li>Crea un <a class="resaltar">&lt;div&gt;</a> con texto de tu elección.</li>
+            </ul>
+            <p>En tu archivo CSS:</p>
+            <ul>
+                <li>Aplica un borde sólido de 2px al <a class="resaltar">&lt;div&gt;</a>.</li>
+                <li>Añade un margen externo (margin) de 20px.</li>
+                <li>Añade un relleno interno (padding) de 15px.</li>
+            </ul>
+
+	    <h3>Ejercicio 8: Estilos de Enlaces</h3>
+            <p>Crea una lista de enlaces en tu archivo HTML y luego aplica los siguientes estilos usando CSS:</p>
+            <ul>
+                <li>Cambia el color de los enlaces en su estado normal.</li>
+                <li>Haz que el enlace cambie de color cuando se pase el ratón por encima (hover).</li>
+                <li>Haz que los enlaces visitados tengan un color diferente.</li>
+            </ul>
+
+	    <h3>Ejercicio 9: Creación de un Menú Horizontal</h3>
+            <p>En tu archivo HTML, crea una lista no ordenada (<a class="resaltar">&lt;ul&gt;</a>) con varios elementos (<a class="resaltar">&lt;li&gt;</a>) que actúen como enlaces de un menú. Luego, en tu archivo CSS:</p>
+            <ul>
+                <li>Aplica estilos para que la lista se muestre en línea (horizontalmente).</li>
+                <li>Añade un fondo de color a cada elemento del menú.</li>
+                <li>Añade espaciado (padding) alrededor de los elementos para hacerlos más grandes.</li>
+            </ul>
+
+	    <h3>Ejercicio 10: Diseño de una Tarjeta de Presentación</h3>
+            <p>Crea una "tarjeta de presentación" en HTML usando un <a class="resaltar">&lt;div&gt;</a> contenedor que incluya un título, un párrafo, y una imagen. Luego, en tu archivo CSS:</p>
+            <ul>
+                <li>Estiliza la tarjeta con un color de fondo, borde redondeado, y sombra (box-shadow).</li>
+                <li>Aplica un diseño flexible con la propiedad <a class="resaltar">display: flex;</a> para centrar el contenido.</li>
+                <li>Establece un ancho máximo para la tarjeta y centra el contenedor en la página.</li>
+            </ul>
+
+       <!--     <h3>Ejercicio 7: Transiciones y Animaciones</h3>
+            <ol>
+                <li>Crea una página HTML con varios <code>&lt;div&gt;</code> que contengan texto.</li>
+                <li>Usa CSS para:
+                    <ul>
+                        <li>Añadir una transición suave al cambiar el color de fondo de los <code>&lt;div&gt;</code> al pasar el ratón por encima.</li>
+                        <li>Crear una animación que haga que un <code>&lt;div&gt;</code> se mueva horizontalmente de izquierda a derecha de forma repetida.</li>
+                        <li>Configurar la animación para que dure 2 segundos y tenga un retraso de 1 segundo antes de comenzar.</li>
+                    </ul>
+                </li>
+            </ol>
+       -->
+        </section>
+
+
+
+	<!-- Sección: CSS Variables (Custom Properties) -->
+<section id="css-variables">
+    <h2>CSS Variables (Custom Properties)</h2>
+    <p>Las variables CSS, también conocidas como Custom Properties, permiten almacenar valores y reutilizarlos en tu CSS. Se definen con el prefijo <a class="resaltar">--</a> y se pueden utilizar mediante la función <a class="resaltar">var()</a>.</p>
+    <pre><code>
+:root {
+    --main-bg-color: #3498db;
+    --main-text-color: #ffffff;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+    </code></pre>
+    <p>En este ejemplo, <a class="resaltar">--main-bg-color</a> y <a class="resaltar">--main-text-color</a> son variables que definen el color de fondo y el color del texto, respectivamente.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Crea una serie de variables CSS para definir los colores de tu sitio web y utilízalas en diferentes elementos (encabezados, párrafos, enlaces, etc.).</p>
+</section>
+
+<!-- Sección: Animaciones y Transiciones -->
+<section id="css-animations-transitions">
+    <h2>Animaciones y Transiciones</h2>
+    <p>Las animaciones y transiciones permiten crear efectos de cambio suave en los elementos del sitio web. Las transiciones se aplican a cambios de estado, mientras que las animaciones permiten secuencias de movimientos más complejas.</p>
+
+    <h3>Transiciones</h3>
+    <p>Las transiciones controlan la velocidad de cambio de las propiedades CSS.</p>
+    <pre><code>
+.button {
+    background-color: #3498db;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #2ecc71;
+}
+    </code></pre>
+    <p>En este ejemplo, al pasar el cursor sobre el botón, el color de fondo cambiará suavemente.</p>
+
+    <h3>Animaciones</h3>
+    <p>Las animaciones se definen mediante <code>@keyframes</code>, que describe los cambios en un elemento en diferentes etapas.</p>
+    <pre><code>
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.element {
+    animation: slideIn 1s ease-in-out;
+}
+    </code></pre>
+    <p>Este código mueve el elemento desde fuera de la pantalla hacia su posición original.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Crea una animación para un cuadro de texto que cambie de color y posición cuando el usuario haga clic en él.</p>
+</section>
+
+<!-- Sección: Responsive Design con Media Queries -->
+<section id="responsive-design">
+    <h2>Responsive Design con Media Queries</h2>
+    <p>El diseño responsive permite que un sitio web se vea bien en diferentes dispositivos y tamaños de pantalla. Se logra utilizando media queries para aplicar estilos específicos según el tamaño de la pantalla.</p>
+    <pre><code>
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 601px) {
+    .container {
+        flex-direction: row;
+    }
+}
+    </code></pre>
+    <p>En este ejemplo, los elementos dentro de <a class="resaltar">.container</a> se mostrarán en columna para pantallas pequeñas y en fila para pantallas más grandes.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Desarrolla una página web con un diseño de tres columnas que se convierta en una sola columna en pantallas más pequeñas.</p>
+</section>
+
+<!-- Sección: CSS Grid Layout Avanzado -->
+<section id="css-grid-advanced">
+    <h2>CSS Grid Layout Avanzado</h2>
+    <p>CSS Grid Layout es una poderosa herramienta para crear diseños complejos y flexibles. Permite dividir una página en regiones y definir la relación de tamaño, posición y capa entre sus partes.</p>
+    <pre><code>
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    gap: 10px;
+}
+
+.header {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+
+.sidebar {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.main-content {
+    grid-column: 2;
+    grid-row: 2;
+}
+    </code></pre>
+    <p>En este ejemplo, <a class="resaltar">.header</a> ocupa dos columnas, <a class="resaltar">.sidebar</a> ocupa la primera columna, y <a class="resaltar">.main-content</a> ocupa la segunda columna.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Crea un diseño de página usando Grid Layout con un encabezado, barra lateral, contenido principal y pie de página.</p>
+</section>
+
+<!-- Sección: CSS Clipping and Masking -->
+<section id="css-clipping-masking">
+    <h2>CSS Clipping and Masking</h2>
+    <p>CSS Clipping and Masking permiten mostrar solo partes específicas de un elemento, basándose en una forma o una imagen de máscara.</p>
+
+    <h3>Clipping</h3>
+    <p>Con la propiedad <a class="resaltar">clip-path</a>, puedes crear formas complejas que determinan qué partes de un elemento se mostrarán.</p>
+    <pre><code>
+.clipped {
+    clip-path: circle(50% at 50% 50%);
+}
+    </code></pre>
+    <p>Este ejemplo crea un clip circular centrado en el elemento.</p>
+
+    <h3>Masking</h3>
+    <p>La propiedad <a class="resaltar">mask</a> se utiliza para ocultar partes de un elemento, basándose en una imagen de máscara.</p>
+    <pre><code>
+.masked {
+    mask-image: url('mask.png');
+}
+    </code></pre>
+    <p>Este ejemplo aplica una máscara basada en la imagen <a class="resaltar">mask.png</a>.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Crea un diseño donde una imagen de fondo se recorte en diferentes formas geométricas utilizando <a class="resaltar">clip-path</a>.</p>
+</section>
+
+<!-- Sección: CSS Blend Modes -->
+<section id="css-blend-modes">
+    <h2>CSS Blend Modes</h2>
+    <p>Los modos de mezcla CSS permiten combinar el contenido de los elementos superpuestos de diferentes maneras, creando efectos visuales únicos.</p>
+    <pre><code>
+.blended {
+    background-image: url('image.jpg');
+    background-blend-mode: multiply;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+    </code></pre>
+    <p>En este ejemplo, la imagen de fondo y el color de fondo se mezclan usando el modo de mezcla <a class="resaltar">multiply</a>.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Experimenta con diferentes modos de mezcla en una imagen de fondo y un color superpuesto para crear efectos visuales interesantes.</p>
+</section>
+<!-- Sección: Introducción a Bootstrap -->
+<section id="bootstrap-intro">
+    <h2>Introducción a Bootstrap</h2>
+    <p>Bootstrap es un framework de front-end que facilita el desarrollo de sitios web responsivos y móviles. Proporciona una colección de herramientas CSS y JavaScript predefinidas para crear rápidamente interfaces de usuario modernas y atractivas.</p>
+
+    <h3>Características Clave</h3>
+    <ul>
+        <li>Sistema de cuadrícula flexible (Grid system).</li>
+        <li>Componentes de UI como botones, formularios, tarjetas, etc.</li>
+        <li>Responsive design y utilidades para distintos tamaños de pantalla.</li>
+        <li>Extensibilidad mediante plugins de JavaScript.</li>
+    </ul>
+
+    <h3>Ejemplo Básico</h3>
+    <p>Para utilizar Bootstrap, incluye los enlaces a los archivos CSS y JS en tu proyecto:</p>
+    <pre><code>&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"&gt;
+&lt;script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"&gt;&lt;/script&gt;</code></pre>
+
+    <h3>Ejemplo de Uso del Sistema de Cuadrícula</h3>
+    <pre><code>&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-sm"&gt;
+            Columna 1
+        &lt;/div&gt;
+        &lt;div class="col-sm"&gt;
+            Columna 2
+        &lt;/div&gt;
+        &lt;div class="col-sm"&gt;
+            Columna 3
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <p>Este código crea una disposición de tres columnas que se ajusta según el tamaño de la pantalla.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Crea una página de inicio utilizando Bootstrap, que incluya una barra de navegación, una sección de contenido con al menos tres columnas y un pie de página. Experimenta con diferentes componentes de Bootstrap.</p>
+</section>
+
+<!-- Sección: Introducción a Sass -->
+<section id="sass-intro">
+    <h2>Introducción a Sass</h2>
+    <p>Sass (Syntactically Awesome Stylesheets) es un preprocesador CSS que permite usar variables, anidamiento, mixins, funciones y más, para escribir CSS de manera más eficiente y organizada.</p>
+
+    <h3>Características Clave</h3>
+    <ul>
+        <li>Variables para almacenar valores como colores, fuentes, etc.</li>
+        <li>Anidamiento de reglas para una estructura más clara.</li>
+        <li>Mixins para reutilizar bloques de código CSS.</li>
+        <li>Funciones y operaciones para manipular valores CSS.</li>
+    </ul>
+
+    <h3>Ejemplo Básico</h3>
+    <pre><code>// Definición de variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+// Uso de variables y anidamiento
+body {
+    font-family: Arial, sans-serif;
+    background-color: $primary-color;
+    color: white;
+
+    .header {
+        background-color: $secondary-color;
+        padding: 10px;
+    }
+}
+
+// Mixins
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// Uso de mixins
+.button {
+    @include border-radius(5px);
+    background-color: $secondary-color;
+}
+    </code></pre>
+    <p>Este ejemplo muestra cómo usar variables, anidamiento y mixins en Sass.</p>
+
+    <h3>Ejercicio</h3>
+    <p>Escribe un archivo Sass que defina una paleta de colores, y utilice mixins para crear botones estilizados y secciones con bordes redondeados. Compílalo a CSS y aplícalo a una página web.</p>
+</section>
+
+<!-- Sección: Diseño de un Sitio Web -->
+<section id="design-website">
+    <h2>Diseño de un Sitio Web</h2>
+    <p>El diseño de un sitio web efectivo requiere planificación y consideración cuidadosa de varios elementos clave para atraer y retener a los usuarios. A continuación se detallan los pasos importantes:</p>
+
+    <h3>1. Elección de la Paleta de Colores</h3>
+    <p>La paleta de colores debe reflejar la identidad de la marca y el público objetivo. Herramientas como <a href="https://coolors.co/">Coolors</a> o <a href="https://color.adobe.com/es/create/color-wheel">Adobe Color</a> pueden ayudar a crear combinaciones armoniosas.</p>
+
+    <h3>2. Elección de la Tipografía</h3>
+    <p>Selecciona tipografías que sean legibles y apropiadas para el tono del sitio. Google Fonts ofrece una gran variedad de fuentes gratuitas.</p>
+
+    <h3>3. Diseño del Mockup</h3>
+    <p>El mockup es un prototipo visual del sitio web. Se puede diseñar usando herramientas como <a href="https://www.figma.com/">Figma</a>, <a href="https://www.sketch.com/">Sketch</a> o <a href="https://www.adobe.com/products/xd.html">Adobe XD</a>. Es útil para visualizar la estructura y disposición antes de empezar a codificar.</p>
+
+    <h3>4. Implementación</h3>
+    <p>Una vez aprobado el diseño, se procede a la implementación usando HTML, CSS y JavaScript. Frameworks como Bootstrap pueden acelerar el proceso.</p>
+
+    <h3>5. Recomendaciones para una Landing Page Atrayente</h3>
+    <img class="float-right" src="./img/design.png"></img>
+    <ul>
+        <li>Título claro y llamativo.</li>
+        <li>Uso de imágenes de alta calidad y elementos visuales consistentes.</li>
+        <li>Call to Action (CTA) destacado.</li>
+        <li>Navegación sencilla y clara.</li>
+        <li>Optimización para dispositivos móviles.</li>
+    </ul>
+
+    <h3>6. Tipo de Imágenes a Utilizar</h3>
+    <p>Usa imágenes relevantes y de alta calidad. Recurre a bancos de imágenes como Unsplash, Pexels, o Shutterstock, y asegúrate de que las imágenes sean coherentes con el mensaje y estilo del sitio.</p>
+
+    <h3>Ejercicio Final</h3>
+    <p>Diseña y desarrolla una landing page para un producto o servicio ficticio. Define una paleta de colores, selecciona las tipografías adecuadas, crea un mockup y desarrolla la página usando HTML, CSS (puedes usar Sass) y Bootstrap. Asegúrate de que sea responsive y de alta calidad visual.</p>
+</section>
+
+        <section id="bibliografia-css">
+            <h2>Bibliografía y Recursos Recomendados</h2>
+            <ul>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank">MDN Web Docs - CSS</a>: Documentación oficial de Mozilla sobre CSS.</li>
+                <li><a href="https://www.w3schools.com/css/" target="_blank">W3Schools - CSS Tutorial</a>: Tutorial interactivo sobre CSS.</li>
+                <li><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a>: Recursos, guías y trucos sobre CSS.</li>
+            </ul>
+
+            <h3>Libros Recomendados:</h3>
+            <ul>
+                <li><em><a href="https://www.amazon.com/CSS-Definitive-Guide-Visual-Presentation/dp/1449393195" target="_blank">"CSS: The Definitive Guide"</a></em> - Eric A. Meyer: Una guía completa sobre CSS y su uso en diseño web.</li>
+                <li><em><a href="https://www.amazon.com/Transcending-CSS-Elegant-Web-Design/dp/0321410971" target="_blank">"Transcending CSS: The Fine Art of Web Design"</a></em> - Andy Clarke: Un libro que explora el diseño web avanzado con CSS.</li>
+                <li><em><a href="https://www.amazon.com/Responsive-Web-Design-HTML5-CSS3/dp/0321784421" target="_blank">"Responsive Web Design with HTML5 and CSS3"</a></em> - Ben Frain: Enfoque práctico sobre diseño web responsivo utilizando HTML5 y CSS3.</li>
+            </ul>
+        </section>
+	
+	<a href="#arriba" class="back-to-top">  ↑  </a>
+    
+    </main>
+    <footer>
+    	<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+</body>
+</html>

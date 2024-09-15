@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción al almacenamiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="arriba">
+        <h1>Bases de datos</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./almacenamiento.html">Almacenamiento</a></li>
+                <li><a href="./logico.html">Diseño lógico</a></li>
+               <!-- <li><a href="./fisico.html">Diseño físico</a></li>
+                <li><a href="./ddl.html">DDL</a></li>
+                <li><a href="./dml.html">DML</a></li>
+                <li><a href="./dcl.html">DCL TCL</a></li>
+                <li><a href="./utilidades.html">Utilidades</a></li>
+                <li><a href="./plsql.html">PL/SQL</a></li>
+                <li><a href="./nosql.html">NoSQL</a></li>-->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Ficheros -->
+        <section id="ficheros">
+            <h2>Ficheros</h2>
+            <p>Los ficheros son la forma más básica de almacenamiento de datos. Existen varios tipos, cada uno con sus características y aplicaciones:</p>
+            <ul>
+                <li><span class="resaltar">Ficheros planos:</span> Son simples archivos de texto donde los datos se almacenan en líneas consecutivas. Estos son fáciles de usar, pero pueden volverse ineficientes cuando los datos crecen. Además, suelen ser propensos a problemas de <span class="resaltar">inconsistencia</span> y <span class="resaltar">redundancia</span> debido a la falta de control de integridad y la dificultad para mantener relaciones complejas entre datos.</li>
+                <li><span class="resaltar">Ficheros indexados:</span> Utilizan índices para acelerar la búsqueda de datos. Un índice es una estructura adicional que permite acceder rápidamente a los registros sin necesidad de recorrer todo el fichero.</li>
+                <li><span class="resaltar">Ficheros de acceso directo:</span> Permiten acceder a los datos directamente mediante una clave o identificador, sin necesidad de leer secuencialmente desde el inicio, lo que mejora la eficiencia en la recuperación de información.</li>
+            </ul>
+
+            <h3>Problemas de los Ficheros</h3>
+            <p>Trabajar con ficheros, especialmente ficheros planos, puede presentar varios problemas:</p>
+            <ul>
+                <li><span class="resaltar">Inconsistencia de Datos:</span> Los datos pueden duplicarse y no ser actualizados en todas las ubicaciones, lo que lleva a inconsistencias.</li>
+                <li><span class="resaltar">Redundancia de Datos:</span> Los mismos datos se almacenan en múltiples lugares, ocupando más espacio del necesario y dificultando su gestión.</li>
+                <li><span class="resaltar">Dificultad de Acceso:</span> Las búsquedas pueden ser lentas y complicadas, especialmente en ficheros grandes.</li>
+                <li><span class="resaltar">Falta de Seguridad:</span> Es difícil implementar controles de acceso y asegurar los datos en sistemas de ficheros simples.</li>
+            </ul>
+
+            <div class="codigo">
+                <h4>Ejemplo de un fichero plano (CSV):</h4>
+                <pre>
+nombre,edad,ciudad
+Juan,28,Madrid
+Ana,32,Barcelona
+Luis,24,Valencia
+                </pre>
+            </div>
+            <div class="codigo">
+                <h4>Ejemplo de un fichero indexado:</h4>
+                <pre>
+Archivo de datos:
+[1] Juan,28,Madrid
+[2] Ana,32,Barcelona
+[3] Luis,24,Valencia
+
+Archivo de índice:
+ID   Posición
+1    0x0000
+2    0x0014
+3    0x0028
+                </pre>
+                <p>En este ejemplo, el archivo de índice permite acceder directamente a la posición del registro en el archivo de datos, acelerando las búsquedas.</p>
+            </div>
+            <div class="codigo">
+                <h4>Ejemplo de un fichero de acceso directo:</h4>
+                <pre>
+Registro 1 -> clave: "1234", datos: "Juan,28,Madrid"
+Registro 2 -> clave: "5678", datos: "Ana,32,Barcelona"
+Registro 3 -> clave: "9101", datos: "Luis,24,Valencia"
+
+Acceso directo utilizando la clave "5678" para obtener el registro correspondiente.
+                </pre>
+            </div>
+
+         
+        <h3>Ejercicio 1: Diseño de Ficheros</h3>
+        <h4>Objetivo:</h4>
+        <p>Diseñar el esquema de ficheros necesario para una aplicación.</p>
+        <h4>Descripción:</h4>
+        <ol>
+            <li>Elige una idea de aplicación (por ejemplo, una tienda online, una red social, una aplicación de gestión de proyectos, etc.).</li>
+            <li>Define la información que se debe almacenar para que la aplicación funcione correctamente (por ejemplo, datos de usuarios, productos, pedidos, etc.).</li>
+            <li>Basado en la información anterior, elabora un esquema de ficheros que detalle qué ficheros necesitarás para almacenar toda la información de la aplicación.</li>
+            <li>Incluye en el esquema:
+                <ul>
+                    <li>Nombre del fichero</li>
+                    <li>Descripción del contenido</li>
+                    <li>Formato del fichero (texto, binario, etc.)</li>
+                    <li>Relación entre ficheros, si la hay</li>
+                </ul>
+            </li>
+        </ol>
+        <h4>Entrega:</h4>
+        <p>Un documento que contenga el esquema de ficheros detallado.</p>
+    </div>
+        </section>
+
+        <!-- Bases de Datos -->
+        <section id="bases-datos">
+            <h2>Bases de Datos</h2>
+            <p>Las bases de datos son estructuras organizadas de datos que permiten su almacenamiento, recuperación y manipulación eficiente. A diferencia de los ficheros, las bases de datos permiten mantener la integridad de los datos y soportan operaciones más complejas.</p>
+            <p>Existen varios tipos de bases de datos según el modelo de datos:</p>
+            <ul>
+                <li><span class="resaltar">Relacionales:</span> Utilizan tablas para representar los datos y sus relaciones. Son las más comunes y utilizan SQL para la gestión de datos.</li>
+                <li><span class="resaltar">NoSQL:</span> Incluyen modelos como documentos, clave-valor, columnas y grafos. Son más flexibles y escalables, especialmente para grandes volúmenes de datos no estructurados.</li>
+                <li><span class="resaltar">Jerárquicas:</span> Organizan los datos en una estructura de árbol, donde cada nodo tiene un solo padre y múltiples hijos. Esto puede ser útil para datos con relaciones jerárquicas naturales.</li>
+                <li><span class="resaltar">En red:</span> Similar al modelo jerárquico, pero permite relaciones más complejas entre los datos, con nodos que pueden tener múltiples padres.</li>
+                <li><span class="resaltar">Orientadas a objetos:</span> Combinan conceptos de bases de datos con la programación orientada a objetos, permitiendo almacenar objetos completos en lugar de solo datos primitivos.</li>
+            </ul>
+            <div class="codigo">
+                <h4>Ejemplo de una consulta SQL básica en una base de datos relacional:</h4>
+                <pre>
+SELECT nombre, edad 
+FROM usuarios 
+WHERE ciudad = 'Madrid';
+                </pre>
+            </div>
+            <h3>Ejercicio: Comparativa de Sistemas Gestores de Bases de Datos</h3>
+            <h4>Objetivo:</h4>
+            <p>Comparar diferentes sistemas gestores de bases de datos (SGBD) en términos de características y capacidades.</p>
+            
+            <h4>Descripción:</h4>
+            <ol>
+                <li>Elabora una tabla comparativa que incluya 10 sistemas gestores de bases de datos:
+                    <ul>
+                        <li>5 Sistemas Gestores de Bases de Datos Relacionales (por ejemplo, MySQL, PostgreSQL, Oracle, SQL Server, SQLite)</li>
+                        <li>5 Sistemas Gestores NoSQL (por ejemplo, MongoDB, Cassandra, Redis, Couchbase, Neo4j)</li>
+                    </ul>
+                </li>
+                <li>Para cada SGBD, incluye las siguientes columnas en la tabla comparativa:
+                    <ul>
+                        <li>Nombre del SGBD</li>
+                        <li>Tipo (Relacional o NoSQL)</li>
+                        <li>Lenguaje de consulta utilizado (SQL, CQL, etc.)</li>
+                        <li>Características principales</li>
+                        <li>Casos de uso comunes</li>
+                        <li>Ventajas y desventajas</li>
+                        <li>Escalabilidad (vertical/horizontal)</li>
+                        <li>Soporte para transacciones</li>
+                        <li>Ejemplos de empresas que lo utilizan</li>
+                    </ul>
+                </li>
+            </ol>
+            <h4>Entrega:</h4>
+            <p>Una tabla comparativa completa en formato de documento o presentación.</p>
+   
+            <h3>Ejercicio Propuesto:</h3>
+            <p>Describe una situación en la que sería preferible utilizar una base de datos NoSQL en lugar de una base de datos relacional. Considera aspectos como la escalabilidad, flexibilidad y tipo de datos a almacenar.</p>
+        </section>
+
+        <!-- Sistemas Gestores de Bases de Datos -->
+        <section id="sgbd">
+            <h2>Sistemas Gestores de Bases de Datos (SGBD)</h2>
+            <p>Los Sistemas Gestores de Bases de Datos (SGBD) son herramientas que permiten gestionar bases de datos de manera eficiente. Sus principales funciones incluyen:</p>
+            <ul>
+                <li><span class="resaltar">Definición de datos:</span> Creación y modificación de estructuras de datos.</li>
+                <li><span class="resaltar">Manipulación de datos:</span> Inserción, actualización, eliminación y consulta de datos.</li>
+                <li><span class="resaltar">Control de acceso:</span> Autenticación y autorización de usuarios.</li>
+                <li><span class="resaltar">Mantenimiento:</span> Copias de seguridad, recuperación de datos, etc.</li>
+            </ul>
+            <p>Los componentes clave de un SGBD incluyen:</p>
+            <ul>
+                <li><span class="resaltar">Motor de base de datos:</span> Maneja el almacenamiento, recuperación y actualización de datos.</li>
+                <li><span class="resaltar">Lenguaje de consulta:</span> Interfaz para interactuar con los datos (SQL es el más común).</li>
+                <li><span class="resaltar">Sistema de gestión de transacciones:</span> Asegura que las operaciones de la base de datos se completen correctamente.</li>
+            </ul>
+
+            <h3>Niveles de ANSI/SPARC y la Independencia de Datos</h3>
+            <p>El modelo ANSI/SPARC define tres niveles de abstracción en una base de datos:</p>
+            <ul>
+                <li><span class="resaltar">Nivel Interno:</span> Define cómo se almacenan los datos en el sistema.</li>
+                <li><span class="resaltar">Nivel Conceptual:</span> Describe la estructura lógica global de la base de datos, sin preocuparse por cómo se almacenan los datos.</li>
+                <li><span class="resaltar">Nivel Externo:</span> Define las vistas individuales de los datos para diferentes usuarios.</li>
+            </ul>
+            <p>La <span class="resaltar">independencia de datos</span> se refiere a la capacidad de modificar la estructura de la base de datos sin afectar a las aplicaciones que la utilizan. Esto se logra a través de la separación de estos niveles.</p>
+
+            <h3>Perfiles de Usuarios</h3>
+            <p>En el contexto de un SGBD, existen varios perfiles de usuarios con diferentes niveles de acceso y responsabilidades:</p>
+            <ul>
+                <li><span class="resaltar">Administradores de Base de Datos (DBA):</span> Encargados de la configuración, mantenimiento y seguridad del SGBD.</li>
+                <li><span class="resaltar">Desarrolladores:</span> Diseñan y desarrollan aplicaciones que interactúan con la base de datos.</li>
+                <li><span class="resaltar">Usuarios Finales:</span> Interactúan con la base de datos a través de las aplicaciones, realizando consultas y actualizaciones según sus permisos.</li>
+            </ul>
+
+            <h3>Ejercicio Propuesto:</h3>
+            <p>Investiga y enumera las diferencias clave entre un SGBD centralizado y uno distribuido. ¿Cómo afecta la elección de un tipo de SGBD a la escalabilidad, la seguridad y la gestión de datos?</p>
+        </section>
+
+        <!-- SGBD Comerciales y Libres -->
+        <section id="sgbd-comerciales">
+            <h2>SGBD Comerciales y Libres</h2>
+            <p>Los SGBD pueden ser clasificados como comerciales o libres:</p>
+            <ul>
+                <li><span class="resaltar">Comerciales:</span> Son desarrollados por empresas y requieren licencias pagadas. Ejemplos: Oracle, Microsoft SQL Server. Estos suelen ofrecer soporte técnico y características avanzadas.</li>
+                <li><span class="resaltar">Libres:</span> Son de código abierto y generalmente gratuitos. Ejemplos: MySQL, PostgreSQL. Son altamente personalizables y tienen comunidades activas que ofrecen soporte.</li>
+            </ul>
+            <h3>Ejercicio Propuesto:</h3>
+            <p>Analiza las ventajas y desventajas de utilizar un SGBD libre en una empresa en comparación con un SGBD comercial. Considera factores como el coste, soporte, características y escalabilidad.</p>
+        </section>
+
+        <!-- Bases de Datos Centralizadas y Distribuidas -->
+        <section id="bd-distribuidas">
+            <h2>Bases de Datos Centralizadas y Distribuidas</h2>
+            <p>Las bases de datos pueden ser <span class="resaltar">centralizadas</span> o <span class="resaltar">distribuidas</span>:</p>
+            <ul>
+                <li><span class="resaltar">Centralizadas:</span> Todos los datos se almacenan en un solo lugar, lo que facilita la gestión y el control, pero puede presentar problemas de escalabilidad y disponibilidad.</li>
+                <li><span class="resaltar">Distribuidas:</span> Los datos se reparten en múltiples ubicaciones geográficas. Esto mejora la disponibilidad y el rendimiento, pero puede ser más complejo de gestionar.</li>
+            </ul>
+            <p>La <span class="resaltar">fragmentación</span> es una técnica usada en bases de datos distribuidas para dividir una base de datos en fragmentos más pequeños que pueden almacenarse en diferentes ubicaciones. Hay varios tipos de fragmentación:</p>
+            <ul>
+                <li><span class="resaltar">Fragmentación Horizontal:</span> Divide los datos en subgrupos de registros. Por ejemplo, una base de datos de clientes podría fragmentarse en función de la región geográfica.</li>
+                <li><span class="resaltar">Fragmentación Vertical:</span> Divide los datos en subgrupos de atributos. Por ejemplo, una base de datos de empleados podría dividirse en una fragmentación que contenga información personal y otra con información de salarios.</li>
+                <li><span class="resaltar">Fragmentación Mixta:</span> Combina fragmentación horizontal y vertical para una mayor flexibilidad y eficiencia.</li>
+            </ul>
+
+            <h3>Ejercicio Propuesto:</h3>
+            <p>Explica cómo la fragmentación puede mejorar el rendimiento de una base de datos distribuida. Considera ejemplos de fragmentación horizontal y vertical en aplicaciones del mundo real.</p>
+        </section>
+
+<section id="bases_datos_relacionales">
+    <h2>Bases de Datos Relacionales</h2>
+    <p>Las bases de datos relacionales están fundamentadas en la teoría de conjuntos y el álgebra relacional, lo que les otorga una base matemática sólida para la manipulación y consulta de datos. Se introdujeron por primera vez en la década de los 70, con el trabajo de Edgar F. Codd, quien estableció los principios que siguen rigiendo este tipo de sistemas hasta la fecha.</p>
+
+    <h3 class="resaltar">Base Matemática: Álgebra Relacional</h3>
+    <p>El álgebra relacional es un lenguaje formal que proporciona un conjunto de operaciones para manipular las relaciones (tablas) en una base de datos relacional. Las operaciones básicas incluyen:</p>
+    <ul>
+        <li><span class="resaltar">Selección (σ):</span> Permite obtener un subconjunto de filas de una tabla que cumplen una condición específica.</li>
+        <li><span class="resaltar">Proyección (π):</span> Selecciona columnas específicas de una tabla.</li>
+        <li><span class="resaltar">Unión (∪):</span> Combina las filas de dos tablas con la misma estructura.</li>
+        <li><span class="resaltar">Intersección (∩):</span> Retorna las filas que son comunes en dos tablas.</li>
+        <li><span class="resaltar">Diferencia (-):</span> Retorna las filas que están en la primera tabla pero no en la segunda.</li>
+        <li><span class="resaltar">Producto cartesiano (×):</span> Combina cada fila de la primera tabla con cada fila de la segunda tabla.</li>
+        <li><span class="resaltar">Join (⨝):</span> Combina filas de dos tablas basadas en una condición lógica.</li>
+    </ul>
+
+    <h3 class="resaltar">Principios Básicos</h3>
+    <p>Las bases de datos relacionales se construyen a partir de tablas que representan entidades. Cada tabla está formada por filas (también llamadas registros o tuplas) y columnas (llamadas atributos o campos).</p>
+    <p>Los principios fundamentales de una base de datos relacional son:</p>
+    <ul>
+        <li><span class="resaltar">Integridad de Entidad:</span> Cada tabla debe tener una clave primaria que identifique de manera única cada fila. Esto asegura que no existan registros duplicados.</li>
+        <li><span class="resaltar">Integridad Referencial:</span> Si una tabla tiene una clave ajena que hace referencia a la clave primaria de otra tabla, el valor de la clave ajena debe existir en la tabla referenciada. Esto mantiene la coherencia entre las tablas.</li>
+        <li><span class="resaltar">Normalización:</span> Es un proceso que organiza los datos para reducir la redundancia y mejorar la integridad. Las bases de datos bien diseñadas suelen seguir diversas formas normales.</li>
+    </ul>
+
+    <h3 class="resaltar">Conceptos Clave</h3>
+    <p>A continuación, se describen algunos conceptos esenciales en las bases de datos relacionales:</p>
+    <ul>
+        <li><span class="resaltar">Dominio:</span> Es el conjunto de valores permitidos que un atributo puede tomar. Por ejemplo, el dominio de un atributo "Edad" podría ser los números enteros positivos.</li>
+        <li><span class="resaltar">Tupla:</span> Es una fila en una tabla, que representa una instancia de una entidad. Cada tupla está compuesta por un conjunto de valores.</li>
+        <li><span class="resaltar">Clave Primaria:</span> Es un atributo o un conjunto de atributos que identifica de manera única a cada tupla en una tabla. Por ejemplo, el número de DNI en una tabla de personas.</li>
+        <li><span class="resaltar">Clave Foránea:</span> Es un atributo en una tabla que se refiere a la clave primaria de otra tabla, estableciendo una relación entre las dos tablas.</li>
+    </ul>
+
+    <h4 class="resaltar">Ejemplo de Tablas Relacionales</h4>
+    <p>Supongamos que tenemos dos tablas, <span class="resaltar">Personas</span> y <span class="resaltar">Direcciones</span>, relacionadas por una clave foránea:</p>
+
+    <pre>
+        Personas (id_persona, nombre, apellido, id_direccion)
+        -------------------------------------------
+        1, Juan, Pérez, 101
+        2, María, Gómez, 102
+        3, Pedro, López, 101
+
+        Direcciones (id_direccion, calle, ciudad)
+        -------------------------------------------
+        101, Calle Mayor, Madrid
+        102, Avenida Central, Barcelona
+    </pre>
+
+    <p>En este ejemplo, <span class="resaltar">id_persona</span> es la clave primaria de la tabla <span class="resaltar">Personas</span>, mientras que <span class="resaltar">id_direccion</span> es una clave foránea en <span class="resaltar">Personas</span>, que hace referencia a la clave primaria de la tabla <span class="resaltar">Direcciones</span>.</p>
+
+    <h3 class="resaltar">Sistemas Gestores de Bases de Datos Relacionales (RDBMS)</h3>
+    <p>Los sistemas de gestión de bases de datos relacionales son software que permiten crear, gestionar y consultar bases de datos relacionales. Entre los más utilizados se encuentran:</p>
+    <ul>
+        <li><span class="resaltar">MySQL:</span> Uno de los RDBMS más populares y utilizados en aplicaciones web.</li>
+        <li><span class="resaltar">PostgreSQL:</span> Un sistema gestor de bases de datos relacionales avanzado con soporte para SQL y características adicionales.</li>
+        <li><span class="resaltar">Oracle Database:</span> Un sistema empresarial con características robustas para grandes organizaciones.</li>
+        <li><span class="resaltar">Microsoft SQL Server:</span> Muy utilizado en entornos empresariales que usan software de Microsoft.</li>
+    </ul>
+
+    <h3 class="resaltar">Ventajas de las Bases de Datos Relacionales</h3>
+    <p>Las bases de datos relacionales resuelven muchos de los problemas del manejo tradicional de ficheros, como la inconsistencia de datos, la redundancia y la dificultad para acceder a la información. Entre sus principales ventajas destacan:</p>
+    <ul>
+        <li><span class="resaltar">Atomicidad:</span> Garantizan que las transacciones se completen de manera íntegra; si una parte falla, la transacción no se realiza.</li>
+        <li><span class="resaltar">Concurrencia:</span> Permiten que múltiples usuarios accedan a los datos simultáneamente sin generar conflictos.</li>
+        <li><span class="resaltar">Integridad de los Datos:</span> Las restricciones y reglas de integridad aseguran que los datos se mantengan consistentes.</li>
+        <li><span class="resaltar">Escalabilidad:</span> Son capaces de manejar grandes volúmenes de datos y usuarios sin perder rendimiento.</li>
+    </ul>
+
+</section>
+
+
+
+        <a href="#arriba" class="back-to-top">  ↑  </a>
+    </main>
+
+    <footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+</body>
+</html>
+

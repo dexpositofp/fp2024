@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenguaje de Marcas</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Importando las fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id=="arriba">
+        <h1>Lenguaje de Marcas</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./lmarcas.html">L.Marcas</a></li>
+                <li><a href="./html.html">HTML</a></li>
+                <li><a href="./css.html">CSS</a></li>
+                <li><a href="./js.html">JavaScript</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+	<section id="introduccion-javascript">
+            <h2>Arquitecturas y Tecnologías</h2>
+            
+            <h3>¿Qué es JavaScript?</h3>
+            <p>JavaScript es un lenguaje de programación de alto nivel y dinámico, utilizado principalmente para el desarrollo de aplicaciones web interactivas. Es un lenguaje interpretado, lo que significa que no necesita ser compilado antes de ejecutarse. JavaScript es el único lenguaje que puede ejecutarse de manera nativa en todos los navegadores web modernos, lo que lo convierte en una herramienta esencial para el desarrollo web.</p>
+
+            <h3>¿Qué puede hacer JavaScript en el navegador?</h3>
+            <p>JavaScript permite a los desarrolladores web crear páginas dinámicas e interactivas. Algunas de las capacidades de JavaScript incluyen:</p>
+            <ul>
+                <li>Manipulación del DOM (Document Object Model) para modificar la estructura del documento HTML en tiempo real.</li>
+                <li>Validación de formularios y datos de entrada del usuario.</li>
+                <li>Creación de animaciones y efectos visuales.</li>
+                <li>Interacción con APIs web para cargar datos dinámicamente (por ejemplo, mediante AJAX).</li>
+                <li>Gestión de eventos, como clics del ratón o pulsaciones de teclas.</li>
+            </ul>
+
+            <h3>¿Qué NO PUEDE hacer JavaScript en el navegador?</h3>
+            <p>Si bien JavaScript es muy versátil, también tiene limitaciones importantes en el contexto del navegador:</p>
+            <ul>
+                <li>No puede acceder directamente al sistema de archivos del usuario (excepto a través de ciertas APIs específicas y controladas, como File API).</li>
+                <li>No puede realizar operaciones de red a nivel bajo (por ejemplo, manipulación de sockets).</li>
+                <li>No puede acceder directamente a los dispositivos de hardware del sistema (como cámaras o micrófonos), salvo mediante permisos específicos y con el uso de APIs especializadas.</li>
+                <li>No tiene acceso a otras pestañas o ventanas del navegador por razones de seguridad (con ciertas excepciones, como el uso de postMessage).</li>
+            </ul>
+
+            <h3>¿Qué hace que JavaScript sea único?</h3>
+            <p>JavaScript tiene varias características que lo hacen único:</p>
+            <ul>
+                <li><strong>Interpretado:</strong> No requiere un proceso de compilación; el código se ejecuta directamente en el navegador.</li>
+                <li><strong>Dinámico:</strong> Las variables no están tipadas explícitamente, lo que significa que pueden cambiar de tipo en tiempo de ejecución.</li>
+                <li><strong>Orientado a objetos basado en prototipos:</strong> JavaScript utiliza prototipos en lugar de clases tradicionales para la herencia.</li>
+                <li><strong>Event-driven:</strong> JavaScript puede responder a eventos, lo que es crucial para crear interfaces de usuario interactivas.</li>
+            </ul>
+
+            <h3>Lenguajes "sobre" JavaScript</h3>
+            <p>Existen varios lenguajes que se compilan o transpilan a JavaScript, agregando funcionalidades adicionales o una sintaxis más amigable. Algunos ejemplos incluyen:</p>
+            <ul>
+                <li><strong>TypeScript:</strong> Un superconjunto de JavaScript que añade tipos estáticos.</li>
+                <li><strong>CoffeeScript:</strong> Un lenguaje que compila a JavaScript y ofrece una sintaxis más concisa.</li>
+                <li><strong>Babel:</strong> Un compilador que permite escribir código JavaScript moderno y lo transpila a una versión compatible con navegadores más antiguos.</li>
+            </ul>
+
+            <h3>Resumen de Características de JavaScript</h3>
+            <p>JavaScript es versátil, dinámico y una parte esencial del desarrollo web moderno. Su capacidad para interactuar con el DOM, manejar eventos y comunicarse con servidores lo hace indispensable para crear aplicaciones web ricas e interactivas.</p>
+
+            <h3>Especificación del Lenguaje</h3>
+	    <p>JavaScript está estandarizado bajo la especificación ECMAScript (ES). Las versiones más recientes de ECMAScript han introducido muchas características nuevas, como <a class="resaltar">let</a> y <a class="resaltar">const</a>, clases, y funciones flecha.</p>
+
+            <h3>Manuales de Referencia</h3>
+            <p>Algunos recursos clave para aprender y consultar JavaScript son:</p>
+            <ul>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank">MDN Web Docs</a>: Completa referencia de JavaScript.</li>
+                <li><a href="https://www.javascript.com/" target="_blank">JavaScript.com</a>: Tutoriales y recursos para principiantes.</li>
+                <li><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank">ECMA-262</a>: Especificación oficial del lenguaje ECMAScript.</li>
+            </ul>
+
+            <h3>Editores de Código: IDE y Editores Ligeros</h3>
+            <p>Al desarrollar con JavaScript, es importante elegir un editor de código adecuado. Algunas opciones populares incluyen:</p>
+            <ul>
+                <li><strong>Visual Studio Code (VS Code):</strong> Un editor gratuito y de código abierto con una gran cantidad de extensiones.</li>
+                <li><strong>Sublime Text:</strong> Un editor ligero y rápido, muy popular entre desarrolladores web.</li>
+                <li><strong>WebStorm:</strong> Un IDE completo con herramientas avanzadas para JavaScript.</li>
+            </ul>
+
+            <h3>Herramientas de Desarrollo (Developer Console)</h3>
+            <p>La consola de desarrollo del navegador es una herramienta poderosa para depurar y probar código JavaScript en tiempo real. Puedes acceder a ella con las teclas F12 o Ctrl+Shift+I en la mayoría de los navegadores. Algunas de sus funciones incluyen:</p>
+            <ul>
+                <li>Inspección de elementos del DOM.</li>
+                <li>Registro y depuración de mensajes y errores de JavaScript.</li>
+                <li>Prueba de scripts y expresión de código en la consola.</li>
+                <li>Análisis de la red y el rendimiento del sitio web.</li>
+            </ul>
+
+            <h3>Ejercicios</h3>
+            <ol>
+                <li>Investiga y escribe un resumen sobre las diferencias entre <a class="resaltar">var</a>, <a class="resaltar">let</a> y <a class="resaltar">const</a> en JavaScript.</li>
+                <li>Crea un archivo HTML simple y añade un script JavaScript que cambie el texto de un párrafo cuando se haga clic en un botón.</li>
+                <li>Utiliza la consola de desarrollo del navegador para probar diferentes expresiones JavaScript y explorar las herramientas disponibles.</li>
+            </ol>
+
+            <h3>Recursos Adicionales</h3>
+            <ul>
+                <li><a href="https://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a>: Un libro gratuito y completo sobre JavaScript.</li>
+                <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a>: Una guía moderna y detallada sobre JavaScript.</li>
+            </ul>
+        </section>
+	<a href="#arriba" class="back-to-top">  ↑  </a>
+
+    
+    </main>
+    <footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+
+
+</body>
+</html>

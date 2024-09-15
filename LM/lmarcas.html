@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenguaje de Marcas</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Importando las fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="arriba">
+        <h1>Lenguaje de Marcas</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./lmarcas.html">L.Marcas</a></li>
+                <li><a href="./html.html">HTML</a></li>
+                <li><a href="./css.html">CSS</a></li>
+                <li><a href="./js.html">JavaScript</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Secciones adicionales para HTML, CSS y JavaScript -->
+    <section id="que-es-lenguaje-de-marcas">
+    <h2>¿Qué es un Lenguaje de Marcas?</h2>
+    <p>Un lenguaje de marcas es un sistema que utiliza etiquetas para anotar un documento de una manera que es sintácticamente distinguible del texto.</p>
+    <p>Estas anotaciones típicamente sirven para indicar cómo se debe presentar el documento en el navegador, estructurarlo, o incluso describir los datos que contiene.</p>
+
+     <img src="./img/laptop.png" class="float-right">
+   
+    <h3>Ejemplos de Lenguajes de Marcas</h3>
+    <ul>
+        <li><strong>HTML (HyperText Markup Language):</strong> Utilizado para crear y estructurar páginas web.</li>
+        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página Web&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;¡Hola, mundo!&lt;/h1&gt;
+    &lt;p&gt;Este es un ejemplo de párrafo en HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+
+        <li><strong>XML (eXtensible Markup Language):</strong> Usado para transportar y almacenar datos.</li>
+        <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persona&gt;
+    &lt;nombre&gt;Juan&lt;/nombre&gt;
+    &lt;apellido&gt;Pérez&lt;/apellido&gt;
+    &lt;edad&gt;30&lt;/edad&gt;
+&lt;/persona&gt;
+        </code></pre>
+
+        <li><strong>Markdown:</strong> Un lenguaje ligero de marcas para formatear texto.</li>
+        <pre><code class="language-markdown">
+# Título Principal
+
+Esto es un párrafo en **Markdown**.
+
+- Lista 1
+- Lista 2
+        </code></pre>
+    </ul>
+
+    <h3>Características de los Lenguajes de Marcas</h3>
+    <ul>
+        <li>Uso de etiquetas para definir elementos.</li>
+        <li>Estructura jerárquica de los documentos.</li>
+        <li>Facilidad de lectura y edición tanto por humanos como por máquinas.</li>
+        <li>Independencia de plataforma y sistema operativo.</li>
+    </ul>
+
+    <h3>Importancia de los Lenguajes de Marcas</h3>
+    <p>Los lenguajes de marcas son fundamentales en el desarrollo web y en la gestión de datos.</p>
+    <p>Permiten a los desarrolladores definir la estructura y presentación de documentos, lo que es esencial para la creación de sitios web accesibles y bien organizados. Además, facilitan la interoperabilidad entre diferentes sistemas y plataformas.</p>
+
+    </section>
+
+    <section id="conceptos-teoricos">
+            <h2>XML  </h2>
+
+            <p>XML (eXtensible Markup Language) es un lenguaje de marcas que se utiliza para almacenar y transportar datos. A diferencia de HTML, XML no define cómo se deben mostrar los datos, sino que se enfoca en la estructura y el significado de los datos. </p>
+            
+	    <h3>Características Principales</h3>
+            <ul>
+                <li>XML es auto-descriptivo y extensible.</li>
+                <li>Permite definir etiquetas personalizadas.</li>
+                <li>Facilita la interoperabilidad entre sistemas diferentes.</li>
+                <li>Se utiliza comúnmente en aplicaciones web, servicios web y para el intercambio de datos.</li>
+            </ul>
+
+            <h3>Estructura de un Documento XML</h3>
+            <p>Un documento XML está compuesto por elementos, que pueden contener atributos y texto. Cada documento debe tener un elemento raíz que contenga todos los demás elementos.</p>
+     	    <img src="./img/xml.png" class="float-right">
+            <pre>
+                <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;libros&gt;
+    &lt;libro id="1"&gt;
+        &lt;titulo&gt;Aprendiendo XML&lt;/titulo&gt;
+        &lt;autor&gt;Juan Pérez&lt;/autor&gt;
+        &lt;precio&gt;29.99&lt;/precio&gt;
+    &lt;/libro&gt;
+    &lt;libro id="2"&gt;
+        &lt;titulo&gt;XML para Principiantes&lt;/titulo&gt;
+        &lt;autor&gt;Ana García&lt;/autor&gt;
+        &lt;precio&gt;19.99&lt;/precio&gt;
+    &lt;/libro&gt;
+&lt;/libros&gt;
+                </code>
+            </pre>
+            <h3>Reglas Básicas de XML</h3>
+            <ul>
+                <li>Todos los elementos deben tener una etiqueta de cierre.</li>
+                <li>Las etiquetas XML son sensibles a mayúsculas y minúsculas.</li>
+                <li>Los atributos deben estar entre comillas.</li>
+                <li>Un documento XML debe tener un único elemento raíz.</li>
+            </ul>
+        </section>
+
+        <section id="ejemplos-practicos">
+            <h3>Ejemplos Prácticos</h3>
+            <h4>Ejemplo 1: Lista de Productos</h4>
+            <pre>
+                <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;productos&gt;
+    &lt;producto&gt;
+        &lt;nombre&gt;Laptop&lt;/nombre&gt;
+        &lt;precio&gt;799.99&lt;/precio&gt;
+        &lt;stock&gt;25&lt;/stock&gt;
+    &lt;/producto&gt;
+    &lt;producto&gt;
+        &lt;nombre&gt;Smartphone&lt;/nombre&gt;
+        &lt;precio&gt;499.99&lt;/precio&gt;
+        &lt;stock&gt;100&lt;/stock&gt;
+    &lt;/producto&gt;
+&lt;/productos&gt;
+                </code>
+            </pre>
+            <h4>Ejemplo 2: Catálogo de Películas</h4>
+            <pre>
+                <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;peliculas&gt;
+    &lt;pelicula&gt;
+        &lt;titulo&gt;Inception&lt;/titulo&gt;
+        &lt;director&gt;Christopher Nolan&lt;/director&gt;
+        &lt;año&gt;2010&lt;/año&gt;
+    &lt;/pelicula&gt;
+    &lt;pelicula&gt;
+        &lt;titulo&gt;The Matrix&lt;/titulo&gt;
+        &lt;director&gt;The Wachowskis&lt;/director&gt;
+        &lt;año&gt;1999&lt;/año&gt;
+    &lt;/pelicula&gt;
+&lt;/peliculas&gt;
+                </code>
+            </pre>
+        </section>
+
+        <section id="ejercicios">
+		<h3>Ejercicios Propuestos</h3>
+			<h4>Ejercicio 1: Crear un Documento XML de Contactos</h4>
+            			<p>Crear un documento XML que contenga una lista de contactos. Cada contacto debe tener los siguientes elementos: nombre, teléfono, y correo electrónico.</p>
+           		 <h4>Ejercicio 2: Crear un Documento XML de una Biblioteca</h4>
+            			<p>Crear un documento XML que represente una biblioteca. Cada libro debe tener un título, un autor, un género, y un año de publicación.</p>
+            		<h4>Ejercicio 3: Crear un Documento XML de un Calendario de Eventos</h4>
+            			<p>Crear un documento XML que contenga un calendario de eventos. Cada evento debe tener un nombre, una fecha, una hora y una descripción.</p>
+        </section>
+<section id="validacion">
+    <h2>Validación de XML</h2>
+    <p>La validación de documentos XML asegura que los datos siguen una estructura específica. Los métodos más comunes para validar XML son DTD (Document Type Definition) y XML Schema (XSD).</p>
+
+    <h3>Validación con DTD</h3>
+    <p>DTD define la estructura legal de un documento XML. Se puede declarar internamente dentro del documento XML o externamente.</p>
+    
+    <h4>Ejemplo de DTD Interno</h4>
+    <pre>
+        <code>
+&lt;!DOCTYPE libros [
+    &lt;!ELEMENT libros (libro+)&gt;
+    &lt;!ELEMENT libro (titulo, autor, precio)&gt;
+    &lt;!ATTLIST libro id ID #REQUIRED&gt;
+    &lt;!ELEMENT titulo (#PCDATA)&gt;
+    &lt;!ELEMENT autor (#PCDATA)&gt;
+    &lt;!ELEMENT precio (#PCDATA)&gt;
+]&gt;
+&lt;libros&gt;
+    &lt;libro id="1"&gt;
+        &lt;titulo&gt;Aprendiendo XML&lt;/titulo&gt;
+        &lt;autor&gt;Juan Pérez&lt;/autor&gt;
+        &lt;precio&gt;29.99&lt;/precio&gt;
+    &lt;/libro&gt;
+&lt;/libros&gt;
+        </code>
+    </pre>
+    
+    <h4>Ejemplo de DTD Externo</h4>
+    <pre>
+        <code>
+<!-- archivo libros.dtd -->
+&lt;!ELEMENT libros (libro+)&gt;
+&lt;!ELEMENT libro (titulo, autor, precio)&gt;
+&lt;!ATTLIST libro id ID #REQUIRED&gt;
+&lt;!ELEMENT titulo (#PCDATA)&gt;
+&lt;!ELEMENT autor (#PCDATA)&gt;
+&lt;!ELEMENT precio (#PCDATA)&gt;
+
+<!-- archivo XML -->
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE libros SYSTEM "libros.dtd"&gt;
+&lt;libros&gt;
+    &lt;libro id="1"&gt;
+        &lt;titulo&gt;Aprendiendo XML&lt;/titulo&gt;
+        &lt;autor&gt;Juan Pérez&lt;/autor&gt;
+        &lt;precio&gt;29.99&lt;/precio&gt;
+    &lt;/libro&gt;
+&lt;/libros&gt;
+        </code>
+    </pre>
+
+    <h3>Elementos de DTD</h3>
+    <p>DTD (Document Type Definition) define la estructura legal de un documento XML y los elementos que puede contener. Aquí están los elementos y sus usos:</p>
+
+    <ul>
+        <li>
+            <strong>&lt;!ELEMENT&gt;</strong>
+            <p>Define un elemento. La sintaxis es: <code>&lt;!ELEMENT nombre (contenido)&gt;</code>El contenido puede ser:</p>
+            <ul>
+                <li><strong>#PCDATA:</strong> Datos de carácter parseados (texto).</li>
+                <li><strong>ELEMENTO:</strong> Un subelemento.</li>
+                <li><strong>(elemento1, elemento2):</strong> Una secuencia específica de subelementos.</li>
+                <li><strong>(elemento1 | elemento2):</strong> Una elección entre elementos.</li>
+                <li><strong>(elemento*):</strong> Cero o más ocurrencias del elemento.</li>
+                <li><strong>(elemento+):</strong> Una o más ocurrencias del elemento.</li>
+                <li><strong>(elemento?):</strong> Cero o una ocurrencia del elemento.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>&lt;!ATTLIST&gt;</strong>
+            <p>Define atributos para un elemento. La sintaxis es: <code>&lt;!ATTLIST nombre atributo tipo valor_predeterminado&gt;</code></p>
+            <ul>
+                <li><strong>nombre:</strong> El nombre del elemento al que pertenece el atributo.</li>
+                <li><strong>atributo:</strong> El nombre del atributo.</li>
+                <li><strong>tipo:</strong> El tipo de dato del atributo (CDATA, ID, IDREF, NMTOKEN, etc.).</li>
+                <li><strong>valor_predeterminado:</strong> El valor por defecto del atributo (#REQUIRED, #IMPLIED, "valor").</li>
+            </ul>
+        </li>
+        <li>
+            <strong>&lt;!ENTITY&gt;</strong>
+            <p>Define una entidad. Las entidades pueden ser generales o parametrizadas, internas o externas. La sintaxis es: <code>&lt;!ENTITY nombre "valor"&gt;</code> para entidades internas y <code>&lt;!ENTITY nombre SYSTEM "URI"&gt;</code> para entidades externas.</p>
+        </li>
+    </ul>
+
+    <h3>Validación con XML Schema (XSD)</h3>
+    <p>XML Schema es más potente que DTD y permite definir tipos de datos, así como estructuras más complejas.</p>
+    
+    <h4>Ejemplo de XML Schema</h4>
+    <pre>
+        <code>
+<!-- archivo libros.xsd -->
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+    &lt;xsd:element name="libros"&gt;
+        &lt;xsd:complexType&gt;
+            &lt;xsd:sequence&gt;
+                &lt;xsd:element name="libro" maxOccurs="unbounded"&gt;
+                    &lt;xsd:complexType&gt;
+                        &lt;xsd:sequence&gt;
+                            &lt;xsd:element name="titulo" type="xsd:string"/&gt;
+                            &lt;xsd:element name="autor" type="xsd:string"/&gt;
+                            &lt;xsd:element name="precio" type="xsd:decimal"/&gt;
+                        &lt;/xsd:sequence&gt;
+                        &lt;xsd:attribute name="id" type="xsd:ID" use="required"/&gt;
+                    &lt;/xsd:complexType&gt;
+                &lt;/xsd:element&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
+    &lt;/xsd:element&gt;
+&lt;/xsd:schema&gt;
+
+<!-- archivo XML -->
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;libros xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="libros.xsd"&gt;
+    &lt;libro id="1"&gt;
+        &lt;titulo&gt;Aprendiendo XML&lt;/titulo&gt;
+        &lt;autor&gt;Juan Pérez&lt;/autor&gt;
+        &lt;precio&gt;29.99&lt;/precio&gt;
+    &lt;/libro&gt;
+&lt;/libros&gt;
+        </code>
+    </pre>
+
+    <h3>Elementos de XML Schema (XSD)</h3>
+    <p>XML Schema (XSD) define la estructura, contenido y tipos de datos de un documento XML. Aquí están los elementos y sus usos:</p>
+
+    <ul>
+        <li>
+            <strong>&lt;xsd:schema&gt;</strong>
+            <p>El elemento raíz del esquema. Define el espacio de nombres y los componentes del esquema.</p>
+            <pre><code>&lt;xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;</code></pre>
+        </li>
+        <li>
+            <strong>&lt;xsd:element&gt;</strong>
+            <p>Define un elemento. La sintaxis es: <code>&lt;xsd:element name="nombre" type="tipo"/&gt;</code>Puede ser un tipo simple o complejo.</p>
+            <ul>
+                <li><strong>name:</strong> El nombre del elemento.</li>
+                <li><strong>type:</strong> El tipo de dato del elemento (xsd:string, xsd:int, etc.).</li>
+                <li><strong>minOccurs:</strong> El número mínimo de ocurrencias (por defecto es 1).</li>
+                <li><strong>maxOccurs:</strong> El número máximo de ocurrencias (por defecto es 1 o "unbounded" para ilimitado).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>&lt;xsd:complexType&gt;</strong>
+            <p>Define un tipo complejo que puede contener otros elementos y atributos. La sintaxis es: <code>&lt;xsd:complexType&gt;...&lt;/xsd:complexType&gt;</code></p>
+        </li>
+        <li>
+            <strong>&lt;xsd:sequence&gt;</strong>
+            <p>Define una secuencia de elementos que deben aparecer en el orden especificado. Se usa dentro de un <code>&lt;xsd:complexType&gt;</code></p>
+        </li>
+        <li>
+            <strong>&lt;xsd:attribute&gt;</strong>
+            <p>Define un atributo para un elemento. La sintaxis es: <code>&lt;xsd:attribute name="nombre" type="tipo" use="uso"/&gt;</code></p>
+            <ul>
+                <li><strong>name:</strong> El nombre del atributo.</li>
+                <li><strong>type:</strong> El tipo de dato del atributo.</li>
+                <li><strong>use:</strong> Indica si el atributo es opcional ("optional") o requerido ("required").</li>
+            </ul>
+        </li>
+        <li>
+            <strong>&lt;xsd:restriction&gt;</strong>
+            <p>Restringe los valores permitidos para un tipo de dato. Se usa dentro de un <code>&lt;xsd:simpleType&gt;</code></p>
+            <ul>
+                <li><strong>&lt;xsd:enumeration&gt;</strong>: Define un valor permitido específico.</li>
+                <li><strong>&lt;xsd:minLength&gt;</strong>: Define la longitud mínima del valor.</li>
+                <li><strong>&lt;xsd:maxLength&gt;</strong>: Define la longitud máxima del valor.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section id="ejercicios">
+    <h2>Ejercicios Propuestos</h2>
+    <h3>Ejercicio 1: Crear un Documento XML de Contactos</h3>
+    <p>Crear un documento XML que contenga una lista de contactos. Cada contacto debe tener los siguientes elementos: nombre, teléfono, y correo electrónico.</p>
+    <h3>Ejercicio 2: Crear un Documento XML de una Biblioteca</h3>
+    <p>Crear un documento XML que represente una biblioteca. Cada libro debe tener un título, un autor, un género, y un año de publicación.</p>
+    <h3>Ejercicio 3: Crear un Documento XML de un Calendario de Eventos</h3>
+    <p>Crear un documento XML que contenga un calendario de eventos. Cada evento debe tener un nombre, una fecha, una hora y una descripción.</p>
+    <h3>Ejercicio 4: Validar un Documento XML con DTD</h3>
+    <p>Crear un DTD para validar el documento XML de contactos creado en el ejercicio 1.</p>
+    <h3>Ejercicio 5: Validar un Documento XML con XML Schema</h3>
+    <p>Crear un XML Schema para validar el documento XML de la biblioteca creado en el ejercicio 2.</p>
+</section>
+
+
+<section id="que-es-markdown">
+            <h2>Markdown</h2>
+            <p>Markdown es un lenguaje de marcado ligero creado por John Gruber en 2004 con la colaboración de Aaron Swartz. Su objetivo es permitir escribir utilizando un formato de texto plano fácil de leer y escribir, que luego pueda convertirse de manera confiable a HTML estructurado.</p>
+
+            <h3>Características Principales de Markdown</h3>
+            <ul>
+                <li><strong>Sencillez:</strong> La sintaxis de Markdown es minimalista y fácil de aprender.</li>
+                <li><strong>Legibilidad:</strong> El texto en Markdown es fácilmente legible, incluso sin ser convertido a HTML.</li>
+                <li><strong>Compatibilidad:</strong> Markdown se puede convertir a HTML y es compatible con muchas plataformas y editores.</li>
+                <li><strong>Extensibilidad:</strong> Aunque es simple, Markdown permite la extensión con características adicionales como tablas, citas y mucho más.</li>
+            </ul>
+
+            <h3>Sintaxis Básica</h3>
+            <p>Markdown utiliza caracteres simples para aplicar formato al texto:</p>
+     	    <img src="./img/markdown.png" class="float-right">
+            <pre><code>
+# Título Principal
+
+## Subtítulo
+
+- Lista de elementos
+  - Subelemento
+
+**Texto en negrita**
+*Texto en cursiva*
+
+[Enlace a ejemplo.com](http://ejemplo.com)
+            </code></pre>
+
+            <h3>Ejemplos Avanzados</h3>
+            <p>A continuación, se muestran ejemplos más avanzados de Markdown:</p>
+
+            <h4>Bloques de Código</h4>
+            <p>Para mostrar bloques de código, se utilizan backticks (\`) para una línea o triples backticks (\`\`\`) para bloques de código:</p>
+            <pre><code>
+\```javascript
+function saludar() {
+    console.log('¡Hola, mundo!');
+}
+saludar();
+\```
+            </code></pre>
+
+            <h4>Listas y Tablas</h4>
+            <p>Markdown permite crear listas ordenadas y no ordenadas, así como tablas sencillas:</p>
+            <pre><code>
+- Elemento 1
+- Elemento 2
+
+1. Primer elemento
+2. Segundo elemento
+
+| Encabezado 1 | Encabezado 2 |
+|--------------|--------------|
+| Celda 1      | Celda 2      |
+            </code></pre>
+
+            <h3>Aplicaciones de Markdown</h3>
+            <p>Markdown se utiliza ampliamente en varias áreas:</p>
+            <ul>
+                <li>Documentación técnica y en GitHub para README.</li>
+                <li>Tomar notas y escribir documentos rápidamente.</li>
+                <li>Blogs y publicaciones en plataformas como Medium.</li>
+                <li>Formateo de mensajes en foros y correos electrónicos.</li>
+            </ul>
+
+        </section>
+
+	<section id="ejercicio-1">
+    <h2>Ejercicios Propuestos</h2>
+            <h3>Crear una Lista de Tareas</h3>
+            <p>Utiliza Markdown para crear una lista de tareas con al menos tres elementos. Marca algunos elementos como completados y otros como pendientes.</p>
+            <pre><code>
+- [x] Terminar la tarea 1
+- [ ] Revisar el informe
+- [x] Preparar la presentación
+            </code></pre>
+        </section>
+
+	<section id="ejercicio-2">
+            <h3>Crear un Texto con Formato en Markdown</h3>
+	    <p>Crea un breve texto utilizando diferentes formatos de texto disponibles en Markdown, como: <p>negrita</p> <code>**</code> <p>cursiva</p> <code>*</code> <p>tachado</p> <code>~~</code></p>
+            <pre><code>
+# Reporte de Proyecto
+
+Este es un **informe** sobre el proyecto de *Markdown*. Estamos ~~analizando~~ los diferentes usos de Markdown en la escritura técnica.
+            </code></pre>
+        </section>
+
+	<section id="ejercicio-3">
+            <h3>Crear una Tabla en Markdown</h3>
+            <p>Crea una tabla simple utilizando Markdown para mostrar información organizada en filas y columnas.</p>
+            <pre><code>
+| Nombre   | Edad | Ciudad     |
+|----------|------|------------|
+| Juan     | 25   | Barcelona  |
+| María    | 30   | Madrid     |
+            </code></pre>
+        </section>
+
+     <a href="#arriba" class="back-to-top">  ↑  </a>
+    </main>
+    <footer>
+    	<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+</body>
+</html>
+

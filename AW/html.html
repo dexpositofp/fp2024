@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Importing Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="arriba">
+        <h1>HTML</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Guide</a></li>
+                <li><a href="./webapp.html">Web App</a></li>
+                <li><a href="./html.html">HTML</a></li>
+                <li><a href="./css.html">CSS</a></li>
+                <li><a href="./index.html">CMS</a></li>
+                <li><a href="./index.html">Python</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="introduccion-html">
+            <h2>Introduction to HTML</h2>
+            <p><span class="resaltar">HTML</span> (short for <em>HyperText Markup Language</em>) is the standard language used to create and design web pages. HTML defines the structure of a web document and, along with CSS and JavaScript, forms the core of most websites we visit.</p>
+
+            <h3>What is HTML?</h3>
+            <p>HTML is a markup language that uses a series of elements or tags to define the content of a web page. Each of these elements describes different types of content, such as text, images, links, lists, forms, etc. For example, the tag: <code>&lt;p&gt;</code> defines a paragraph of text, while: <code>&lt;img&gt;</code> inserts an image into the page.</p>
+
+            <h3>Meaning of HTML</h3>
+            <p>The acronym HTML breaks down as follows:</p>
+            <ul>
+                <li><span class="resaltar">H</span> - <em>Hyper</em>: Refers to hyperlinks, which allow users to navigate from one page to another on the web.</li>
+                <li><span class="resaltar">T</span> - <em>Text</em>: The main content presented on the web, which can include text, images, videos, etc.</li>
+                <li><span class="resaltar">M</span> - <em>Markup</em>: Refers to the marking up of documents, i.e., the structure and organization of content using tags.</li>
+                <li><span class="resaltar">L</span> - <em>Language</em>: Indicates that HTML is a language used to define how content is structured and presented on the web.</li>
+            </ul>
+
+            <h3>History and Evolution of HTML</h3>
+            <p>HTML was developed by Tim Berners-Lee in 1991 and has evolved significantly since its early versions. Over time, new versions have introduced more tags and functionalities, adapting to the changing needs of the web. The most recent version is HTML5, which offers improved support for multimedia, graphics, and modern APIs.</p>
+
+            <h3>Why is HTML Important?</h3>
+            <p>HTML is fundamental for web development because it defines the structure and content of web pages. Without HTML, browsers would not be able to interpret and display content consistently. Additionally, HTML is the foundation upon which styles (with CSS) and interactivity (with JavaScript) are applied.</p>
+
+            <h3>Basic HTML Example</h3>
+            <p>Below is a basic example of an HTML document:</p>
+            <img class="float-right" src="./img/html.png" alt="HTML Example">
+            <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is my first HTML document.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+
+            <h3>Proposed Exercise</h3>
+            <p><span class="resaltar">Exercise 1:</span> Create a simple HTML document that includes a title, a paragraph of text, and an image. Use the basic HTML5 structure and make sure to include the necessary opening and closing tags.</p>
+        </section>
+
+        <section id="validacion-html">
+            <h2>HTML Document Validation</h2>
+            <p>Validating HTML documents is a crucial process to ensure that the code complies with specifications and standards defined by the W3C. This helps detect errors and ensures compatibility with various browsers.</p>
+            <p>There are online tools and code editors that allow for automatic validation of HTML documents, ensuring that the code is properly structured and free of errors that could affect the display and functionality of web pages.</p>
+            <p>Developers should integrate validation into their workflow to maintain the quality and consistency of HTML code throughout web application development.</p>
+        </section>
+        <section id="principios-diseno">
+            <h2>Web Design Principles</h2>
+            <p>Web design principles guide the creation of effective and attractive interfaces for users. Some fundamental principles include:</p>
+            <ul>
+                <li><span class="resaltar">Usability:</span> Ease of use and intuitive navigation.</li>
+                <li><span class="resaltar">Accessibility:</span> Ensuring that all users, including those with disabilities, can access content equitably.</li>
+                <li><span class="resaltar">Readability:</span> Clear and well-structured text for easy comprehension.</li>
+                <li><span class="resaltar">Consistency:</span> Maintaining consistent visual and interaction patterns throughout the interface.</li>
+                <li><span class="resaltar">Aesthetics:</span> Balance between functionality and visually appealing design.</li>
+            </ul>
+            <p>Web developers should apply these principles to create effective and satisfying user experiences.</p>
+        </section>
+        <section id="usabilidad-accesibilidad">
+            <h2>Usability and Accessibility</h2>
+            <p>Usability refers to how easily users can interact with a web application and complete tasks. Accessibility, on the other hand, focuses on making websites accessible to all users, including those with disabilities.</p>
+            <p>To improve usability, developers should consider aspects such as intuitive navigation, page load speed, and content layout. Accessibility involves using appropriate tags, providing alternatives for multimedia content, and ensuring sufficient contrast in design.</p>
+            <p>Adhering to standards and best practices, such as W3C accessibility guidelines, helps ensure that all users can benefit from web content equitably.</p>
+        </section>
+        <section id="sintaxis-etiquetas-basicas">
+            <h2>HTML Syntax. Basic Tags</h2>
+            <p>HTML uses a simple and consistent markup syntax to define the structure and content of a web page. The most common basic tags include:</p>
+            <ul class="listacodigo">
+                <li><code>&lt;!DOCTYPE html&gt;</code> Defines the version of HTML used in the document.</li>
+                <li><code>&lt;html&gt;</code> Defines the beginning and end of an HTML document.</li>
+                <li><code>&lt;head&gt;</code> Contains the document's header information, such as metadata, links to stylesheets, and scripts.</li>
+                <li><code>&lt;title&gt;</code> Defines the title of the web page that appears in the browser tab.</li>
+                <li><code>&lt;body&gt;</code> Contains the main visible content of the page, including text, images, and other elements.</li>
+                <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> Define headings of different levels of importance.</li>
+                <li><code>&lt;p&gt;</code> Defines a paragraph of text.</li>
+                <li><code>&lt;a&gt;</code> Defines a hyperlink.</li>
+                <li><code>&lt;img&gt;</code> Inserts an image into the page.</li>
+                <li><code>&lt;ul&gt;</code> <code>&lt;li&gt;</code> Defines unordered lists with list items.</li>
+            </ul>
+            <p>These tags are fundamental for structuring and presenting content in a semantic manner on the web.</p>
+        </section>
+        <section id="nuevas-etiquetas-html5">
+            <h2>New HTML5 Tags</h2>
+            <p>HTML5 introduced several new tags that facilitate the creation of semantic and accessible content. Some of these new tags include:</p>
+            <ul>
+                <li><code>&lt;header&gt;</code> Defines the header section of a page or section.</li>
+                <li><code>&lt;nav&gt;</code> Defines navigation links.</li>
+                <li><code>&lt;section&gt;</code> Represents a section of content within a document.</li>
+                <li><code>&lt;article&gt;</code> Defines a self-contained piece of content, such as a blog post or news article.</li>
+                <li><code>&lt;aside&gt;</code> Represents content indirectly related to the surrounding content, like a sidebar.</li>
+                <li><code>&lt;footer&gt;</code> Defines the footer section of a page or section.</li>
+                <li><code>&lt;figure&gt;</code> Represents a unit of content, such as an image or diagram, along with a caption.</li>
+                <li><code>&lt;figcaption&gt;</code> Provides a caption for a <code>&lt;figure&gt;</code> element.</li>
+                <li><code>&lt;main&gt;</code> Represents the main content of a document.</li>
+            </ul>
+            <p>Using these new tags enhances the semantic structure of web documents, making them easier to understand for both humans and machines.</p>
+            <h3>Example of Semantic Structure</h3>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Semantic Structure&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Main Header&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Main Section&lt;/h2&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Article 1&lt;/h3&gt;
+            &lt;p&gt;This is an article.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;Article 2&lt;/h3&gt;
+            &lt;p&gt;This is another article.&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;
+        &lt;h2&gt;Sidebar&lt;/h2&gt;
+        &lt;p&gt;Additional content.&lt;/p&gt;
+    &lt;/aside&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Footer&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+        </section>
+
+<section id="form-tags">
+    <h2>New Form Tags and Attributes</h2>
+    <p>HTML5 also introduces new tags and attributes to enhance form functionality.</p>
+
+    <h3>New Tags</h3>
+    <ul class="code-list">
+        <li><code>&lt;input type="email"&gt;</code> Field for entering an email address.</li>
+        <li><code>&lt;input type="url"&gt;</code> Field for entering a URL.</li>
+        <li><code>&lt;input type="tel"&gt;</code> Field for entering a phone number.</li>
+        <li><code>&lt;input type="date"&gt;</code> Field for selecting a date.</li>
+        <li><code>&lt;input type="range"&gt;</code> Slider for selecting a value within a range.</li>
+    </ul>
+
+    <h3>Form Example</h3>
+    <pre><code>
+&lt;form&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="website"&gt;Website:&lt;/label&gt;
+    &lt;input type="url" id="website" name="website"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="phone"&gt;Phone:&lt;/label&gt;
+    &lt;input type="tel" id="phone" name="phone"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="birthday"&gt;Birthday:&lt;/label&gt;
+    &lt;input type="date" id="birthday" name="birthday"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="volume"&gt;Volume:&lt;/label&gt;
+    &lt;input type="range" id="volume" name="volume" min="0" max="100"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+    </code></pre>
+</section>
+
+<section id="etiquetas-multimedia">
+    <h2>Multimedia Tags in HTML5</h2>
+    <p>HTML5 introduces tags to handle multimedia content more easily and directly.</p>
+
+    <h3>New Tags</h3>
+    <ul class="listacodigo">
+        <li><code>&lt;audio&gt;</code> Defines audio content.</li>
+        <li><code>&lt;video&gt;</code> Defines video content.</li>
+        <li><code>&lt;canvas&gt;</code> Used to draw graphics via scripts (like JavaScript).</li>
+        <li><code>&lt;svg&gt;</code> Defines scalable vector graphics.</li>
+    </ul>
+
+    <h3>Example of Audio and Video</h3>
+    <pre><code>
+&lt;!-- Audio --&gt;
+&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;!-- Video --&gt;
+&lt;video width="320" height="240" controls&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    Your browser does not support the video tag.
+&lt;/video&gt;
+    </code></pre>
+
+    <h3>Example of Canvas</h3>
+    <pre><code>
+&lt;canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(0, 0, 150, 75);
+&lt;/script&gt;
+    </code></pre>
+
+</section>
+
+<section id="xhtml-restrictions">
+    <h2>Restrictions Imposed by XHTML</h2>
+    <p>XHTML (Extensible Hypertext Markup Language) is a reformulation of HTML as XML. Although XHTML follows the same semantic specifications as HTML, it imposes additional restrictions:</p>
+    <ul>
+        <li><strong>XML Well-Formed:</strong> XHTML documents must be structurally correct according to XML rules.</li>
+        <li><strong>Lowercase Usage:</strong> All elements and attributes must be in lowercase.</li>
+        <li><strong>Tag Closure:</strong> All tags must be properly closed.</li>
+        <li><strong>Mandatory Attributes:</strong> Some elements require specific attributes to comply with XHTML syntax.</li>
+    </ul>
+    <p>These restrictions make XHTML stricter than HTML in terms of syntax and compliance, but promote interoperability and cleaner web development.</p>
+</section>
+
+<section id="basic-html-exercises">
+    <h2>Basic HTML Exercises</h2>
+    <p>Below are some exercises to practice basic HTML properties. These exercises are essential to familiarize yourself with common structure and tags before working with layers and more advanced layout.</p>
+
+    <ol>
+        <li>
+            <h3>Exercise 1: Create a Personal Introduction Page</h3>
+            <p>Create a simple web page containing the following elements:</p>
+            <ul>
+                <li>A main title with your full name (using the <a class="resaltar">&lt;h1&gt;</a> tag).</li>
+                <li>A paragraph describing your hobbies or interests.</li>
+                <li>An ordered or unordered list of your favorite movies or books.</li>
+            </ul>
+        </li>
+
+        <li>
+            <h3>Exercise 2: Basic Structure of an HTML Document</h3>
+            <p>Create an HTML document with the basic structure. Be sure to include the following parts:</p>
+            <ul>
+                <li>The <a class="resaltar">&lt;!DOCTYPE&gt;</a> tag and the <a class="resaltar">&lt;html&gt;</a> declaration.</li>
+                <li>The <a class="resaltar">&lt;head&gt;</a> and <a class="resaltar">&lt;body&gt;</a> sections.</li>
+                <li>A page title in the <a class="resaltar">&lt;title&gt;</a> tag.</li>
+            </ul>
+        </li>
+
+        <li>
+            <h3>Exercise 3: Create a Link and an Image</h3>
+            <p>Create a web page containing:</p>
+            <ul>
+                <li>A link to your website or a site of your interest (using the <a class="resaltar">&lt;a&gt;</a> tag).</li>
+                <li>An image centered on the page (use the <a class="resaltar">&lt;img&gt;</a> tag and attributes like <a class="resaltar">alt</a> and <a class="resaltar">title</a>).</li>
+            </ul>
+        </li>
+
+        <li>
+            <h3>Exercise 4: Basic Forms</h3>
+            <p>Create a basic form that includes:</p>
+            <ul>
+                <li>A text field for the name.</li>
+                <li>A field for the email address.</li>
+                <li>A text area for comments.</li>
+                <li>A submit button.</li>
+            </ul>
+        </li>
+
+        <li>
+            <h3>Exercise 5: Creating Tables</h3>
+            <p>Create a simple table with the following structure:</p>
+            <ul>
+                <li>3 rows and 3 columns.</li>
+                <li>The first row should contain the column headers.</li>
+                <li>Fill the cells with any content of your choice.</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+
+<section>
+        <h2>Final project</h2>
+        <p>For this final project, you will create a personal online resume using HTML. The goal is to apply all the HTML tags you’ve learned throughout the unit. Your resume should include various elements, such as text, images, links, and lists, to present your qualifications in a professional and visually appealing way.</p>
+        
+            <h3>Project Requirements</h3>
+            <ul>
+                <li>Create a webpage titled <strong>"My Resume"</strong>.</li>
+                <li>Include a header with your name and a short tagline.</li>
+                <li>Add a photo of yourself or an appropriate placeholder image.</li>
+                <li>Include the following sections on your page:
+                    <ul>
+                        <li><strong>About Me:</strong> A brief biography or introduction (use paragraphs).</li>
+                        <li><strong>Work Experience:</strong> List your previous jobs or relevant experiences (use an ordered or unordered list).</li>
+                        <li><strong>Education:</strong> Include your educational background, such as degrees or certifications (use a table to organize this information).</li>
+                        <li><strong>Skills:</strong> Mention your key skills or proficiencies (use another list here).</li>
+                        <li><strong>Contact Information:</strong> Add your contact details and social media links (use hyperlinks for email, LinkedIn, or other profiles).</li>
+                    </ul>
+                </li>
+                <li>Include at least one external link to a website relevant to your field (e.g., portfolio or LinkedIn).</li>
+                <li>Ensure proper use of semantic tags (like &lt;header&gt;, &lt;footer&gt;, &lt;section&gt;, &lt;article&gt;, etc.).</li>
+                <li>Use an image for your profile photo with the &lt;img&gt; tag. Ensure the image is correctly formatted and responsive.</li>
+            </ul>
+     
+            <h3>Bonus (Optional)</h3>
+            <p>For additional credit, you can include a contact form where users can send you a message. The form should include input fields for name, email, and message, with a submit button. This is a great opportunity to practice using &lt;form&gt; elements.</p>
+        </section>
+
+       
+ <a href="#arriba" class="back-to-top">  ↑  </a>
+
+    </main>
+    <footer>
+       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License">
+        </a>
+    </footer>
+</body>
+</html>
+

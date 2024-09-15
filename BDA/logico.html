@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño lógico de bases de datos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header común para todas las páginas -->
+    <header id="arriba">
+        <h1>Bases de datos</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./almacenamiento.html">Almacenamiento</a></li>
+                <li><a href="./logico.html">Diseño lógico</a></li>
+                <!--<li><a href="./fisico.html">Diseño físico</a></li>
+                <li><a href="./ddl.html">DDL</a></li>
+                <li><a href="./dml.html">DML</a></li>
+                <li><a href="./dcl.html">DCL TCL</a></li>
+                <li><a href="./utilidades.html">Utilidades</a></li>
+                <li><a href="./plsql.html">PL/SQL</a></li>
+                <li><a href="./nosql.html">NoSQL</a></li>-->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+
+<section id="introduccion-logico">
+    <h2>Diseño Lógico de Bases de Datos</h2>
+    <p>El diseño lógico de una base de datos es un paso crucial en el desarrollo de un sistema de bases de datos. Consiste en transformar los requisitos de información de una organización, que inicialmente se representan de manera abstracta, en una estructura lógica que pueda implementarse en un sistema de gestión de bases de datos (SGBD).</p>
+
+    <p>En esta etapa, se parte de un modelo conceptual (generalmente, un diagrama Entidad-Relación, también conocido como E/R) que describe la información y las relaciones entre los distintos elementos de un sistema, y se transforma en un modelo lógico que sigue las reglas del modelo de datos que se va a utilizar. El diseño lógico suele realizarse bajo un enfoque relacional, ya que las bases de datos relacionales son las más comunes, pero también puede aplicarse a otros modelos como el jerárquico o en red.</p>
+
+    <h3>Objetivos del Diseño Lógico</h3>
+    <ul>
+        <li>Definir de manera precisa las tablas que representarán los datos.</li>
+        <li>Establecer las relaciones entre las tablas mediante claves foráneas y restricciones.</li>
+        <li>Optimizar la estructura de la base de datos para mejorar el rendimiento.</li>
+        <li>Garantizar que la base de datos sea flexible, escalable y fácil de mantener.</li>
+    </ul>
+
+    <h3>Pasos en el Diseño Lógico</h3>
+    <p>El diseño lógico de una base de datos sigue una serie de pasos clave:</p>
+    <ol>
+        <li><strong>Modelado conceptual:</strong> Consiste en la creación de un modelo que represente los elementos y relaciones del sistema de manera abstracta. Aquí se utilizan herramientas como los diagramas E/R.</li>
+        <li><strong>Transformación a modelo lógico:</strong> El diagrama E/R se convierte en un modelo de base de datos que puede implementarse en un SGBD. En el caso de bases de datos relacionales, esto implica la creación de tablas, columnas, claves primarias y claves foráneas.</li>
+        <li><strong>Normalización:</strong> Se aplica un proceso de normalización para eliminar redundancias y asegurar la integridad de los datos.</li>
+        <li><strong>Validación y optimización:</strong> Finalmente, se revisa y optimiza el modelo lógico para garantizar que cumpla con los requisitos de rendimiento y escalabilidad.</li>
+    </ol>
+
+    <h3>El Diagrama Entidad-Relación (E/R)</h3>
+    <p>Uno de los componentes fundamentales en el diseño lógico de una base de datos es el diagrama Entidad-Relación (E/R). Este diagrama permite representar gráficamente las entidades (objetos) que componen el sistema y las relaciones que existen entre ellas. A partir de este diagrama conceptual, el diseñador de bases de datos puede pasar al modelo relacional, que es más formal y que puede ser implementado en un SGBD relacional.</p>
+
+    <p>El diagrama E/R proporciona una forma clara y concisa de visualizar cómo los diferentes elementos de un sistema interactúan entre sí, lo que facilita el proceso de diseño lógico y posterior implementación.</p>
+</section>
+
+<section id="diagrama-er">
+    <h2>Diagrama Entidad-Relación (E/R)</h2>
+    <p>El diagrama Entidad-Relación (E/R) es una herramienta fundamental en el diseño conceptual de bases de datos. Representa de manera gráfica las entidades, atributos y las relaciones que existen entre ellas en el sistema que se desea modelar. A continuación, se describen los componentes más importantes de un diagrama E/R.</p>
+
+    <h3>Componentes del Diagrama E/R</h3>
+
+    <h4>1. Entidades</h4>
+    <p>Las entidades son objetos o conceptos del mundo real que tienen una existencia independiente. En el contexto de una base de datos, una entidad se representa como un rectángulo y puede ser cualquier cosa sobre la que necesitamos almacenar información, como personas, productos o eventos.</p>
+    <ul>
+        <li>Ejemplo: Una entidad <span class="resaltar">Cliente</span> en un sistema de ventas.</li>
+    </ul>
+
+    <img class="centrar" src="./img/entidad.png"></img>
+
+    <h4>2. Atributos</h4>
+    <p>Los atributos describen propiedades o características de las entidades. En el diagrama, se representan con óvalos conectados a su entidad correspondiente. Algunos atributos son clave, lo que significa que son únicos para cada entidad.</p>
+    <p>Los atributos pueden clasificarse en diferentes tipos:</p>
+            <ul>
+                <li><strong>Atributos monovaluados:</strong> Contienen un solo valor para cada entidad. Ejemplo: el <em>nombre</em> de una persona.</li>
+                <li><strong>Atributos multivaluados:</strong> Pueden contener múltiples valores para cada entidad. Ejemplo: los <em>teléfonos</em> de una persona.</li>
+                <li><strong>Atributos compuestos:</strong> Son aquellos que pueden subdividirse en varios subatributos. Ejemplo: el <em>nombre completo</em>, que puede subdividirse en <em>nombre</em> y <em>apellido</em>.</li>
+                <li><strong>Atributos opcionales:</strong> No son necesarios para cada entidad, es decir, pueden tener un valor o pueden estar vacíos. Ejemplo: el <em>segundo apellido</em> de una persona.</li>
+            </ul>
+    <ul>
+        <li>Ejemplo: La entidad <span class="resaltar">Cliente</span> puede tener los atributos <span class="resaltar">Nombre</span>, <span class="resaltar">Dirección</span> y <span class="resaltar">Teléfono</span>.</li>
+    </ul>
+    
+    <img class="centrar" src="./img/atributos.png"></img>
+
+    <h4>3. Relaciones</h4>
+    <p>Las relaciones describen cómo dos o más entidades están asociadas entre sí. Se representan con rombos conectados a las entidades que participan en la relación. Las relaciones pueden tener diferentes cardinalidades (uno a uno, uno a muchos, muchos a muchos), lo que indica cuántas instancias de una entidad pueden estar relacionadas con instancias de otra entidad.</p>
+    <ul>
+        <li>Ejemplo: Un <span class="resaltar">Cliente</span> realiza un <span class="resaltar">Pedido</span>, por lo que existe una relación entre las entidades <span class="resaltar">Cliente</span> y <span class="resaltar">Pedido</span>.</li>
+    </ul>
+
+    <h4>4. Cardinalidad</h4>
+    <p>La cardinalidad de una relación define el número de instancias que pueden estar asociadas entre las entidades relacionadas. Existen varios tipos de cardinalidad:</p>
+    <ul>
+        <li><span class="resaltar">Uno a uno (1:1):</span> Una entidad de un conjunto está relacionada con una sola entidad de otro conjunto.</li>
+        <li><span class="resaltar">Uno a muchos (1:N):</span> Una entidad de un conjunto puede estar relacionada con muchas entidades de otro conjunto, pero una entidad del otro conjunto solo puede estar relacionada con una del primero.</li>
+        <li><span class="resaltar">Muchos a muchos (N:M):</span> Varias entidades de un conjunto pueden estar relacionadas con varias entidades del otro conjunto.</li>
+    </ul>
+    
+    <img class="centrar" src="./img/cardinalidad.png"></img>
+
+    <h4>5. Atributos Clave</h4>
+    <p>Un atributo clave es aquel que identifica de forma única cada instancia de una entidad. Los atributos clave se representan en el diagrama con un subrayado.</p>
+    <ul>
+        <li>Ejemplo: En la entidad <span class="resaltar">Cliente</span>, el atributo <span class="resaltar">ID_Cliente</span> puede ser una clave primaria, ya que identifica de manera única a cada cliente.</li>
+    </ul>
+
+    <h4>6. Entidades Débiles</h4>
+    <p>Una entidad débil es una entidad que no tiene una clave propia para identificarse de manera única y depende de la clave de otra entidad (entidad fuerte). Se representan con un doble rectángulo.</p>
+    <ul>
+        <li>Ejemplo: En un sistema de reserva de habitaciones de hotel, la entidad <span class="resaltar">Reserva</span> puede ser una entidad débil dependiente de la entidad <span class="resaltar">Habitación</span>.</li>
+    </ul>
+
+    <h4>4. Agregación y Especialización</h4>
+            <p><strong>Agregación:</strong> Es un proceso mediante el cual una relación entre entidades se trata como una entidad.</p>
+            <p><strong>Especialización:</strong> Se utiliza cuando una entidad general se subdivide en entidades más específicas. Ejemplo: Una entidad <em>Empleado</em> puede subdividirse en <em>Gerente</em> y <em>Operario</em>.</p>
+        </section>
+
+        <section id="ejercicios">
+            <h2>Ejercicios</h2>
+            <p>Identifica las entidades, atributos, relaciones, cardinalidades y tipos de atributos.</p>
+            <h3>Ejercicio 1:</h3>
+            <p>Un cliente realiza uno o varios pedidos en una tienda online. Cada pedido está relacionado con uno o más productos, y cada producto tiene un precio, nombre y descripción. Los pedidos se identifican mediante un número de pedido único y están asociados a una fecha.</p>
+
+            <h3>Ejercicio 2:</h3>
+            <p>Un profesor imparte una o varias asignaturas, y cada asignatura tiene un código, un título y un número de créditos. Los estudiantes pueden matricularse en varias asignaturas, y cada matrícula está identificada por un número único.</p>
+
+            <h3>Ejercicio 3:</h3>
+            <p>En una biblioteca, los libros están clasificados por género. Cada libro tiene un título, autor y un ISBN único. Un lector puede tomar prestados varios libros, y cada préstamo tiene una fecha de inicio y una fecha de finalización.</p>
+
+            <h3>Ejercicio 4:</h3>
+            <p>En un hospital, los doctores están especializados en diferentes áreas. Cada doctor tiene un identificador único, un nombre y un número de teléfono. Los pacientes pueden estar asignados a varios doctores, y cada paciente tiene un historial médico único.</p>
+
+            <h3>Ejercicio 5:</h3>
+            <p>Un equipo de fútbol está compuesto por jugadores que tienen un número de camiseta único, un nombre y una posición en el campo. Un entrenador entrena uno o más equipos, y cada equipo tiene un nombre y un identificador único.</p>
+        </section>
+
+
+
+
+        <a href="#arriba" class="back-to-top"> ↑ </a>
+    </main>
+
+    <footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+</body>
+</html>
+
