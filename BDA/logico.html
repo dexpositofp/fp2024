@@ -140,6 +140,117 @@
         </section>
 
 
+        <section id="notacion-independiente">
+    <h2>Notación Independiente del Modelo Físico</h2>
+    <p>En el diseño de bases de datos, es esencial comprender cómo representar la información de manera efectiva. Usaremos la notación Demarco, que permite traducir un Diagrama Entidad-Relación (DER) a un esquema relacional. A continuación, se presentan los conceptos clave.</p>
+
+    <h3>Modelos de Representación</h3>
+    <p>El modelo ER representa el mundo mediante:</p>
+    <ul>
+        <li><strong>Entidades:</strong> fuertes y débiles.</li>
+        <li><strong>Atributos:</strong> normales, identificantes, obligatorios, compuestos, multivaluados, etc.</li>
+        <li><strong>Relaciones y restricciones:</strong> cardinalidad máxima (1-N) y mínima (0-1), identificantes, generalizaciones y agregaciones.</li>
+        <li><strong>Aserciones:</strong> reglas de negocio.</li>
+    </ul>
+    <p>El modelo relacional utiliza otros mecanismos:</p>
+    <ul>
+        <li><strong>Tablas:</strong> se representan con columnas que contienen valores atómicos.</li>
+        <li><strong>Restricciones:</strong>
+            <ul>
+                <li>Integridad: claves primarias y alternativas.</li>
+                <li>Integridad referencial: claves ajenas.</li>
+                <li>Valores no nulos.</li>
+                <li>Restricciones de valores (tipos de datos y check) y aserciones.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Notación Demarco</h3>
+    <p>La notación Demarco se utiliza para expresar el esquema relacional y tiene las siguientes características:</p>
+    <ul>
+        <li><strong>T = col1 + ... + coln:</strong> define la tabla llamada T con el nombre de sus columnas.</li>
+        <li><strong>CP(columnas):</strong> columnas que forman la clave primaria de la tabla T (una pk por tabla).</li>
+        <li><strong>CAlt(columnas):</strong> columnas que forman una clave alternativa de T (0 o más por tabla).</li>
+        <li><strong>C.Ajena(columnas) → T1(columnas1):</strong> clave ajena (referencia) a las columnas de la tabla T1, donde columnas1 es clave primaria o alternativa en T1 (0 o más por tabla).</li>
+        <li><strong>VNN(columna):</strong> valor no nulo de columna.</li>
+        <li><strong>ASERCIÓN n:</strong> una restricción o regla de negocio.</li>
+    </ul>
+
+    <h3>Entidades y Atributos</h3>
+    <p>Casi siempre, toda entidad del modelo ER genera una tabla en el modelo relacional. Cada atributo de la entidad se corresponde con otro de la tabla. Pero hay casos especiales:</p>
+    <ul>
+        <li><span class="resaltar">Atributos compuestos:</span> el modelo relacional solo admite atributos atómicos (sin estructura). La tabla tendrá como columnas individuales los atributos que componen el atributo compuesto.</li>
+        <li><span class="resaltar">Atributos multivaluados:</span> generan una nueva tabla, y su clave primaria es la de la entidad origen junto al atributo multivaluado (o como mínimo uno de ellos).</li>
+        <li><span class="resaltar">Atributos obligatorios:</span> además de crear la columna, se indica VNN (atributo).</li>
+        <li><span class="resaltar">Atributos derivados:</span> podría indicarse la fórmula con la que se calcula su valor.</li>
+    </ul>
+
+
+    <h3>Relaciones Binarias</h3>
+    <p>Dependiendo de la cardinalidad de la relación, las entidades pueden generar o no tablas adicionales. A continuación, se muestran algunos ejemplos:</p>
+    
+    <h4>Relación Muchos a Muchos (N:M)</h4>
+    <p>En una relación N:M, siempre se genera una tabla para la relación. Por ejemplo, un alumno puede estudiar varias asignaturas, y una asignatura puede tener varios alumnos.</p>
+    <pre>
+        Alumno = expediente, nombre
+        CP(expediente)
+        Asignatura = código, descripción
+        CP(código)
+        Notas = expediente, código, eval1, eval2, final
+        CP(expediente, código)
+    </pre>
+    <p>La tabla Notas incluye como claves ajenas el expediente y el código de alumno y asignatura respectivamente.</p>
+
+    <h4>Relación Uno a Uno (1:1)</h4>
+    <p>En una relación 1:1, no se genera una tabla para la relación. En lugar de ello, se puede incluir la clave de una entidad como clave alternativa o ajena en la otra. Ejemplo: Un conductor puede conducir como máximo un coche, y un coche puede ser conducido como máximo por un conductor.</p>
+    <pre>
+        Conductor = dni, nombre
+        CP(dni)
+        Coche = matrícula, marca, coordenadasGPS, dni
+        CP(matrícula)
+        C.Alt(dni)
+    </pre>
+
+    <h4>Relación Uno a Muchos (1:N)</h4>
+    <p>En una relación 1:N, tampoco se genera una tabla para la relación. La clave de la entidad con cardinalidad 1 se incluye como clave ajena en la tabla de la entidad del lado N. Ejemplo: Un departamento puede tener varios empleados.</p>
+    <pre>
+        Departamento = depto, nombre
+        CP(depto)
+        Empleado = dni, nombre, depto
+        CP(dni)
+        C.Aj(depto)
+    </pre>
+</section>
+
+    <h3>Relaciones reflexivas</h3>
+    <p>Las relaciones reflexivas son aquellas en las que una entidad se relaciona consigo misma. También pueden tener cardinalidades N:M, 1:1, o 1:N.</p>
+
+    <h4>Relación Muchos a Muchos (N:N)</h4>
+    <p>Un ejemplo sería el caso de los temas y subtemas en un videoclub. Un tema puede ser subtema de otros temas y a su vez tener muchos subtemas.</p>
+    <pre>
+        Tema = nombre, descripción
+        CP(nombre)
+        Relación = nombre, subtema
+        CP(nombre, subtema)
+    </pre>
+
+    <h4>Relación Uno a Uno (1:1)</h4>
+    <p>En una relación 1:1 unaria, un ejemplo clásico sería la relación de una persona casada con otra persona. Cada persona solo puede tener una pareja.</p>
+    <pre>
+        Persona = dni, nombre, pareja, fecha_casamiento
+        CP(dni)
+        C.Alt(pareja)
+    </pre>
+
+    <p>En una relación 1:N unaria, como un empleado que depende de un jefe, se puede modelar la dependencia de un empleado hacia un jefe en una organización.</p>
+    <pre>
+        Empleado = dni, nombre, jefe
+        CP(dni)
+        C.Aj(jefe)
+    </pre>
+</section>
+    
+   
 
 
         <a href="#arriba" class="back-to-top"> ↑ </a>
