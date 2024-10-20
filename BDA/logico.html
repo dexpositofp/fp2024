@@ -250,7 +250,174 @@
     </pre>
 </section>
     
-   
+   <section id="restricciones_existencialidad">
+    <h3>Relaciones Binarias con Restricción de Existencialidad</h3>
+    <p>Cuando la cardinalidad mínima es 1 en ambos lados de una relación binaria, se exige que las entidades de ambos lados estén totalmente relacionadas a través de la relación, es decir, que cada entidad debe estar asociada al menos con una entidad del otro conjunto.</p>
+    
+    <h4>Relación Muchos a Muchos (N:N) con Existencialidad Total</h4>
+    <p>En una relación N:N con existencialidad total, siempre se genera una tabla para la relación, y se deben cumplir las siguientes aserciones para garantizar que todas las entidades de ambos conjuntos están relacionadas. Ejemplo: Un alumno debe estar matriculado en al menos una asignatura, y cada asignatura debe tener al menos un alumno.</p>
+    <pre>
+        Alumno = expediente, nombre
+        CP(expediente)
+        Asignatura = codigo, descripcion
+        CP(codigo)
+        Matricula = expediente, codigo, fecha
+        CP(expediente, codigo)
+        C.Aj(expediente) → Alumno
+        C.Aj(codigo) → Asignatura
+
+        ASERCIÓN 1: Asignatura[codigo] ⊆ Matricula[codigo]
+        ASERCIÓN 2: Alumno[expediente] ⊆ Matricula[expediente]
+    </pre>
+    <p>La tabla <code>Matricula</code> incluye claves ajenas a <code>Alumno</code> y <code>Asignatura</code>, y las aserciones aseguran que cada alumno está matriculado en al menos una asignatura, y cada asignatura tiene al menos un alumno.</p>
+
+    <h4>Relación Uno a Uno (1:1) con Existencialidad Total</h4>
+    <p>En una relación 1:1 con existencialidad total, no se genera una tabla adicional, pero la clave de una entidad debe incluirse en la otra como clave alternativa o ajena. Ejemplo: Un empleado debe estar asignado a un escritorio, y cada escritorio debe estar asignado a un empleado.</p>
+    <pre>
+        Empleado = dni, nombre
+        CP(dni)
+        Escritorio = id_escritorio, ubicacion, dni
+        CP(id_escritorio)
+        C.Alt(dni) → Empleado
+
+        ASERCIÓN 1: Escritorio[dni] ⊆ Empleado[dni]
+        ASERCIÓN 2: Empleado[dni] ⊆ Escritorio[dni]
+    </pre>
+    <p>La clave <code>dni</code> en <code>Escritorio</code> referencia a la entidad <code>Empleado</code>, y las aserciones garantizan que cada empleado está asignado a un escritorio y cada escritorio tiene un empleado.</p>
+</section>
+
+<section id="relaciones_reflexivas_existencialidad">
+    <h3>Relaciones Reflexivas con Restricción de Existencialidad</h3>
+    <p>Una relación reflexiva con existencialidad total requiere que cada entidad esté relacionada consigo misma o con otra entidad del mismo conjunto. Un ejemplo típico podría ser la relación de supervisión entre empleados.</p>
+    
+    <h4>Relación Uno a Muchos (1:N) Reflexiva con Existencialidad Total</h4>
+    <p>En una relación reflexiva 1:N, cada entidad debe estar relacionada con al menos una entidad del mismo conjunto. Ejemplo: Un empleado debe ser supervisado por otro empleado.</p>
+    <pre>
+        Empleado = dni, nombre, supervisor
+        CP(dni)
+        C.Aj(supervisor) → Empleado
+
+        ASERCIÓN: Empleado[supervisor] ⊆ Empleado[dni]
+    </pre>
+    <p>La clave ajena <code>supervisor</code> hace referencia al mismo conjunto de empleados, y la aserción asegura que cada empleado tiene un supervisor.</p>
+</section>
+
+
+
+<section id="relaciones_reflexivas_existencialidad">
+    <h3>Relaciones Reflexivas con Restricción de Existencialidad</h3>
+    <p>Una relación reflexiva con existencialidad total requiere que cada entidad esté relacionada consigo misma o con otra entidad del mismo conjunto. Un ejemplo típico podría ser la relación de supervisión entre empleados.</p>
+    
+    <h4>Relación Uno a Muchos (1:N) Reflexiva con Existencialidad Total</h4>
+    <p>En una relación reflexiva 1:N, cada entidad debe estar relacionada con al menos una entidad del mismo conjunto. Ejemplo: Un empleado debe ser supervisado por otro empleado.</p>
+    <pre>
+        Empleado = dni, nombre, supervisor
+        CP(dni)
+        C.Aj(supervisor) → Empleado
+
+        ASERCIÓN: Empleado[supervisor] ⊆ Empleado[dni]
+    </pre>
+    <p>La clave ajena <code>supervisor</code> hace referencia al mismo conjunto de empleados, y la aserción asegura que cada empleado tiene un supervisor.</p>
+</section>
+
+<section id="relaciones_reflexivas_existencialidad">
+    <h3>Relaciones Reflexivas con Restricción de Existencialidad</h3>
+    <p>Una relación reflexiva con existencialidad total requiere que cada entidad esté relacionada consigo misma o con otra entidad del mismo conjunto. Un ejemplo típico podría ser la relación de supervisión entre empleados.</p>
+    
+    <h4>Relación Uno a Muchos (1:N) Reflexiva con Existencialidad Total</h4>
+    <p>En una relación reflexiva 1:N, cada entidad debe estar relacionada con al menos una entidad del mismo conjunto. Ejemplo: Un empleado debe ser supervisado por otro empleado.</p>
+    <pre>
+        Empleado = dni, nombre, supervisor
+        CP(dni)
+        C.Aj(supervisor) → Empleado
+
+        ASERCIÓN: Empleado[supervisor] ⊆ Empleado[dni]
+    </pre>
+    <p>La clave ajena <code>supervisor</code> hace referencia al mismo conjunto de empleados, y la aserción asegura que cada empleado tiene un supervisor.</p>
+</section>
+
+<section id="relaciones_reflexivas_existencialidad">
+    <h3>Relaciones Reflexivas con Restricción de Existencialidad</h3>
+    <p>Una relación reflexiva con existencialidad total requiere que cada entidad esté relacionada consigo misma o con otra entidad del mismo conjunto. Un ejemplo típico podría ser la relación de supervisión entre empleados.</p>
+    
+    <h4>Relación Uno a Muchos (1:N) Reflexiva con Existencialidad Total</h4>
+    <p>En una relación reflexiva 1:N, cada entidad debe estar relacionada con al menos una entidad del mismo conjunto. Ejemplo: Un empleado debe ser supervisado por otro empleado.</p>
+    <pre>
+        Empleado = dni, nombre, supervisor
+        CP(dni)
+        C.Aj(supervisor) → Empleado
+
+        ASERCIÓN: Empleado[supervisor] ⊆ Empleado[dni]
+    </pre>
+    <p>La clave ajena <code>supervisor</code> hace referencia al mismo conjunto de empleados, y la aserción asegura que cada empleado tiene un supervisor.</p>
+</section>
+
+<section id="relaciones_reflexivas_existencialidad">
+    <h3>Relaciones Reflexivas con Restricción de Existencialidad</h3>
+    <p>Una relación reflexiva con existencialidad total requiere que cada entidad esté relacionada consigo misma o con otra entidad del mismo conjunto. Un ejemplo típico podría ser la relación de supervisión entre empleados.</p>
+    
+    <h4>Relación Uno a Muchos (1:N) Reflexiva con Existencialidad Total</h4>
+    <p>En una relación reflexiva 1:N, cada entidad debe estar relacionada con al menos una entidad del mismo conjunto. Ejemplo: Un empleado debe ser supervisado por otro empleado.</p>
+    <pre>
+        Empleado = dni, nombre, supervisor
+        CP(dni)
+        C.Aj(supervisor) → Empleado
+
+        ASERCIÓN: Empleado[supervisor] ⊆ Empleado[dni]
+    </pre>
+    <p>La clave ajena <code>supervisor</code> hace referencia al mismo conjunto de empleados, y la aserción asegura que cada empleado tiene un supervisor.</p>
+</section>
+<section id="relaciones_ternarias_existencialidad">
+    <h3>Relaciones Ternarias con Restricción de Existencialidad</h3>
+    <p>En las relaciones ternarias con existencialidad total, todas las entidades involucradas deben participar en la relación, es decir, cada entidad de los tres conjuntos debe estar relacionada al menos una vez.</p>
+    
+    <h4>Relación N:M:P con Existencialidad Total</h4>
+    <p>En una relación N:M:P, siempre se genera una tabla para la relación que incluye las claves de las tres entidades, además de las aserciones necesarias. Ejemplo: Un producto debe ser suministrado por un proveedor a través de un contrato, y cada contrato debe involucrar a un producto y un proveedor.</p>
+    <pre>
+        Producto = id_producto, nombre_producto
+        CP(id_producto)
+        Proveedor = id_proveedor, nombre_proveedor
+        CP(id_proveedor)
+        Contrato = id_contrato, fecha
+        CP(id_contrato)
+        Suministro = id_producto, id_proveedor, id_contrato, cantidad
+        CP(id_producto, id_proveedor, id_contrato)
+        C.Aj(id_producto) → Producto
+        C.Aj(id_proveedor) → Proveedor
+        C.Aj(id_contrato) → Contrato
+
+        ASERCIÓN 1: Producto[id_producto] ⊆ Suministro[id_producto]
+        ASERCIÓN 2: Proveedor[id_proveedor] ⊆ Suministro[id_proveedor]
+        ASERCIÓN 3: Contrato[id_contrato] ⊆ Suministro[id_contrato]
+    </pre>
+    <p>Las aserciones aseguran que cada producto, proveedor y contrato participan en la relación de suministro.</p>
+</section>
+
+<section id="relaciones_ternarias_existencialidad">
+    <h3>Relaciones Ternarias con Restricción de Existencialidad</h3>
+    <p>En las relaciones ternarias con existencialidad total, todas las entidades involucradas deben participar en la relación, es decir, cada entidad de los tres conjuntos debe estar relacionada al menos una vez.</p>
+    
+    <h4>Relación N:M:P con Existencialidad Total</h4>
+    <p>En una relación N:M:P, siempre se genera una tabla para la relación que incluye las claves de las tres entidades, además de las aserciones necesarias. Ejemplo: Un producto debe ser suministrado por un proveedor a través de un contrato, y cada contrato debe involucrar a un producto y un proveedor.</p>
+    <pre>
+        Producto = id_producto, nombre_producto
+        CP(id_producto)
+        Proveedor = id_proveedor, nombre_proveedor
+        CP(id_proveedor)
+        Contrato = id_contrato, fecha
+        CP(id_contrato)
+        Suministro = id_producto, id_proveedor, id_contrato, cantidad
+        CP(id_producto, id_proveedor, id_contrato)
+        C.Aj(id_producto) → Producto
+        C.Aj(id_proveedor) → Proveedor
+        C.Aj(id_contrato) → Contrato
+
+        ASERCIÓN 1: Producto[id_producto] ⊆ Suministro[id_producto]
+        ASERCIÓN 2: Proveedor[id_proveedor] ⊆ Suministro[id_proveedor]
+        ASERCIÓN 3: Contrato[id_contrato] ⊆ Suministro[id_contrato]
+    </pre>
+    <p>Las aserciones aseguran que cada producto, proveedor y contrato participan en la relación de suministro.</p>
+</section>
 
 
         <a href="#arriba" class="back-to-top"> ↑ </a>
