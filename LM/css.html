@@ -175,139 +175,8 @@ elemento {
             </code></pre>
         </section>
 
-	<section id="posicionamiento">
-  	  <h2>Posicionamiento en CSS</h2>
-   	 <p>El posicionamiento en CSS es crucial para controlar cómo se colocan los elementos en una página web. Existen varios métodos de posicionamiento, cada uno con su propio uso y comportamiento.</p>
 
-   	 <h3>1. Posicionamiento Estático (Static)</h3>
-	 <p>El posicionamiento estático es el valor por defecto para todos los elementos.</p>
-	 <p>Los elementos con <a class="resaltar">position: static</a> se colocan en el flujo normal del documento, y las propiedades <a class="resaltar">top</a>, <a class="resaltar">right</a>, <a class="resaltar">bottom</a> y <a class="resaltar">left</a> no tienen efecto.</p>
-    <pre><code class="language-css">
-    .static-box {
-        position: static;
-        width: 200px;
-        height: 100px;
-        background-color: lightblue;
-    }
-    </code></pre>
-    <p><a class="resaltar">Consejo:</a> Utiliza el posicionamiento estático cuando no necesites ajustar la posición del elemento de forma específica. Es útil para la mayoría de los elementos en el flujo normal del documento.</p>
-
-    <h3>2. Posicionamiento Relativo (Relative)</h3>
-    <p>Con <a class="resaltar">position: relative</a>, el elemento se posiciona en relación con su posición original en el flujo del documento. Las propiedades <a class="resaltar">top</a>, <a class="resaltar">right</a>, <a class="resaltar">bottom</a> y <a class="resaltar">left</a> desplazan al elemento desde su posición original.</p>
-    <pre><code class="language-css">
-    .relative-box {
-        position: relative;
-        top: 20px;
-        left: 30px;
-        width: 200px;
-        height: 100px;
-        background-color: lightcoral;
-    }
-    </code></pre>
-    <p><a class="resaltar">Consejo:</a> Usa el posicionamiento relativo para ajustar ligeramente la posición de un elemento sin sacarlo del flujo normal del documento. Es útil cuando necesitas un pequeño desplazamiento respecto a su ubicación original.</p>
-
-    <h3>3. Posicionamiento Absoluto (Absolute)</h3>
-    <p>El <a class="resaltar">position: absolute</a> saca al elemento del flujo normal del documento y lo posiciona en relación con el elemento padre más cercano que tenga un posicionamiento distinto de <a class="resaltar">static</a>. Si no hay tal elemento, se posiciona en relación con el documento.</p>
-    <pre><code class="language-css">
-    .absolute-container {
-        position: relative;
-        width: 300px;
-        height: 200px;
-        background-color: lightgrey;
-    }
-    
-    .absolute-box {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 150px;
-        height: 80px;
-        background-color: lightgreen;
-    }
-    </code></pre>
-    <p><a class="resaltar">Consejo:</a> El posicionamiento absoluto es ideal para colocar elementos en una ubicación específica dentro de un contenedor. Úsalo para elementos flotantes o modales que deben estar en una posición fija dentro de su contenedor padre.</p>
-
-    <h3>4. Posicionamiento Fijo (Fixed)</h3>
-    <p>El <a class="resaltar">position: fixed</a> posiciona el elemento en relación con la ventana del navegador. El elemento permanece en la misma posición incluso cuando el usuario se desplaza por la página.</p>
-    <pre><code class="language-css">
-    .fixed-box {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 150px;
-        height: 80px;
-        background-color: lightpink;
-    }
-    </code></pre>
-    <p><a class:"resaltar">Consejo:</a> Utiliza el posicionamiento fijo para elementos que deben permanecer visibles en todo momento, como botones de navegación o barras de herramientas, sin importar el desplazamiento de la página.</p>
-
-    <h3>5. Posicionamiento Pegajoso (Sticky)</h3>
-    <p>El <a class="resaltar>"position: sticky</a> es una combinación de <a class="resaltar">relative</a> y <a class="resaltar">fixed</a>. El elemento se comporta como <a class="resaltar">relative</a> hasta que se desplaza a una posición específica en la ventana, momento en el cual se comporta como <a class="resaltar">fixed</a>.</p>
-    <pre><code class="language-css">
-    .sticky-box {
-        position: sticky;
-        top: 0;
-        width: 100%;
-        height: 50px;
-        background-color: lightgoldenrodyellow;
-    }
-    </code></pre>
-    <p><a class="resaltar">Consejo:</a> El posicionamiento pegajoso es útil para elementos como encabezados de secciones que deben permanecer visibles mientras se navega por una sección larga, pero que no deben estar fijos en la pantalla en todo momento.</p>
-
-
-    <h3>Ejercicios de posicionamiento</h3>
-    <h4>Ejercicio 1: Menú de Navegación Fijo</h4>
-        <p> <a class="resaltar">Descripción:</a> Crea una página con un menú de navegación que permanezca fijo en la parte superior de la página mientras te desplazas hacia abajo.</p>
-        <p><a class="resaltar"> Instrucciones:</a></p>
-        <ul>
-            <li>Crea una estructura básica de HTML con un menú de navegación en la parte superior.</li>
-            <li>Usa <a class="resaltar">position: fixed;</a> para hacer que el menú se mantenga en la parte superior de la página.</li>
-            <li>Añade algunos enlaces de ejemplo en el menú y contenido debajo para permitir el desplazamiento.</li>
-        </ul>
-
-     <h4>Ejercicio 2: Caja Flotante en una Esquina</h4>
-     <p><a class="resaltar">Descripción:</a> Crea una caja que se mantenga en la esquina inferior derecha de la pantalla y permanezca visible al desplazarse.</p>
-     <p> <a class="resaltar">Instrucciones:</a></p>
-        <ul>
-            <li>Crea una caja con un contenido básico.</li>
-	    <li>Usa <a class="resaltar">position: fixed;</a> para posicionar la caja en la esquina inferior derecha de la pantalla.</li>
-            <li>Ajusta el tamaño y el color de la caja según tu preferencia.</li>
-        </ul>
-   
-	<h4>Ejercicio 3: Caja Dentro de un Contenedor</h4>
-	<p> <a class="resaltar">Descripción:</a> Crea un contenedor con posición relativa y dentro de él, coloca una caja con posición absoluta.</p>
-        <p> <a class="resaltar">Instrucciones:</a></p>
-        <ul>
-            <li>Crea un contenedor con un tamaño específico y posición relativa.</li>
-            <li>Dentro del contenedor, añade una caja con posición absoluta.</li>
-            <li>Asegúrate de que la caja esté posicionada en una ubicación específica dentro del contenedor.</li>
-        </ul>
-
-	<h4>Ejercicio 4: Encabezado Pegajoso (Sticky Header)</h4>
-	<p><a class="resaltar">Descripción:</a> Crea un encabezado que se quede pegado en la parte superior de la ventana cuando el usuario se desplaza hacia abajo.</p>
-        <p><a class="resaltar">Instrucciones:</a></p>
-        <ul>
-            <li>Crea un encabezado con un tamaño específico y usa <code>position: sticky;</code></li>
-            <li>Ajusta la propiedad <code>top</code> para que el encabezado se quede en la parte superior de la ventana.</li>
-            <li>Añade contenido debajo del encabezado para permitir el desplazamiento.</li>
-        </ul>
-
-	<h4>Ejercicio 5: Diseño de una Tarjeta con Posicionamiento Relativo y Absoluto</h4>
-        <p><a class="resaltar">Descripción:</a> Diseña una tarjeta con una imagen y texto, y usa <code>position: relative;</code> para la tarjeta y <code>position: absolute;</code> para un elemento dentro de la tarjeta.</p>
-        <p><a class="resaltar">Instrucciones:</a></p>
-        <ul>
-            <li>Crea una tarjeta con una imagen de fondo y texto superpuesto.</li>
-            <li>Usa <code>position: relative;</code> en la tarjeta para poder posicionar el texto con <code>position: absolute;</code></li>
-            <li>Ajusta el texto para que esté centrado en la parte inferior de la tarjeta.</li>
-        </ul>
-    </div>
-	</section>
-
-
-
-
-
-        <section id="pseudoclases-css">
+       <section id="pseudoclases-css">
             <h2>Pseudo-clases en CSS</h2>
             <p>Las pseudo-clases se utilizan para definir el estado especial de un elemento.</p>
             <ul>
@@ -331,144 +200,274 @@ elemento {
             </ul>
         </section>
 
-	<section id="flexbox-css">
-    		<h2>Flexbox en CSS</h2>
-   		<p>Flexbox, o "Flexible Box Layout", es un sistema de diseño en CSS que permite crear interfaces responsivas y alineadas de manera eficiente. Es especialmente útil para distribuir espacio entre elementos y alinearlos dentro de contenedores, incluso cuando el tamaño de los elementos es dinámico o desconocido.</p>
 
-    		<h3>¿Cómo funciona Flexbox?</h3>
-    		<p>El sistema Flexbox consta de dos componentes principales:</p>
-    		<ul>
-        		<li><a class="resaltar">Contenedor flexible (flex container):</a> El elemento padre que contiene a los elementos flexibles.</li>
-        		<li><a class="resaltar">Elementos flexibles (flex items):</a> Los elementos hijos que se alinearán y distribuirán según las reglas de Flexbox.</li>
-    		</ul>
 
-    		<h3>Propiedades Principales de Flexbox</h3>
-    		<p>Flexbox cuenta con varias propiedades clave para controlar la distribución y alineación de los elementos flexibles:</p>
-    		<ul>
-        		<li><a class="resaltar">display: flex; o display: inline-flex;</a> Convierte el contenedor en un contenedor flexible.</li>
-        		<li><a class="resaltar">flex-direction:</a> Define la dirección en la que se distribuyen los elementos.</li>
-        		<li><a class="resaltar">justify-content:</a> Controla la alineación de los elementos a lo largo del eje principal.</li>
-        		<li><a class="resaltar">align-items:</a> Controla la alineación de los elementos a lo largo del eje transversal.</li>
-        		<li><a class="resaltar">flex-wrap:</a> Permite ajustar los elementos a una nueva línea si no caben en una sola.</li>
-        		<li><a class="resaltar">align-content:</a> Controla la alineación de múltiples líneas de elementos flexibles si hay espacio extra.</li>
-    		</ul>
+<section id="bem"">
+    <h2>Metodología BEM (Block, Element, Modifier)</h2>
 
-    		<h3>Ejemplo Práctico de Flexbox</h3>
-    		<p>A continuación, se muestra un ejemplo de cómo se puede aplicar Flexbox en un contenedor con varios elementos:</p>
+    <p class="resaltar">BEM (Block, Element, Modifier) es una metodología de nomenclatura para CSS que facilita la organización y escalabilidad del código al dividir la interfaz en componentes reutilizables y predecibles.</p>
 
-    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Ejemplo Flexbox&lt;/title&gt;
-    &lt;style&gt;
-        .contenedor {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            height: 300px;
-            border: 2px solid #3498db;
-        }
-        .item {
-            background-color: #e74c3c;
-            color: white;
-            padding: 20px;
-            margin: 10px;
-            font-size: 18px;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="contenedor"&gt;
-        &lt;div class="item"&gt;Elemento 1&lt;/div&gt;
-        &lt;div class="item"&gt;Elemento 2&lt;/div&gt;
-        &lt;div class="item"&gt;Elemento 3&lt;/div&gt;
-        &lt;div class="item"&gt;Elemento 4&lt;/div&gt;
+    <h3>Conceptos Clave de BEM</h3>
+
+    <ul>
+        <li>
+            <strong>Block (Bloque):</strong> Es el contenedor principal que representa un componente de la interfaz. Es independiente y puede reutilizarse. Un "block" puede contener elementos y modificadores.
+            <br>
+            <em>Ejemplo de un block:</em>
+            <code>&lt;div class="menu"&gt;...&lt;/div&gt;</code>
+        </li>
+        <li>
+            <strong>Element (Elemento):</strong> Es una parte de un bloque que no puede existir sin el bloque padre. Se utiliza para describir componentes internos de un bloque. Los elementos están asociados a su bloque utilizando un doble guion bajo (`__`).
+            <br>
+            <em>Ejemplo de un block y sus elementos:</em>
+            <code>
+                &lt;div class="menu"&gt;
+                    &lt;div class="menu__item"&gt;...&lt;/div&gt;
+                    &lt;div class="menu__link"&gt;...&lt;/div&gt;
+                &lt;/div&gt;
+            </code>
+        </li>
+        <li>
+            <strong>Modifier (Modificador):</strong> Es una variación de un bloque o un elemento. Los modificadores se usan para representar diferentes estados, estilos o variaciones del bloque o elemento. Se indican con un doble guion (`--`).
+            <br>
+            <em>Ejemplo de un modificador:</em>
+            <code>&lt;div class="button button--primary"&gt;Enviar&lt;/div&gt;</code>
+        </li>
+    </ul>
+
+    <h3>Cómo nombrar las clases en BEM</h3>
+    <p>La nomenclatura en BEM sigue una estructura muy clara:</p>
+
+    <ul>
+        <li>
+            <strong>Bloque:</strong> El nombre de un bloque es el componente principal de la interfaz.
+            <br>
+            <em>Ejemplo:</em> <code>.header</code> <code>.menu</code> <code>.form</code>
+        </li>
+        <li>
+            <strong>Elemento:</strong> El nombre de un elemento siempre está vinculado a un bloque, separado por un doble guion bajo (`__`).
+            <br>
+            <em>Ejemplo:</em> <code>.menu__item</code> <code>.form__input</code>
+        </li>
+        <li>
+            <strong>Modificador:</strong> Los modificadores representan variaciones y se añaden a los bloques o elementos con un doble guion (`--`).
+            <br>
+            <em>Ejemplo:</em> <code>.button--large</code> <code>.header--dark</code>
+        </li>
+    </ul>
+
+    <h3>Ejemplo Completo en HTML y CSS con BEM</h3>
+
+    <p>Vamos a aplicar BEM para crear una tarjeta (card) con un encabezado, cuerpo, y botón:</p>
+
+    <pre>
+    &lt;div class="card"&gt;
+        &lt;header class="card__header"&gt;
+            &lt;h1 class="card__title"&gt;Título de la tarjeta&lt;/h1&gt;
+        &lt;/header&gt;
+        &lt;div class="card__body"&gt;
+            &lt;p class="card__text"&gt;Este es el contenido de la tarjeta.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;footer class="card__footer"&gt;
+            &lt;button class="card__button card__button--primary"&gt;Leer más&lt;/button&gt;
+        &lt;/footer&gt;
     &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-    </code></pre>
+    </pre>
 
-    		<h3>Recursos Adicionales para Aprender Flexbox</h3>
-  		  <p>Aquí tienes algunos enlaces útiles para estudiar Flexbox con mayor profundidad:</p>
-    		<ul>
-        		<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank">Guía Completa de CSS Flexbox - MDN</a></li>
-        		<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS Tricks - Una guía visual de Flexbox</a></li>
-        		<li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy - Juego interactivo para aprender Flexbox</a></li>
-		</ul>
-	</section>
+    <h4>CSS para el ejemplo:</h4>
+
+    <pre>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    .card__header {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .card__body {
+        margin-top: 15px;
+    }
+
+    .card__footer {
+        margin-top: 20px;
+    }
+
+    .card__button {
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .card__button--primary {
+        background-color: blue;
+        color: white;
+    }
+    </pre>
+
+    <h3>Beneficios de BEM</h3>
+    <p>La metodología BEM ofrece las siguientes ventajas:</p>
+
+    <ul>
+        <li>
+            <strong>Escalabilidad:</strong> Facilita el crecimiento del proyecto sin que el CSS se vuelva difícil de gestionar.
+        </li>
+        <li>
+            <strong>Reusabilidad:</strong> Los bloques y elementos son fácilmente reutilizables en distintas partes de la aplicación.
+        </li>
+        <li>
+            <strong>Modularidad:</strong> Cada bloque es independiente, lo que permite realizar cambios sin afectar a otros componentes.
+        </li>
+        <li>
+            <strong>Mantenibilidad:</strong> La estructura clara y consistente ayuda a los desarrolladores a comprender y modificar el código rápidamente.
+        </li>
+    </ul>
+
+    <h3>Otras metodologías de nomenclatura para CSS</h3>
+
+    <p>Además de BEM, existen otras metodologías que ayudan a organizar el CSS de forma eficiente:</p>
+
+    <ul>
+        <li>
+            <strong>SMACSS (Scalable and Modular Architecture for CSS):</strong> Se centra en la modularización dividiendo el CSS en cinco categorías: Base, Layout, Module, State, Theme.
+        </li>
+        <li>
+            <strong>OOCSS (Object-Oriented CSS):</strong> Promueve la separación de estructura y apariencia, facilitando la reutilización de objetos CSS.
+        </li>
+        <li>
+            <strong>Atomic CSS:</strong> Utiliza clases pequeñas y especializadas para describir propiedades específicas, promoviendo la reutilización aunque a costa de muchos nombres de clase.
+        </li>
+    </ul>
+</section>
 
 
-	<section id="grid-layout-css">
-   		<h2>CSS Grid Layout</h2>
-    		<p>El CSS Grid Layout es un sistema de diseño en CSS que permite crear estructuras complejas y responsivas de una manera mucho más intuitiva. Mientras que Flexbox se enfoca en la distribución de elementos en un eje (horizontal o vertical), Grid permite trabajar en dos dimensiones (filas y columnas) simultáneamente.</p>
 
-    		<h3>¿Cómo funciona Grid Layout?</h3>
-    		<p>El sistema Grid Layout se basa en un <a class="resaltar">contenedor grid</a> que organiza su contenido en una cuadrícula de filas y columnas. Los elementos hijos dentro de este contenedor son los <a class="resaltar">items grid</a>, los cuales pueden ser ubicados en posiciones específicas dentro de la cuadrícula.</p>
 
-   		 <h3>Propiedades Principales de Grid Layout</h3>
-   		 <p>El Grid Layout tiene varias propiedades clave para controlar la estructura y distribución de los elementos:</p>
-    		<ul>
-        		<li><a class="resaltar">display: grid;</a> o <a class="resaltar">display: inline-grid;</a> Convierte un contenedor en un contenedor de cuadrícula.</li>
-        		<li><a class="resaltar">grid-template-columns:</a> Define las columnas en la cuadrícula.</li>
-        		<li><a class="resaltar">grid-template-rows:</a> Define las filas en la cuadrícula.</li>
-        		<li><a class="resaltar">grid-gap:</a> Establece el espacio entre filas y columnas.</li>
-        		<li><a class="resaltar">grid-template-areas:</a> Permite organizar áreas específicas de la cuadrícula usando nombres.</li>
-        		<li><a class="resaltar">justify-items:</a> Controla la alineación de los elementos dentro de sus celdas a lo largo del eje horizontal.</li>
-        		<li><a class="resaltar">align-items:</a> Controla la alineación de los elementos dentro de sus celdas a lo largo del eje vertical.</li>
-   		 </ul>
 
-   		 <h3>Ejemplo Práctico de Grid Layout</h3>
-    		 <p>A continuación, se muestra un ejemplo básico de cómo aplicar CSS Grid para organizar un layout simple:</p>
+	<section id="css-positioning">
+  <h2>Posicionamiento en CSS</h2>
 
-    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Ejemplo Grid Layout&lt;/title&gt;
-    &lt;style&gt;
-        .contenedor-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto;
-            grid-gap: 20px;
-            padding: 20px;
-            border: 2px solid #2ecc71;
-        }
-        .item-grid {
-            background-color: #9b59b6;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="contenedor-grid"&gt;
-        &lt;div class="item-grid"&gt;Elemento 1&lt;/div&gt;
-        &lt;div class="item-grid"&gt;Elemento 2&lt;/div&gt;
-        &lt;div class="item-grid"&gt;Elemento 3&lt;/div&gt;
-        &lt;div class="item-grid"&gt;Elemento 4&lt;/div&gt;
-        &lt;div class="item-grid"&gt;Elemento 5&lt;/div&gt;
-        &lt;div class="item-grid"&gt;Elemento 6&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-    </code></pre>
+  <p>El posicionamiento en CSS es fundamental para controlar el layout de una página web. Permite definir cómo y dónde deben colocarse los elementos dentro del espacio disponible en la página. A lo largo del tiempo, las técnicas de posicionamiento han evolucionado, desde el uso de <span class="resaltar">position</span> (absoluto, relativo, fijo y estático) hasta técnicas modernas como <span class="resaltar">Flexbox</span> y <span class="resaltar">CSS Grid</span>, que simplifican mucho el trabajo con layouts responsivos.</p>
 
-    		<h3>Recursos Adicionales para Aprender Grid Layout</h3>
-  		<p>Si deseas aprender más sobre Grid Layout, estos enlaces pueden ser útiles:</p>
-   		<ul>
-        		<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Grid_Layout" target="_blank">Guía Completa de CSS Grid Layout - MDN</a></li>
-        		<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">CSS Tricks - Guía visual completa para Grid Layout</a></li>
-        		<li><a href="https://gridbyexample.com/" target="_blank">Grid by Example - Ejemplos prácticos de Grid Layout</a></li>
-   		</ul>
-	</section>
+  <h3>Tipos de Posicionamiento en CSS</h3>
+
+  <ul>
+    <li><span class="resaltar">static</span>: Es el valor por defecto. Los elementos se posicionan en el flujo natural del documento.</li>
+    <li><span class="resaltar">relative</span>: Permite mover el elemento desde su posición original en el flujo del documento sin modificar el espacio que ocupa.</li>
+    <li><span class="resaltar">absolute</span>: Posiciona un elemento respecto a su contenedor más cercano con <span class="resaltar">position: relative</span> o <span class="resaltar">absolute</span>.</li>
+    <li><span class="resaltar">fixed</span>: Fija el elemento en una posición específica de la pantalla, independientemente del scroll.</li>
+    <li><span class="resaltar">sticky</span>: Es una combinación de <span class="resaltar">relative</span> y <span class="resaltar">fixed</span>. El elemento se comporta como <span class="resaltar">relative</span> hasta que se activa en una posición, y luego permanece fijo.</li>
+  </ul>
+
+  <h4>Ejemplos básicos de posicionamiento:</h4>
+
+  <p><span class="resaltar">position: relative</span> mueve el elemento respecto a su posición natural:</p>
+
+  <pre><code>
+.elemento-relativo {
+  position: relative;
+  top: 10px; /* El elemento se moverá 10px hacia abajo */
+  left: 20px; /* El elemento se moverá 20px hacia la derecha */
+}
+  </code></pre>
+
+  <p><span class="resaltar">position: absolute</span> saca al elemento del flujo normal del documento:</p>
+
+  <pre><code>
+.elemento-absoluto {
+  position: absolute;
+  top: 50px;  /* Se coloca a 50px del borde superior del contenedor */
+  left: 30px; /* Se coloca a 30px del borde izquierdo del contenedor */
+}
+  </code></pre>
+
+  <p>Para que un elemento con <span class="resaltar">position: absolute</span> funcione, debe estar dentro de un contenedor con <span class="resaltar">position: relative</span> o <span class="resaltar">absolute</span>.</p>
+
+  <h3>Flexbox</h3>
+  <p>El modelo de caja flexible, o <span class="resaltar">Flexbox</span>, es ideal para diseños unidimensionales (ya sea en fila o columna). Es muy útil para distribuir espacio entre elementos y alinear ítems dentro de un contenedor.</p>
+
+  <h4>Conceptos clave en Flexbox</h4>
+  <ul>
+    <li><span class="resaltar">justify-content</span>: Controla la alineación de los ítems a lo largo del eje principal (horizontal o vertical).</li>
+    <li><span class="resaltar">align-items</span>: Alinea los ítems en el eje perpendicular (transversal).</li>
+    <li><span class="resaltar">flex-direction</span>: Define si los ítems se alinean en fila (<span class="resaltar">row</span>) o en columna (<span class="resaltar">column</span>).</li>
+    <li><span class="resaltar">flex-wrap</span>: Controla si los ítems deben mantenerse en una sola fila o permitir que envuelvan en múltiples filas.</li>
+  </ul>
+
+  <p>Ejemplo básico de <span class="resaltar">Flexbox</span>:</p>
+
+  <pre><code>
+.container {
+  display: flex;
+  justify-content: space-between; /* Espacio igual entre ítems */
+  align-items: center; /* Centrado vertical de los ítems */
+  flex-wrap: wrap; /* Permite que los ítems envuelvan a la siguiente línea si es necesario */
+}
+  </code></pre>
+
+  <p>Este código crea una distribución flexible donde los ítems dentro del contenedor <span class="resaltar">.container</span> se alinearán con espacio entre ellos y se centrarán verticalmente.</p>
+
+  <h4>Distribución flexible con flex-grow y flex-shrink</h4>
+
+  <p>El uso de <span class="resaltar">flex-grow</span> y <span class="resaltar">flex-shrink</span> permite controlar cuánto debe crecer o encoger un elemento dentro de un contenedor flex. Por ejemplo:</p>
+
+  <pre><code>
+.item {
+  flex-grow: 1; /* Permite que este ítem crezca para ocupar más espacio disponible */
+  flex-shrink: 2; /* Este ítem encogerá dos veces más rápido que otros cuando el contenedor sea más pequeño */
+}
+  </code></pre>
+
+  <h3>CSS Grid</h3>
+  <p><span class="resaltar">CSS Grid</span> es un sistema de cuadrículas bidimensionales que permite crear layouts tanto en filas como en columnas. A diferencia de Flexbox, CSS Grid es ideal para estructuras más complejas, como diseños de página completos o galerías de imágenes.</p>
+
+  <h4>Conceptos clave en CSS Grid</h4>
+  <ul>
+    <li><span class="resaltar">grid-template-columns</span>: Define el número y tamaño de las columnas.</li>
+    <li><span class="resaltar">grid-template-rows</span>: Define el número y tamaño de las filas.</li>
+    <li><span class="resaltar">grid-gap</span>: Controla el espacio entre filas y columnas.</li>
+    <li><span class="resaltar">grid-area</span>: Permite asignar un área específica del grid a un elemento.</li>
+  </ul>
+
+  <h4>Ejemplo básico de CSS Grid</h4>
+
+  <pre><code>
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Crea tres columnas de igual tamaño */
+  grid-template-rows: auto; /* Filas ajustadas al contenido */
+  grid-gap: 20px; /* Espacio de 20px entre filas y columnas */
+}
+.grid-item {
+  grid-column: span 2; /* Este ítem ocupará dos columnas */
+}
+  </code></pre>
+
+  <p>En este ejemplo, el contenedor <span class="resaltar">.container-grid</span> tiene tres columnas de igual tamaño, y el ítem con la clase <span class="resaltar">.grid-item</span> ocupa dos de esas columnas.</p>
+
+  <h4>CSS Grid vs. Flexbox</h4>
+
+  <p>La principal diferencia entre <span class="resaltar">Flexbox</span> y <span class="resaltar">CSS Grid</span> es que Flexbox es un sistema unidimensional (maneja elementos en una fila o columna), mientras que CSS Grid es bidimensional (maneja elementos en filas y columnas). CSS Grid es más útil para layouts complejos de toda la página, mientras que Flexbox es perfecto para componentes más pequeños y para alineación dentro de un contenedor.</p>
+
+  <h3>Posicionamiento Absoluto vs Flexbox vs Grid</h3>
+
+  <p>El uso de <span class="resaltar">position: absolute</span> todavía tiene sentido en casos muy específicos donde se requiere un control absoluto sobre un elemento, como un menú flotante o un modal. Sin embargo, tanto <span class="resaltar">Flexbox</span> como <span class="resaltar">CSS Grid</span> han demostrado ser más eficientes para layouts generales y ajustables. Además, son más fáciles de manejar cuando se trabaja con diseños responsivos y elementos dinámicos.</p>
+
+  <h4>Ejemplo de cuándo usar cada técnica</h4>
+  <ul>
+    <li>Usa <span class="resaltar">position: absolute</span> para elementos como overlays o ventanas modales que deben colocarse en un lugar específico sin influir en el flujo del documento.</li>
+    <li>Usa <span class="resaltar">Flexbox</span> cuando necesites organizar elementos en una fila o columna, como menús, barras de navegación, o para centrar elementos en un contenedor.</li>
+    <li>Usa <span class="resaltar">CSS Grid</span> para layouts complejos, como el diseño general de una página, una galería de imágenes, o cualquier estructura que necesite manejar filas y columnas de manera más controlada.</li>
+  </ul>
+
+  <h3>Conclusión</h3>
+
+  <p>El posicionamiento en CSS ha evolucionado mucho desde el uso simple de <span class="resaltar">position</span>. Ahora, técnicas como <span class="resaltar">Flexbox</span> y <span class="resaltar">CSS Grid</span> nos permiten crear diseños más complejos y responsivos de manera más eficiente. Es importante dominar estas técnicas para tener más control sobre el diseño de nuestras páginas y adaptarlas a diferentes dispositivos.</p>
+</section>
+
 
 
 
