@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenguaje de Marcas</title>
+    <title>Web app</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Importando las fuentes de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
@@ -175,84 +175,161 @@ element {
     </code></pre>
 </section>
 
-	<section id="positioning">
-    <h2>Positioning in CSS</h2>
-    <p>Positioning in CSS is crucial for controlling how elements are placed on a web page. There are several positioning methods, each with its own use and behavior.</p>
+	<section id="css-positioning">
+  <h2>CSS Positioning</h2>
 
-    <h3>1. Static Positioning</h3>
-    <p>Static positioning is the default value for all elements.</p>
-    <p>Elements with <a class="resaltar">position: static</a> are placed in the normal flow of the document, and the <a class="resaltar">top</a>, <a class="resaltar">right</a>, <a class="resaltar">bottom</a>, and <a class="resaltar">left</a> properties have no effect.</p>
-    <pre><code class="language-css">
-.static-box {
-    position: static;
-    width: 200px;
-    height: 100px;
-    background-color: lightblue;
-}
-    </code></pre>
-    <p><a class="resaltar">Tip:</a> Use static positioning when you do not need to adjust the position of the element specifically. It is useful for most elements in the normal flow of the document.</p>
+  <p>CSS positioning is fundamental for controlling the layout of a webpage. It defines how and where elements should be placed within the available space on the page. Over time, positioning techniques have evolved from using <span class="resaltar">position</span> (absolute, relative, fixed, and static) to modern techniques like <span class="resaltar">Flexbox</span> and <span class="resaltar">CSS Grid</span>, which greatly simplify working with responsive layouts.</p>
 
-    <h3>2. Relative Positioning</h3>
-    <p>With <a class="resaltar">position: relative</a>, the element is positioned relative to its original position in the document flow. The <a class="resaltar">top</a>, <a class="resaltar">right</a>, <a class="resaltar">bottom</a>, and <a class="resaltar">left</a> properties move the element from its original position.</p>
-    <pre><code class="language-css">
-.relative-box {
-    position: relative;
-    top: 20px;
-    left: 30px;
-    width: 200px;
-    height: 100px;
-    background-color: lightcoral;
-}
-    </code></pre>
-    <p><a class="resaltar">Tip:</a> Use relative positioning to slightly adjust the position of an element without removing it from the normal document flow. It is useful when you need a slight offset from its original location.</p>
+  <h3>Types of CSS Positioning</h3>
 
-    <h3>3. Absolute Positioning</h3>
-    <p><a class="resaltar">position: absolute</a> removes the element from the normal document flow and positions it relative to the nearest parent element with a positioning value other than <a class="resaltar">static</a>. If no such element exists, it is positioned relative to the document.</p>
-    <pre><code class="language-css">
-.absolute-container {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    background-color: lightgrey;
+  <ul>
+    <li><span class="resaltar">static</span>: This is the default value. Elements are positioned in the natural document flow.</li>
+    <li><span class="resaltar">relative</span>: Moves the element from its original position in the document flow without changing the space it occupies.</li>
+    <li><span class="resaltar">absolute</span>: Positions an element relative to its closest container with <span class="resaltar">position: relative</span> or <span class="resaltar">absolute</span>.</li>
+    <li><span class="resaltar">fixed</span>: Fixes the element at a specific position on the screen, regardless of scroll.</li>
+    <li><span class="resaltar">sticky</span>: A combination of <span class="resaltar">relative</span> and <span class="resaltar">fixed</span>. The element behaves as <span class="resaltar">relative</span> until it reaches a specific position, then stays fixed.</li>
+  </ul>
+
+  <h4>Basic Positioning Examples:</h4>
+
+  <p><span class="resaltar">position: relative</span> moves the element relative to its natural position:</p>
+
+  <pre><code>
+.relative-element {
+  position: relative;
+  top: 10px; /* The element moves 10px down */
+  left: 20px; /* The element moves 20px to the right */
+}
+  </code></pre>
+
+  <p><span class="resaltar">position: absolute</span> removes the element from the normal document flow:</p>
+
+  <pre><code>
+.absolute-element {
+  position: absolute;
+  top: 50px;  /* Positioned 50px from the top of its container */
+  left: 30px; /* Positioned 30px from the left of its container */
+}
+  </code></pre>
+
+  <p>For an element with <span class="resaltar">position: absolute</span> to work, it must be within a container that has <span class="resaltar">position: relative</span> or <span class="resaltar">absolute</span>.</p>
+
+  <h3>Flexbox</h3>
+  <p>The flexible box model, or <span class="resaltar">Flexbox</span>, is ideal for one-dimensional layouts (either in a row or column). It is very useful for distributing space among items and aligning them within a container.</p>
+
+  <h4>Key Flexbox Concepts</h4>
+  <ul>
+    <li><span class="resaltar">justify-content</span>: Controls the alignment of items along the main axis (horizontal or vertical).</li>
+    <li><span class="resaltar">align-items</span>: Aligns items along the cross axis (perpendicular).</li>
+    <li><span class="resaltar">flex-direction</span>: Defines whether items are aligned in a row (<span class="resaltar">row</span>) or column (<span class="resaltar">column</span>).</li>
+    <li><span class="resaltar">flex-wrap</span>: Controls whether items should remain in a single row or wrap onto multiple rows.</li>
+  </ul>
+
+  <p>Basic <span class="resaltar">Flexbox</span> example:</p>
+
+  <pre><code>
+.container {
+  display: flex;
+  justify-content: space-between; /* Equal spacing between items */
+  align-items: center; /* Vertically centers items */
+  flex-wrap: wrap; /* Allows items to wrap to the next line if needed */
+}
+  </code></pre>
+
+  <p>This code creates a flexible layout where the items inside the <span class="resaltar">.container</span> will align with space between them and center vertically.</p>
+
+  <h4>Flexible Distribution with flex-grow and flex-shrink</h4>
+
+  <p>Using <span class="resaltar">flex-grow</span> and <span class="resaltar">flex-shrink</span> allows you to control how much an item should grow or shrink within a flex container. For example:</p>
+
+  <pre><code>
+.item {
+  flex-grow: 1; /* This item will grow to take up more available space */
+  flex-shrink: 2; /* This item will shrink twice as fast as others when the container is smaller */
+}
+  </code></pre>
+
+  <h3>What is CSS Grid?</h3>
+  <p>CSS Grid is a two-dimensional layout system that divides a page into cells or areas, allowing for precise placement of elements. Unlike Flexbox, which is one-dimensional (rows or columns), CSS Grid allows for working with both dimensions at once.</p>
+
+  <h3>Key CSS Grid Properties</h3>
+        
+  <h4>1. Grid Container</h4>
+  <p>To activate Grid mode on a container, use the property <span class="resaltar">display: grid;</span>:</p>
+  <pre><code class="code-example">.grid-container {
+    display: grid;
+}</code></pre>
+
+  <h4>2. Defining Columns and Rows</h4>
+  <p>The layout of columns and rows is mainly controlled with the properties <span class="resaltar">grid-template-columns</span> and <span class="resaltar">grid-template-rows</span>. Here’s a simple example:</p>
+  <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px;
+}</code></pre>
+  <p>This example creates a grid with two columns of 200px and two rows of 100px.</p>
+
+  <h4>3. Cell Spacing</h4>
+  <p>To add space between grid cells, use <span class="resaltar">grid-gap</span>:</p>
+  <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px;
+    grid-gap: 10px;
+}</code></pre>
+
+  <h4>4. Grid Areas</h4>
+  <p>Grid areas allow defining blocks of cells where content can be placed. They are used with the property <span class="resaltar">grid-template-areas</span>:</p>
+  <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}</code></pre>
+
+  <h4>5. Element Placement</h4>
+  <p>Placement is controlled by properties like <span class="resaltar">grid-column</span> and <span class="resaltar">grid-row</span>, which determine in which column and row each element is placed:</p>
+  <pre><code class="code-example">.item {
+    grid-column: 1 / 3;
+    grid-row: 2 / 4;
+}</code></pre>
+
+  <h4>6. Measurement Units</h4>
+  <p>Units like <span class="resaltar">fr</span> (fraction), <span class="resaltar">px</span>, <span class="resaltar">%</span>, and <span class="resaltar">auto</span> provide flexibility in distributing elements in the grid.</p>
+  <pre><code class="code-example">.grid-container {
+    grid-template-columns: 1fr 2fr 1fr;
+}</code></pre>
+  <p>In this case, the columns are set to a 1:2:1 ratio.</p>
+
+  <h3>Complete Example</h3>
+  <p>Here is a full example of a CSS Grid layout with a container and some elements:</p>
+  <pre><code class="code-example">&lt;div class="grid-container"&gt;
+    &lt;div class="header"&gt;Header&lt;/div&gt;
+    &lt;div class="sidebar"&gt;Sidebar&lt;/div&gt;
+    &lt;div class="main"&gt;Main Content&lt;/div&gt;
+    &lt;div class="footer"&gt;Footer&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+  <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "footer footer footer";
+    grid-gap: 10px;
 }
 
-.absolute-box {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 150px;
-    height: 80px;
-    background-color: lightgreen;
-}
-    </code></pre>
-    <p><a class="resaltar">Tip:</a> Absolute positioning is ideal for placing elements in a specific location within a container. Use it for floating or modal elements that need to be in a fixed position within their parent container.</p>
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+  <p>This code shows how to organize page elements using CSS Grid.</p>
 
-    <h3>4. Fixed Positioning</h3>
-    <p><a class="resaltar">position: fixed</a> positions the element relative to the browser window. The element stays in the same position even when the user scrolls the page.</p>
-    <pre><code class="language-css">
-.fixed-box {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 150px;
-    height: 80px;
-    background-color: lightpink;
-}
-    </code></pre>
-    <p><a class="resaltar">Tip:</a> Use fixed positioning for elements that need to remain visible at all times, such as navigation buttons or toolbars, regardless of the page scroll.</p>
+  <h3>Absolute Positioning vs Flexbox and CSS Grid</h3>
+  <p><span class="resaltar">Absolute positioning</span> is ideal for elements that need to stay fixed relative to another element or the viewport, while <span class="resaltar">Flexbox</span> and <span class="resaltar">CSS Grid</span> are better for fluid layouts where space distribution and element alignment are prioritized.</p>
+</section>
 
-    <h3>5. Sticky Positioning</h3>
-    <p><a class="resaltar">position: sticky</a> is a combination of <a class="resaltar">relative</a> and <a class="resaltar">fixed</a>. The element behaves like <a class="resaltar">relative</a> until it scrolls to a specified position in the viewport, at which point it behaves like <a class="resaltar">fixed</a>.</p>
-    <pre><code class="language-css">
-.sticky-box {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 50px;
-    background-color: lightgoldenrodyellow;
-}
-    </code></pre>
-    <p><a class="resaltar">Tip:</a> Sticky positioning is useful for elements like section headers that need to remain visible while scrolling through a long section, but should not be fixed to the screen at all times.</p>
 
     <h3>Positioning Exercises</h3>
     <h4>Exercise 1: Fixed Navigation Menu</h4>
@@ -329,143 +406,6 @@ element {
     </ul>
 </section>
 
-<section id="flexbox-css">
-    <h2>Flexbox in CSS</h2>
-    <p>Flexbox, or "Flexible Box Layout", is a CSS layout system that allows for creating responsive and aligned interfaces efficiently. It is especially useful for distributing space between elements and aligning them within containers, even when the size of the elements is dynamic or unknown.</p>
-
-    <h3>How Flexbox Works</h3>
-    <p>The Flexbox system consists of two main components:</p>
-    <ul>
-        <li><a class="resaltar">Flex Container:</a> The parent element that contains the flexible items.</li>
-        <li><a class="resaltar">Flex Items:</a> The child elements that will be aligned and distributed according to Flexbox rules.</li>
-    </ul>
-
-    <h3>Main Flexbox Properties</h3>
-    <p>Flexbox has several key properties to control the distribution and alignment of flexible items:</p>
-    <ul>
-        <li><a class="resaltar">display: flex; or display: inline-flex;</a> Turns the container into a flex container.</li>
-        <li><a class="resaltar">flex-direction:</a> Defines the direction in which items are distributed.</li>
-        <li><a class="resaltar">justify-content:</a> Controls alignment of items along the main axis.</li>
-        <li><a class="resaltar">align-items:</a> Controls alignment of items along the cross axis.</li>
-        <li><a class="resaltar">flex-wrap:</a> Allows items to wrap onto multiple lines if they do not fit in one.</li>
-        <li><a class="resaltar">align-content:</a> Controls the alignment of multiple lines of flex items if there is extra space.</li>
-    </ul>
-
-    <h3>Practical Example of Flexbox</h3>
-    <p>Here is an example of how to apply Flexbox in a container with several items:</p>
-
-    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Flexbox Example&lt;/title&gt;
-    &lt;style&gt;
-        .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            height: 300px;
-            border: 2px solid #3498db;
-        }
-        .item {
-            background-color: #e74c3c;
-            color: white;
-            padding: 20px;
-            margin: 10px;
-            font-size: 18px;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="container"&gt;
-        &lt;div class="item"&gt;Item 1&lt;/div&gt;
-        &lt;div class="item"&gt;Item 2&lt;/div&gt;
-        &lt;div class="item"&gt;Item 3&lt;/div&gt;
-        &lt;div class="item"&gt;Item 4&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-    </code></pre>
-
-    <h3>Additional Resources for Learning Flexbox</h3>
-    <p>Here are some useful links for studying Flexbox in more depth:</p>
-    <ul>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank">Complete Guide to CSS Flexbox - MDN</a></li>
-        <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS Tricks - A visual guide to Flexbox</a></li>
-        <li><a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy - Interactive game to learn Flexbox</a></li>
-    </ul>
-</section>
-
-<section id="grid-layout-css">
-    <h2>CSS Grid Layout</h2>
-    <p>CSS Grid Layout is a CSS layout system that allows for creating complex and responsive structures in a much more intuitive way. While Flexbox focuses on the distribution of elements along a single axis (horizontal or vertical), Grid allows for working in two dimensions (rows and columns) simultaneously.</p>
-
-    <h3>How Grid Layout Works</h3>
-    <p>The Grid Layout system is based on a <a class="resaltar">grid container</a> that organizes its content into a grid of rows and columns. The child elements within this container are called <a class="resaltar">grid items</a>, which can be positioned in specific locations within the grid.</p>
-
-    <h3>Main Grid Layout Properties</h3>
-    <p>Grid Layout has several key properties for controlling the structure and distribution of elements:</p>
-    <ul>
-        <li><a class="resaltar">display: grid;</a> or <a class="resaltar">display: inline-grid;</a> Turns a container into a grid container.</li>
-        <li><a class="resaltar">grid-template-columns:</a> Defines the columns in the grid.</li>
-        <li><a class="resaltar">grid-template-rows:</a> Defines the rows in the grid.</li>
-        <li><a class="resaltar">grid-gap:</a> Sets the space between rows and columns.</li>
-        <li><a class="resaltar">grid-template-areas:</a> Allows organizing specific areas of the grid using names.</li>
-        <li><a class="resaltar">justify-items:</a> Controls the alignment of items within their cells along the horizontal axis.</li>
-        <li><a class="resaltar">align-items:</a> Controls the alignment of items within their cells along the vertical axis.</li>
-    </ul>
-
-    <h3>Practical Example of Grid Layout</h3>
-    <p>Here is a basic example of how to apply CSS Grid to organize a simple layout:</p>
-
-    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Grid Layout Example&lt;/title&gt;
-    &lt;style&gt;
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto;
-            grid-gap: 20px;
-            padding: 20px;
-            border: 2px solid #2ecc71;
-        }
-        .grid-item {
-            background-color: #9b59b6;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="grid-container"&gt;
-        &lt;div class="grid-item"&gt;Item 1&lt;/div&gt;
-        &lt;div class="grid-item"&gt;Item 2&lt;/div&gt;
-        &lt;div class="grid-item"&gt;Item 3&lt;/div&gt;
-        &lt;div class="grid-item"&gt;Item 4&lt;/div&gt;
-        &lt;div class="grid-item"&gt;Item 5&lt;/div&gt;
-        &lt;div class="grid-item"&gt;Item 6&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-    </code></pre>
-
-    <h3>Additional Resources for Learning Grid Layout</h3>
-    <p>If you want to learn more about Grid Layout, these links might be useful:</p>
-    <ul>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blank">Complete Guide to CSS Grid Layout - MDN</a></li>
-        <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">CSS Tricks - Complete visual guide to Grid Layout</a></li>
-        <li><a href="https://gridbyexample.com/" target="_blank">Grid by Example - Practical examples of Grid Layout</a></li>
-    </ul>
-</section>
 
 
 
