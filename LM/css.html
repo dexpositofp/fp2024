@@ -421,36 +421,87 @@ elemento {
 }
   </code></pre>
 
-  <h3>CSS Grid</h3>
-  <p><span class="resaltar">CSS Grid</span> es un sistema de cuadrículas bidimensionales que permite crear layouts tanto en filas como en columnas. A diferencia de Flexbox, CSS Grid es ideal para estructuras más complejas, como diseños de página completos o galerías de imágenes.</p>
+ 
 
-  <h4>Conceptos clave en CSS Grid</h4>
-  <ul>
-    <li><span class="resaltar">grid-template-columns</span>: Define el número y tamaño de las columnas.</li>
-    <li><span class="resaltar">grid-template-rows</span>: Define el número y tamaño de las filas.</li>
-    <li><span class="resaltar">grid-gap</span>: Controla el espacio entre filas y columnas.</li>
-    <li><span class="resaltar">grid-area</span>: Permite asignar un área específica del grid a un elemento.</li>
-  </ul>
 
-  <h4>Ejemplo básico de CSS Grid</h4>
+        <h3>¿Qué es CSS Grid?</h3>
+        <p>CSS Grid es un sistema de diseño bidimensional que divide una página en celdas o áreas, permitiendo una gran precisión en la disposición de los elementos. A diferencia de Flexbox, que es un diseño unidimensional (columnas o filas), CSS Grid permite trabajar con ambas dimensiones a la vez.</p>
 
-  <pre><code>
-.container-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Crea tres columnas de igual tamaño */
-  grid-template-rows: auto; /* Filas ajustadas al contenido */
-  grid-gap: 20px; /* Espacio de 20px entre filas y columnas */
+
+        <h3>Propiedades clave de CSS Grid</h3>
+        
+        <h4>1. Contenedor Grid</h4>
+        <p>Para activar el modo Grid en un contenedor, utilizamos la propiedad <a class="resaltar">display: grid;</a>:</p>
+        <pre><code class="code-example">.grid-container {
+    display: grid;
+}</code></pre>
+
+        <h4>2. Definición de columnas y filas</h4>
+        <p>La disposición de columnas y filas se controla principalmente con las propiedades <a class="resaltar">grid-template-columns</a> y <a class="resaltar">grid-template-rows</a>. Aquí tienes un ejemplo sencillo:</p>
+        <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px;
+}</code></pre>
+        <p>Este ejemplo crea una cuadrícula de dos columnas de 200px y dos filas de 100px.</p>
+
+        <h4>3. Espaciado entre celdas</h4>
+        <p>Para añadir espacio entre las celdas del grid, usa <a class="resaltar">grid-gap</a>:</p>
+        <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px;
+    grid-gap: 10px;
+}</code></pre>
+
+        <h4>4. Áreas de Grid</h4>
+        <p>Las áreas de grid permiten definir bloques de celdas en los que se puede colocar contenido. Se utilizan en combinación con la propiedad <a class="resaltar">grid-template-areas</a>:</p>
+        <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}</code></pre>
+
+        <h4>5. Colocación de Elementos</h4>
+        <p>La colocación se realiza a través de propiedades como <a class="resaltar">grid-column</a> y <a class="resaltar">grid-row</a>, que permiten controlar en qué columna y fila se sitúa cada elemento:</p>
+        <pre><code class="code-example">.item {
+    grid-column: 1 / 3;
+    grid-row: 2 / 4;
+}</code></pre>
+
+        <h4>6. Unidades de Medida</h4>
+        <p>Las unidades como <a class="resaltar">fr</a> (fracción), <a class="resaltar">px</a>, <a class="resaltar">%</a>, y <a class="resaltar">auto</a> permiten gran flexibilidad para la distribución de los elementos en el grid.</p>
+        <pre><code class="code-example">.grid-container {
+    grid-template-columns: 1fr 2fr 1fr;
+}</code></pre>
+        <p>En este caso, las columnas estarán en una proporción de 1:2:1.</p>
+
+        <h3>Ejemplo Completo</h3>
+        <p>Aquí tienes un ejemplo completo de una estructura de CSS Grid con un contenedor y algunos elementos:</p>
+        <pre><code class="code-example">&lt;div class="grid-container"&gt;
+    &lt;div class="header"&gt;Header&lt;/div&gt;
+    &lt;div class="sidebar"&gt;Sidebar&lt;/div&gt;
+    &lt;div class="main"&gt;Main Content&lt;/div&gt;
+    &lt;div class="footer"&gt;Footer&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <pre><code class="code-example">.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "footer footer footer";
+    grid-gap: 10px;
 }
-.grid-item {
-  grid-column: span 2; /* Este ítem ocupará dos columnas */
-}
-  </code></pre>
 
-  <p>En este ejemplo, el contenedor <span class="resaltar">.container-grid</span> tiene tres columnas de igual tamaño, y el ítem con la clase <span class="resaltar">.grid-item</span> ocupa dos de esas columnas.</p>
-
-  <h4>CSS Grid vs. Flexbox</h4>
-
-  <p>La principal diferencia entre <span class="resaltar">Flexbox</span> y <span class="resaltar">CSS Grid</span> es que Flexbox es un sistema unidimensional (maneja elementos en una fila o columna), mientras que CSS Grid es bidimensional (maneja elementos en filas y columnas). CSS Grid es más útil para layouts complejos de toda la página, mientras que Flexbox es perfecto para componentes más pequeños y para alineación dentro de un contenedor.</p>
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+        <p>Este código muestra cómo organizar los elementos de una página utilizando CSS Grid.</p>
+    
 
   <h3>Posicionamiento Absoluto vs Flexbox vs Grid</h3>
 
