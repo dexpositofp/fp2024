@@ -419,7 +419,119 @@
     <p>Las aserciones aseguran que cada producto, proveedor y contrato participan en la relación de suministro.</p>
 </section>
 
+<section id="normalizacion">
+    <h2>Normalización de Bases de Datos</h2>
+    <p>La <strong>normalización</strong> es un proceso utilizado en el diseño de bases de datos para organizar los datos de forma que se eviten redundancias y se mantenga la integridad de los datos. Este proceso ayuda a reducir errores y duplicación de datos, mejorando la eficiencia de almacenamiento y la consistencia en las consultas.</p>
 
+    <h3>¿Por qué es importante la normalización?</h3>
+    <p>En bases de datos mal estructuradas, es común encontrar información duplicada o inconsistencias debido a datos almacenados en varias tablas. La normalización garantiza:</p>
+    <ul>
+        <li>Eliminación de redundancias de datos.</li>
+        <li>Reducción de problemas de actualización y eliminación de datos.</li>
+        <li>Mejor organización para el almacenamiento y acceso a los datos.</li>
+    </ul>
+
+    <h3>Primer Paso: Primera Forma Normal (1FN)</h3>
+    <p>Para que una tabla esté en <strong>Primera Forma Normal (1FN)</strong>, cada celda debe contener un solo valor (atómicos), y todas las entradas en una columna deben ser del mismo tipo de datos. Esto elimina los valores repetidos y las estructuras complejas en las celdas.</p>
+    <h4>Ejemplo:</h4>
+    <p>Consideremos una tabla de pedidos antes de aplicar la 1FN:</p>
+    <pre>
+PedidoID | Cliente     | Productos
+---------|-------------|-------------------
+1        | Juan Pérez  | ProductoA, ProductoB
+2        | Ana López   | ProductoC
+3        | Juan Pérez  | ProductoA, ProductoD
+    </pre>
+    <p>Para cumplir la 1FN, separamos cada producto en filas individuales:</p>
+    <pre>
+PedidoID | Cliente     | Producto
+---------|-------------|---------
+1        | Juan Pérez  | ProductoA
+1        | Juan Pérez  | ProductoB
+2        | Ana López   | ProductoC
+3        | Juan Pérez  | ProductoA
+3        | Juan Pérez  | ProductoD
+    </pre>
+
+    <h3>Segundo Paso: Segunda Forma Normal (2FN)</h3>
+    <p>Para estar en <strong>Segunda Forma Normal (2FN)</strong>, la tabla debe cumplir la 1FN y además, todos los atributos no clave deben depender completamente de la clave primaria.</p>
+    <h4>Ejemplo:</h4>
+    <p>Supongamos que tenemos esta tabla de pedidos, que ya cumple la 1FN:</p>
+    <pre>
+PedidoID | Producto    | Cliente     | Dirección
+---------|-------------|-------------|------------
+1        | ProductoA   | Juan Pérez  | C/ Ejemplo, 1
+1        | ProductoB   | Juan Pérez  | C/ Ejemplo, 1
+2        | ProductoC   | Ana López   | C/ Prueba, 2
+    </pre>
+    <p>En este caso, la dirección depende del cliente, no del pedido, por lo que movemos el cliente y la dirección a otra tabla.</p>
+    <pre>
+Clientes:
+Cliente     | Dirección
+------------|------------
+Juan Pérez  | C/ Ejemplo, 1
+Ana López   | C/ Prueba, 2
+
+Pedidos:
+PedidoID | Producto    | Cliente
+---------|-------------|-----------
+1        | ProductoA   | Juan Pérez
+1        | ProductoB   | Juan Pérez
+2        | ProductoC   | Ana López
+    </pre>
+
+    <h3>Tercer Paso: Tercera Forma Normal (3FN)</h3>
+    <p>Para estar en <strong>Tercera Forma Normal (3FN)</strong>, una tabla debe cumplir la 2FN, y además, todos los atributos no clave deben depender directamente de la clave primaria, sin dependencias transitivas.</p>
+    <h4>Ejemplo:</h4>
+    <p>Consideremos una tabla de clientes que cumple 2FN:</p>
+    <pre>
+ClienteID | Nombre      | Dirección        | Ciudad
+----------|-------------|------------------|---------
+1         | Juan Pérez  | C/ Ejemplo, 1    | Madrid
+2         | Ana López   | C/ Prueba, 2     | Sevilla
+    </pre>
+    <p>Aquí, la ciudad depende de la dirección, no del ClienteID. La tabla se reorganiza en:</p>
+    <pre>
+Clientes:
+ClienteID | Nombre      | DirecciónID
+----------|-------------|--------------
+1         | Juan Pérez  | 1
+2         | Ana López   | 2
+
+Direcciones:
+DirecciónID | Dirección       | Ciudad
+------------|-----------------|---------
+1           | C/ Ejemplo, 1   | Madrid
+2           | C/ Prueba, 2    | Sevilla
+    </pre>
+
+    <h3>Cuarto Paso: Forma Normal de Boyce-Codd (BCFN)</h3>
+    <p>La <strong>Forma Normal de Boyce-Codd (BCFN)</strong> es una versión más estricta de la 3FN. En esta forma, cada dependencia funcional en una tabla debe ser una dependencia de clave.</p>
+    <h4>Ejemplo:</h4>
+    <p>Imaginemos una tabla de asignación de empleados a proyectos:</p>
+    <pre>
+EmpleadoID | ProyectoID | SupervisorID
+-----------|------------|--------------
+1          | 101        | 501
+2          | 101        | 501
+3          | 102        | 502
+    </pre>
+    <p>En este caso, cada proyecto tiene un único supervisor, por lo que SupervisorID depende de ProyectoID, no de la clave EmpleadoID + ProyectoID. Para cumplir BCFN, se crea una tabla de proyectos para separar los supervisores:</p>
+    <pre>
+Proyectos:
+ProyectoID | SupervisorID
+-----------|--------------
+101        | 501
+102        | 502
+
+Asignación:
+EmpleadoID | ProyectoID
+-----------|------------
+1          | 101
+2          | 101
+3          | 102
+    </pre>
+</section>
         <a href="#arriba" class="back-to-top"> ↑ </a>
     </main>
 
