@@ -159,34 +159,151 @@ selector {
 
         </section>
 		
-	<section id="model-box-css">
-            <h2>El Modelo de Caja en CSS</h2>
-            <p>El modelo de caja es un concepto fundamental en CSS que describe cómo los elementos HTML son representados en la página web. </p>
-            <p>Cada elemento es una caja que tiene márgenes, bordes, rellenos y contenido.</p>
-            <pre><code>
-/* Ejemplo de modelo de caja */
-elemento {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid black;
+	<section>
+            <h2>Modelo de caja (Box Model)</h2>
+            <p>El modelo de caja es un concepto fundamental en CSS. Describe cómo se estructuran los elementos en la página web, permitiendo manipular márgenes, bordes, relleno y contenido.</p>
+            <p>El modelo de caja consta de cuatro partes:</p>
+            <ul>
+                <li><strong>Contenido:</strong> el área donde se muestra el contenido (texto, imágenes, etc.).</li>
+                <li><strong>Relleno (padding):</strong> el espacio entre el contenido y el borde.</li>
+                <li><strong>Borde (border):</strong> el contorno de la caja.</li>
+                <li><strong>Margen (margin):</strong> el espacio entre la caja y otros elementos.</li>
+            </ul>
+
+ <img class="box-img float-right" src="./img/boxmodel.png"></img>
+
+            <div class="code-block">
+                <pre>
+.elemento {
+    width: 200px;
+    padding: 10px;
+    border: 5px solid #333;
+    margin: 20px;
 }
-            </code></pre>
+                </pre>
+            </div>
+
+            <p>En el ejemplo anterior, tenemos una caja con un ancho de 200px, un relleno de 10px, un borde de 5px y un margen de 20px. Estos valores determinan el tamaño y el espaciado de la caja.</p>
+
+           
+        </section>
+        
+        <!-- Propiedades de los Bordes -->
+        <section>
+            <h2>Bordes y sus propiedades</h2>
+            <p>Las propiedades de borde en CSS permiten agregar un contorno a los elementos. Algunas de las propiedades principales incluyen:</p>
+            <ul>
+                <li><strong>border-width:</strong> define el grosor del borde.</li>
+                <li><strong>border-style:</strong> define el estilo del borde (solid, dotted, dashed, etc.).</li>
+                <li><strong>border-color:</strong> define el color del borde.</li>
+            </ul>
+            
+            <div class="code-block">
+                <pre>
+.elemento-borde {
+    border-width: 4px;
+    border-style: solid;
+    border-color: #007bff;
+}
+                </pre>
+            </div>
+
+            <p>También se puede utilizar border-radius para redondear los bordes, como en el siguiente ejemplo:</p>
+
+            <div class="code-block">
+                <pre>
+.elemento-borde-redondeado {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+}
+                </pre>
+            </div>
         </section>
 
 
        <section id="pseudoclases-css">
             <h2>Pseudo-clases en CSS</h2>
-            <p>Las pseudo-clases se utilizan para definir el estado especial de un elemento.</p>
-            <ul>
-		    <li><a class="resaltar">hover:</a> Se activa cuando el usuario pasa el ratón sobre un elemento. Ej: <code>a:hover { color: red; }</code></li>
-                <li><a class="resaltar">focus:</a> Se activa cuando un elemento recibe el foco. Ej: <code>input:focus { border-color: blue; }</code></li>
-                <li><a class="resaltar">nth-child(n):</a> Selecciona el n-ésimo hijo de su padre. Ej: <code>li:nth-child(2) { color: green; }</code></li>
-                <li><a class="resaltar">first-child:</a> Selecciona el primer hijo de su padre. Ej: <code>p:first-child { font-weight: bold; }</code></li>
-                <li><a class="resaltar">last-child:</a> Selecciona el último hijo de su padre. Ej: <code>p:last-child { font-weight: bold; }</code></li>
-                <li><a class="resaltar">not(selector):</a> Selecciona todos los elementos que no coinciden con el selector dado. Ej: <code>input:not([type="text"]) { display: none; }</code></li>
-            </ul>
+                        <p>Las pseudoclases en CSS son palabras clave que se agregan a los selectores para aplicar estilos en un estado específico de un elemento, como cuando el usuario pasa el cursor sobre un elemento o un enlace ha sido visitado.</p>
+
+            <h3>:hover</h3>
+            <p>La pseudoclase <strong>:hover</strong> se activa cuando el usuario coloca el cursor sobre un elemento. Es útil para enlaces y botones.</p>
+            <div class="code-block">
+                <pre>
+<a href="#" class="btn-hover">Hover sobre mí</a>
+
+.btn-hover {
+    padding: 10px 20px;
+    color: white;
+    background-color: #3498db;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-hover:hover {
+    background-color: #2980b9;
+}
+                </pre>
+            </div>
+
+            <h3>:active</h3>
+            <p>La pseudoclase <strong>:active</strong> se aplica a un elemento mientras es presionado, ideal para botones.</p>
+            <div class="code-block">
+                <pre>
+<a href="#" class="btn-active">Presióname</a>
+
+.btn-active {
+    padding: 10px 20px;
+    color: white;
+    background-color: #e74c3c;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.1s;
+}
+
+.btn-active:active {
+    background-color: #c0392b;
+    transform: scale(0.95);
+}
+                </pre>
+            </div>
+
+            <h3>:focus</h3>
+            <p>La pseudoclase <strong>:focus</strong> aplica estilos a un elemento al recibir el enfoque del teclado o clic.</p>
+            <div class="code-block">
+                <pre>
+<input type="text" class="input-focus" placeholder="Escribe aquí...">
+
+.input-focus {
+    padding: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-focus:focus {
+    border-color: #3498db;
+}
+                </pre>
+            </div>
+
+            <h3>:nth-child(n)</h3>
+            <p><strong>:nth-child(n)</strong> selecciona el n-ésimo elemento dentro de su contenedor.</p>
+            <div class="code-block">
+                <pre>
+<ul class="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+</ul>
+
+.list li:nth-child(2) {
+    background-color: #f1c40f;
+    color: white;
+}
+                </pre>
+            </div>
         </section>
 
         <section id="contexto-css">
@@ -198,6 +315,83 @@ elemento {
                 <li><a class="resaltar">Selector hermano adyacente:</a> Selecciona un elemento que es el siguiente hermano inmediato de otro. Ej: <code>h1 + p { margin-top: 0; }</code></li>
                 <li><a class="resaltar">Selector hermano general:</a> Selecciona todos los elementos hermanos de un elemento anterior. Ej: <code>h1 ~ p { color: red; }</code></li>
             </ul>
+
+
+  <h3>Selector de Hijo Directo  &gt</h3>
+            <p>Este selector selecciona solo los hijos directos de un elemento. Esto permite aplicar estilos solo a los elementos de un nivel inmediato dentro de otro.</p>
+
+            <div class="code-block">
+                <pre>
+/* Aplica estilo solo a los párrafos que son hijos directos de un div */
+div > p {
+    margin-bottom: 10px;
+}
+                </pre>
+            </div>
+            <p>En este caso, solo los &lt;p&gt; que están directamente dentro de un &lt;div&gt; serán estilizados.</p>
+
+
+
+<h3>Selector de Hermano Adyacente +</h3>
+            <p>Este selector aplica estilos al primer elemento que sigue inmediatamente a otro elemento especificado.</p>
+
+            <div class="code-block">
+                <pre>
+/* Aplica estilo al párrafo que sigue a un h2 */
+h2 + p {
+    color: #555;
+    font-style: italic;
+}
+                </pre>
+            </div>
+            <p>En este caso, solo el primer &lt;p&gt; inmediatamente después de un &lt;h2&gt; se verá afectado.</p>
+
+          
+
+            <h3>Selector de Hermano General ~</h3>
+            <p>Este selector afecta a todos los elementos hermanos que comparten el mismo padre y vienen después de un elemento especificado.</p>
+
+            <div class="code-block">
+                <pre>
+/* Estilo aplicado a todos los párrafos que siguen a un h2 */
+h2 ~ p {
+    color: #007bff;
+}
+                </pre>
+            </div>
+            <p>A diferencia de +, este selector aplica estilos a todos los elementos hermanos en lugar de solo al inmediato.</p>
+        </section>
+
+        <h3>Ejercicios prácticos con respuestas</h3>
+        
+            <p>1. Aplica un color de fondo solo al primer elemento &lt;p&gt; que sigue a un &lt;h2&gt;.</p>
+            <p>2. Aplica un borde solo a los &lt;p&gt;que son hijos directos de un contenedor con clase contenedor.</p>
+            <p>3. Aplica un estilo diferente a todos los elementos &lt;p&gt; que siguen a un elemento con clase encabezado, independientemente de la distancia en el DOM.</p>
+
+            <p><strong>Soluciones:</strong></p>
+            <div class="code-block">
+                <pre>
+/* 1 */
+h2 + p {
+    background-color: #f0f0f0;
+}
+
+/* 2 */
+.contenedor > p {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* 3 */
+.encabezado ~ p {
+    font-size: 0.9em;
+    color: #333;
+}
+                </pre>
+            </div>
+
+
+
         </section>
 
 

@@ -159,21 +159,65 @@ selector {
     </ol>
 </section>
 
-<section id="css-box-model">
-    <h2>The CSS Box Model</h2>
-    <p>The box model is a fundamental concept in CSS that describes how HTML elements are represented on the web page.</p>
-    <p>Each element is a box with margins, borders, padding, and content.</p>
-    <pre><code>
-/* Example of box model */
-element {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid black;
+<section>
+    <h2>Box Model</h2>
+    <p>The box model is a fundamental concept in CSS. It describes how elements are structured on the web page, allowing for the manipulation of margins, borders, padding, and content.</p>
+    <p>The box model consists of four parts:</p>
+    <ul>
+        <li><strong>Content:</strong> the area where the content (text, images, etc.) is displayed.</li>
+        <li><strong>Padding:</strong> the space between the content and the border.</li>
+        <li><strong>Border:</strong> the outline of the box.</li>
+        <li><strong>Margin:</strong> the space between the box and other elements.</li>
+    </ul>
+
+    <img class="box-img float-right" src="./img/boxmodel.png" alt="Box model illustration">
+
+    <div class="code-block">
+        <pre>
+.element {
+    width: 200px;
+    padding: 10px;
+    border: 5px solid #333;
+    margin: 20px;
 }
-    </code></pre>
+        </pre>
+    </div>
+
+    <p>In the example above, we have a box with a width of 200px, padding of 10px, a border of 5px, and a margin of 20px. These values determine the size and spacing of the box.</p>
 </section>
+
+<!-- Border Properties -->
+<section>
+    <h2>Borders and Their Properties</h2>
+    <p>Border properties in CSS allow you to add an outline to elements. Some main border properties include:</p>
+    <ul>
+        <li><strong>border-width:</strong> sets the border thickness.</li>
+        <li><strong>border-style:</strong> sets the border style (solid, dotted, dashed, etc.).</li>
+        <li><strong>border-color:</strong> sets the border color.</li>
+    </ul>
+    
+    <div class="code-block">
+        <pre>
+.border-element {
+    border-width: 4px;
+    border-style: solid;
+    border-color: #007bff;
+}
+        </pre>
+    </div>
+
+    <p>You can also use border-radius to round the borders, as shown in the following example:</p>
+
+    <div class="code-block">
+        <pre>
+.rounded-border-element {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+}
+        </pre>
+    </div>
+</section>
+
 
 	<section id="css-positioning">
   <h2>CSS Positioning</h2>
@@ -384,27 +428,169 @@ element {
 
         <section id="pseudo-classes-css">
     <h2>Pseudo-Classes in CSS</h2>
-    <p>Pseudo-classes are used to define the special state of an element.</p>
-    <ul>
-        <li><a class="resaltar">hover:</a> Activated when the user hovers over an element. E.g.: <code>a:hover { color: red; }</code></li>
-        <li><a class="resaltar">focus:</a> Activated when an element receives focus. E.g.: <code>input:focus { border-color: blue; }</code></li>
-        <li><a class="resaltar">nth-child(n):</a> Selects the nth child of its parent. E.g.: <code>li:nth-child(2) { color: green; }</code></li>
-        <li><a class="resaltar">first-child:</a> Selects the first child of its parent. E.g.: <code>p:first-child { font-weight: bold; }</code></li>
-        <li><a class="resaltar">last-child:</a> Selects the last child of its parent. E.g.: <code>p:last-child { font-weight: bold; }</code></li>
-        <li><a class="resaltar">not(selector):</a> Selects all elements that do not match the given selector. E.g.: <code>input:not([type="text"]) { display: none; }</code></li>
-    </ul>
+               <p>CSS pseudo-classes are keywords added to selectors to apply styles for a specific state of an element, such as when a user hovers over it or a link has been visited.</p>
+
+     <h3>:hover</h3>
+            <p>The <strong>:hover</strong> pseudo-class is activated when the user hovers over an element. It's useful for links and buttons.</p>
+            <div class="code-block">
+                <pre>
+<a href="#" class="btn-hover">Hover over me!</a>
+
+.btn-hover {
+    padding: 10px 20px;
+    color: white;
+    background-color: #3498db;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-hover:hover {
+    background-color: #2980b9;
+}
+                </pre>
+            </div>
+
+            <h3>:active</h3>
+            <p>The <strong>:active</strong> pseudo-class applies to an element while it is being pressed, ideal for buttons.</p>
+            <div class="code-block">
+                <pre>
+<a href="#" class="btn-active">Press me!</a>
+
+.btn-active {
+    padding: 10px 20px;
+    color: white;
+    background-color: #e74c3c;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.1s;
+}
+
+.btn-active:active {
+    background-color: #c0392b;
+    transform: scale(0.95);
+}
+                </pre>
+            </div>
+
+            <h3>:focus</h3>
+            <p>The <strong>:focus</strong> pseudo-class applies styles to an element when it receives keyboard focus or a click.</p>
+            <div class="code-block">
+                <pre>
+<input type="text" class="input-focus" placeholder="Type here...">
+
+.input-focus {
+    padding: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-focus:focus {
+    border-color: #3498db;
+}
+                </pre>
+            </div>
+
+            <h3>:nth-child(n)</h3>
+            <p><strong>:nth-child(n)</strong> selects the n-th child within its container.</p>
+            <div class="code-block">
+                <pre>
+<ul class="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+</ul>
+
+.list li:nth-child(2) {
+    background-color: #f1c40f;
+    color: white;
+}
+                </pre>
+            </div>
 </section>
 
 <section id="context-css">
-    <h2>Context-Based Definitions</h2>
-    <p>Context-based definitions allow applying styles based on the position of elements within the HTML structure.</p>
+    <h2>Contextual Definitions</h2>
+    <p>Contextual definitions allow you to apply styles based on the position of elements within the HTML structure.</p>
     <ul>
-        <li><a class="resaltar">Descendant Selector:</a> Selects elements within a specific container. E.g.: <code>div p { color: blue; }</code></li>
-        <li><a class="resaltar">Child Selector:</a> Selects elements that are direct children of a specific container. E.g.: <code>div > p { color: green; }</code></li>
-        <li><a class="resaltar">Adjacent Sibling Selector:</a> Selects an element that is the immediate next sibling of another. E.g.: <code>h1 + p { margin-top: 0; }</code></li>
-        <li><a class="resaltar">General Sibling Selector:</a> Selects all sibling elements following a previous element. E.g.: <code>h1 ~ p { color: red; }</code></li>
+        <li><a class="highlight">Descendant Selector:</a> Selects elements within a specific container. Ex: <code>div p { color: blue; }</code></li>
+        <li><a class="highlight">Child Selector:</a> Selects elements that are direct children of a specific container. Ex: <code>div > p { color: green; }</code></li>
+        <li><a class="highlight">Adjacent Sibling Selector:</a> Selects an element that is the immediate next sibling of another. Ex: <code>h1 + p { margin-top: 0; }</code></li>
+        <li><a class="highlight">General 	Sibling Selector:</a> Selects all sibling elements after a preceding element. Ex: <code>h1 ~ p { color: red; }</code></li>
     </ul>
+
+    <h3>Direct Child Selector &gt</h3>
+    <p>This selector selects only the direct children of an element. It allows you to apply styles only to elements at an immediate level within another.</p>
+
+    <div class="code-block">
+        <pre>
+/* Applies style only to paragraphs that are direct children of a div */
+div > p {
+    margin-bottom: 10px;
+}
+        </pre>
+    </div>
+    <p>In this case, only &lt;p&gt; elements directly within a &lt;div&gt; will be styled.</p>
+
+    <h3>Adjacent Sibling Selector +</h3>
+    <p>This selector applies styles to the first element that immediately follows a specified element.</p>
+
+    <div class="code-block">
+        <pre>
+/* Applies style to the paragraph that follows an h2 */
+h2 + p {
+    color: #555;
+    font-style: italic;
+}
+        </pre>
+    </div>
+    <p>In this case, only the first &lt;p&gt; immediately following an &lt;h2&gt; will be affected.</p>
+
+    <h3>General Sibling Selector ~</h3>
+    <p>This selector affects all sibling elements that share the same parent and come after a specified element.</p>
+
+    <div class="code-block">
+        <pre>
+/* Style applied to all paragraphs following an h2 */
+h2 ~ p {
+    color: #007bff;
+}
+        </pre>
+    </div>
+    <p>Unlike +, this selector applies styles to all sibling elements instead of just the immediate one.</p>
 </section>
+
+<h3>Practical Exercises with Solutions</h3>
+        
+<p>1. Apply a background color only to the first &lt;p&gt; element following an &lt;h2&gt;.</p>
+<p>2. Apply a border only to &lt;p&gt; elements that are direct children of a container with the class "container".</p>
+<p>3. Apply a different style to all &lt;p&gt; elements following an element with the class "header", regardless of their distance in the DOM.</p>
+
+<p><strong>Solutions:</strong></p>
+<div class="code-block">
+    <pre>
+/* 1 */
+h2 + p {
+    background-color: #f0f0f0;
+}
+
+/* 2 */
+.container > p {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* 3 */
+.header ~ p {
+    font-size: 0.9em;
+    color: #333;
+}
+    </pre>
+</div>
+</section>
+
 
 
 
