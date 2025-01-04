@@ -856,22 +856,78 @@ h2 + p {
 <section id="css-variables">
     <h2>CSS Variables (Custom Properties)</h2>
     <p>Las variables CSS, también conocidas como Custom Properties, permiten almacenar valores y reutilizarlos en tu CSS. Se definen con el prefijo <a class="resaltar">--</a> y se pueden utilizar mediante la función <a class="resaltar">var()</a>.</p>
-    <pre><code>
+        <pre><code>/* Declaración */
 :root {
-    --main-bg-color: #3498db;
-    --main-text-color: #ffffff;
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-size: 16px;
+}
+
+/* Uso */
+body {
+    color: var(--primary-color);
+    font-size: var(--font-size);
+}
+
+h1 {
+    color: var(--secondary-color);
+}</code></pre>
+    </section>
+
+    <section id="ventajas">
+        <h3>Ventajas de usar Custom Properties</h3>
+        <ul>
+            <li><span class="resaltar">Reutilización:</span> Definir valores que pueden aplicarse en múltiples lugares.</li>
+            <li><span class="resaltar">Mantenimiento:</span> Cambiar un valor en un solo lugar afecta a todo el diseño.</li>
+            <li><span class="resaltar">Tematización:</span> Crear temas dinámicos para diferentes configuraciones de estilo.</li>
+            <li><span class="resaltar">Interactividad:</span> Actualizar propiedades en tiempo de ejecución con JavaScript.</li>
+        </ul>
+    </section>
+
+    <section id="ejemplos">
+        <h3>Ejemplos prácticos</h3>
+        <article>
+            <h4>Ejemplo 1: Cambiar colores dinámicamente</h4>
+            <p>Este ejemplo muestra cómo cambiar colores mediante JavaScript:</p>
+            <pre><code>&lt;button id="change-theme"&gt;Cambiar Tema&lt;/button&gt;
+
+<script>
+    const button = document.getElementById('change-theme');
+    button.addEventListener('click', () => {
+        document.documentElement.style.setProperty('--primary-color', '#e74c3c');
+    });
+</script></code></pre>
+        </article>
+
+        <article>
+            <h4>Ejemplo 2: Crear un tema oscuro</h4>
+            <pre><code>:root {
+    --background-color: white;
+    --text-color: black;
+}
+
+.dark-theme {
+    --background-color: black;
+    --text-color: white;
 }
 
 body {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-}
-    </code></pre>
-    <p>En este ejemplo, <a class="resaltar">--main-bg-color</a> y <a class="resaltar">--main-text-color</a> son variables que definen el color de fondo y el color del texto, respectivamente.</p>
+    background-color: var(--background-color);
+    color: var(--text-color);
+}</code></pre>
+        </article>
+    </section>
 
-    <h3>Ejercicio</h3>
-    <p>Crea una serie de variables CSS para definir los colores de tu sitio web y utilízalas en diferentes elementos (encabezados, párrafos, enlaces, etc.).</p>
-</section>
+    <section id="ejercicios">
+        <h3>Ejercicios prácticos</h3>
+        <ol>
+            <li>Crea un diseño de botones que utilicen variables CSS para definir colores, tamaños y bordes.</li>
+            <li>Implementa un cambio de tema oscuro usando variables CSS y una clase adicional.</li>
+            <li>Modifica el tamaño de la fuente y los espacios entre elementos usando variables CSS.</li>
+            <li>Desarrolla un diseño responsive donde los valores de las variables cambien según el tamaño de pantalla.</li>
+            <li>Crea un formulario con un diseño adaptable que utilice variables CSS para gestionar colores y espaciados.</li>
+        </ol>
+    </section>
 
 <!-- Sección: Animaciones y Transiciones -->
 <section id="css-animations-transitions">
@@ -879,7 +935,7 @@ body {
     <p>Las animaciones y transiciones permiten crear efectos de cambio suave en los elementos del sitio web. Las transiciones se aplican a cambios de estado, mientras que las animaciones permiten secuencias de movimientos más complejas.</p>
 
     <h3>Transiciones</h3>
-    <p>Las transiciones controlan la velocidad de cambio de las propiedades CSS.</p>
+    <p>Las transiciones CSS permiten animar suavemente los cambios de valores de las propiedades CSS. En lugar de que un cambio sea instantáneo, se produce una animación gradual a lo largo de un tiempo determinado. Esto mejora la experiencia del usuario al proporcionar retroalimentación visual y hacer que las interacciones sean más fluidas.</p>
     <pre><code>
 .button {
     background-color: #3498db;
@@ -892,6 +948,120 @@ body {
     </code></pre>
     <p>En este ejemplo, al pasar el cursor sobre el botón, el color de fondo cambiará suavemente.</p>
 
+    <h4>La propiedad transition</h4>
+
+    <p> La propiedad transition es la clave para crear transiciones. Es una propiedad abreviada que agrupa cuatro subpropiedades:</p>
+    <ol>   
+        <li>transition-property: Especifica la propiedad CSS a la que se aplicará la transición (ej: background-color, opacity, transform, width, height, etc.). Se pueden especificar múltiples propiedades separadas por comas (ej: opacity, background-color). Se puede usar la palabra clave all para aplicar la transición a todas las propiedades que sean animables.</li>
+        <li>transition-duration: Especifica la duración de la transición en segundos (s) o milisegundos (ms) (ej: 0.3s, 500ms).</li>
+        <li>transition-timing-function: Define la curva de aceleración de la transición. Controla cómo varía la velocidad de la animación a lo largo del tiempo.</li>
+        <li>transition-delay: Especifica un retraso antes de que comience la transición (ej: 0.1s, 200ms</li>
+    </ol>
+
+    <pre>transition: propiedad duración función-de-tiempo retraso;</pre>
+
+    <h4>Ejemplos:</h4>
+
+    <pre><code>
+        <!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo de Transición</title>
+<style>
+.caja {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  transition: background-color 0.5s ease; /* Transición en background-color */
+}
+
+.caja:hover {
+  background-color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="caja"></div>
+
+</body>
+</html>
+
+  </code>  </pre>
+        
+
+    <pre>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo de Transiciones con diferentes timing functions</title>
+<style>
+.caja {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    background-color: blue;
+    transition-property: width; /* o all para todas las propiedades */
+    transition-duration: 1s;
+}
+.caja:hover{
+    width: 200px;
+}
+#ease{
+    transition-timing-function: ease;
+}
+#linear{
+    transition-timing-function: linear;
+}
+#ease-in{
+    transition-timing-function: ease-in;
+}
+#ease-out{
+    transition-timing-function: ease-out;
+}
+#ease-in-out{
+    transition-timing-function: ease-in-out;
+}
+</style>
+</head>
+<body>
+<div class="caja" id="ease">ease</div>
+<div class="caja" id="linear">linear</div>
+<div class="caja" id="ease-in">ease-in</div>
+<div class="caja" id="ease-out">ease-out</div>
+<div class="caja" id="ease-in-out">ease-in-out</div>
+</body>
+</html>
+
+    </pre>
+
+
+    <pre>
+        <!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo de Transición con Transform</title>
+<style>
+.caja {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  transition: transform 0.3s ease-in-out;
+}
+
+.caja:hover {
+  transform: rotate(180deg) scale(1.2); /* Rotación y escalado al pasar el ratón */
+}
+</style>
+</head>
+<body>
+
+<div class="caja"></div>
+
+</body>
+</html>
+
+    </pre>
     <h3>Animaciones</h3>
     <p>Las animaciones se definen mediante <code>@keyframes</code>, que describe los cambios en un elemento en diferentes etapas.</p>
     <pre><code>

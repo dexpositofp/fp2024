@@ -170,41 +170,109 @@
             </code></pre>
         </section>
 
-        <section id="etiquetas-formularios">
-            <h2>Nuevas Etiquetas y Atributos para Formularios</h2>
-            <p>HTML5 también introduce nuevas etiquetas y atributos para mejorar la funcionalidad de los formularios.</p>
+        <section id="formularios">
+        	<article id="introduccion">
+        		<h2>Formularios</h2>
+       			 <p>Los formularios en HTML permiten recopilar datos de los usuarios. Son esenciales para crear formularios de registro, inicio de sesión, encuestas, búsquedas, entre otros.</p>
+    		</article>
 
-            <h3>Etiquetas Nuevas</h3>
-            <ul class="listacodigo">
-                <li><code>&lt;input type="email"&gt;</code>  Campo para ingresar una dirección de correo electrónico.</li>
-                <li><code>&lt;input type="url"&gt;</code>  Campo para ingresar una URL.</li>
-                <li><code>&lt;input type="tel"&gt;</code>  Campo para ingresar un número de teléfono.</li>
-                <li><code>&lt;input type="date"&gt;</code>  Campo para seleccionar una fecha.</li>
-                <li><code>&lt;input type="range"&gt;</code>  Control deslizante para seleccionar un valor dentro de un rango.</li>
-            </ul>
-
-            <h3>Ejemplo de Formulario</h3>
-            <pre><code>
-&lt;form&gt;
-    &lt;label for="email"&gt;Correo Electrónico:&lt;/label&gt;
-    &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
-
-    &lt;label for="website"&gt;Sitio Web:&lt;/label&gt;
-    &lt;input type="url" id="website" name="website"&gt;&lt;br&gt;&lt;br&gt;
-
-    &lt;label for="phone"&gt;Teléfono:&lt;/label&gt;
-    &lt;input type="tel" id="phone" name="phone"&gt;&lt;br&gt;&lt;br&gt;
-
-    &lt;label for="birthday"&gt;Cumpleaños:&lt;/label&gt;
-    &lt;input type="date" id="birthday" name="birthday"&gt;&lt;br&gt;&lt;br&gt;
-
-    &lt;label for="volume"&gt;Volumen:&lt;/label&gt;
-    &lt;input type="range" id="volume" name="volume" min="0" max="100"&gt;&lt;br&gt;&lt;br&gt;
-
-    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+    		<article id="estructura-basica">
+        		<h3>2. Estructura Básica de un Formulario</h3>
+			<p>La etiqueta <strong>&lt;form&gt;</strong> define un formulario. A continuación, mostramos un ejemplo básico:</p>
+        		<pre><code>&lt;form action="/submit" method="POST"&gt;
+    				&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    				&lt;input type="text" id="nombre" name="nombre" required&gt;
+  			  	&lt;input type="submit" value="Enviar"&gt;
 &lt;/form&gt;
-            </code></pre>
-        </section>
+			</code></pre>
+       			 <p>
+           			 <strong>Atributos importantes:</strong>
+         			   <ul>
+                			<li><strong>action</strong>: Especifica la URL a donde se envían los datos.</li>
+                			<li><strong>method</strong>: Define el método HTTP (GET o POST).</li>
+            			</ul>
+        		</p>
+    		</article>
+
+    		<article id="elementos-basicos">
+        		<h3>3. Elementos Básicos</h3>
+        		
+			<h4>3.1 Campos de texto</h4>
+        		<p>Se utiliza para ingresar texto:</p>
+        		<pre><code>&lt;input type="text" name="usuario" placeholder="Nombre de usuario"&gt;</code></pre>
+
+        		<h4>3.2 Contraseñas</h4>
+       			 <p>Campo para ingresar contraseñas:</p>
+        		<pre><code>&lt;input type="password" name="clave"&gt;</code></pre>
+
+       	
+			<h4>3.3 Botones</h4>
+        		<p>Botones para enviar el formulario o realizar otras acciones:</p>
+        		<pre><code>&lt;input type="submit" value="Enviar"&gt;</code></pre>
+        		<pre><code>&lt;input type="reset" value="Limpiar"&gt;</code></pre>
+        		<pre><code>&lt;button type="button"&gt;Botón&lt;/button&gt;</code></pre>
+
+        		<h4>3.4 Botones de opción (Radio)</h4>
+        		<p>Permiten seleccionar una opción de varias disponibles:</p>
+        		<pre><code>&lt;input type="radio" name="genero" value="masculino"&gt; Masculino
+&lt;input type="radio" name="genero" value="femenino"&gt; Femenino</code></pre>
+
+        		<h4>3.5 Casillas de verificación (Checkbox)</h4>
+        		<p>Permiten seleccionar múltiples opciones:</p>
+       			<pre><code>&lt;input type="checkbox" name="intereses" value="deporte"&gt; Deporte
+&lt;input type="checkbox" name="intereses" value="musica"&gt; Música</code></pre>
+
+        		<h4>3.6 Menús desplegables (Select)</h4>
+        		<p>Para elegir una opción de una lista:</p>
+        		<pre><code>&lt;select name="pais"&gt;
+    				&lt;option value="es"&gt;España&lt;/option&gt;
+    				&lt;option value="mx"&gt;México&lt;/option&gt;
+    				&lt;option value="ar"&gt;Argentina&lt;/option&gt;
+&lt;/select&gt;
+			</code></pre>
+
+        		<h4>3.7 Áreas de texto (Textarea)</h4>
+        		<p>Para ingresar textos largos:</p>
+        		<pre><code>&lt;textarea name="comentarios" rows="4" cols="50"&gt;&lt;/textarea&gt;</code></pre>
+    		</article>
+
+    		<article id="elementos-avanzados">
+        		<h3>4. Elementos Avanzados</h3>
+       			
+			<h4>4.1 Selector de fecha</h4>
+        		<pre><code>&lt;input type="date" name="fecha"&gt;</code></pre>
+
+        		<h4>4.2 Selector de color</h4>
+        		<pre><code>&lt;input type="color" name="color"&gt;</code></pre>
+
+        		<h4>4.3 Campos de búsqueda</h4>
+        		<pre><code>&lt;input type="search" name="busqueda"&gt;</code></pre>
+
+        		<h4>4.4 Selector de archivos</h4>
+        		<pre><code>&lt;input type="file" name="archivo"&gt;</code></pre>
+    		</article>
+
+    		<article id="validacion">
+       			<h3>5. Validación en Formularios</h3>
+        		<p>HTML5 ofrece validaciones automáticas. Por ejemplo:</p>
+        		<pre><code>&lt;input type="email" name="correo" required&gt;</code></pre>
+        		<p>
+            			<strong>Ejemplo con restricciones:</strong>
+        		</p>
+        		<pre><code>&lt;input type="text" name="telefono" pattern="[0-9]{9}" required&gt;</code></pre>
+    		</article>
+
+    		<article id="ejercicios">
+        		<h3>6. Ejercicios Prácticos</h3>
+        		<ul>
+            			<li>Crea un formulario de registro con nombre, apellido, correo electrónico, contraseña y confirmación de contraseña.</li>
+            			<li>Diseña un formulario de reserva de cita que incluya fecha, hora y una lista desplegable para seleccionar el servicio.</li>
+            			<li>Elabora un formulario para subir un archivo de imagen, indicando que solo se acepten formatos .jpg y .png.</li>
+            			<li>Construye un formulario de encuesta con preguntas de opción múltiple y casillas de verificación.</li>
+            			<li>Desarrolla un formulario de contacto con validaciones para correo electrónico y teléfono.</li>
+        		</ul>
+    		</article>
+	</section>
 
         <section id="etiquetas-multimedia">
             <h2>Etiquetas Multimedia en HTML5</h2>
