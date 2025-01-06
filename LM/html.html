@@ -177,83 +177,193 @@
     		</article>
 
     		<article id="estructura-basica">
-        		<h3>2. Estructura Básica de un Formulario</h3>
-			<p>La etiqueta <strong>&lt;form&gt;</strong> define un formulario. A continuación, mostramos un ejemplo básico:</p>
-        		<pre><code>&lt;form action="/submit" method="POST"&gt;
-    				&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
-    				&lt;input type="text" id="nombre" name="nombre" required&gt;
-  			  	&lt;input type="submit" value="Enviar"&gt;
-&lt;/form&gt;
-			</code></pre>
-       			 <p>
-           			 <strong>Atributos importantes:</strong>
+        		<h3>Estructura Básica de un Formulario</h3>
+			<p>La etiqueta <strong>&lt;form&gt;</strong> define un formulario.</p>
+            <p>Dentro de las etiquetas de apertura y cierre de form se pueden incluir diferentes elementos que son enviados para ser procesados por el servidor web. A continuación, mostramos un ejemplo básico:</p>
+        		
+                <pre><code>
+                &lt;form action="/submit" method="POST"&gt;
+                    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+                    &lt;input type="text" id="nombre" name="nombre" required&gt;
+                    &lt;label for="email"&gt;Email:&lt;/label&gt;
+                    &lt;input type="email" id="email" required&gt;
+                    &lt;input type="submit" value="Enviar"&gt;
+                &lt;/form&gt;</code>
+                </pre>
+            </article>
+            <article>
+                <h3>Atributos de la etiqueta form</h3>
+		<p>El atributo action en un elemento &lt/form&gt especifica la URL o ruta a la cual se enviarán los datos del formulario cuando este sea enviado. Por otro lado, el atributo method define el método HTTP que se utilizará para enviar los datos del formulario.</p>
          			   <ul>
-                			<li><strong>action</strong>: Especifica la URL a donde se envían los datos.</li>
-                			<li><strong>method</strong>: Define el método HTTP (GET o POST).</li>
+                			<li><strong>action</strong>: Puede ser una URL relativa o absoluta que indica dónde se enviarán los datos del formulario para su procesamiento. Por lo general, se especifica la URL de un script del lado del servidor que se encargará de procesar los datos del formulario.</li>
+                			<li>
+                                <strong>method</strong>: El atributo method puede ser «GET» o «POST» y determina el método HTTP que se utilizará para enviar los datos del formulario al servidor. La diferencia principal radica en cómo se transmiten los datos.
+                                <ul>
+                                    <li>GET: Los datos del formulario se adjuntan a la URL como parámetros de consulta. Es la forma predeterminada si no se especifica el atributo method. Es útil cuando se desea que los datos del formulario sean visibles en la URL, por ejemplo, al realizar búsquedas.</li>
+                                    <li>POST: Los datos del formulario se envían en el cuerpo de la solicitud HTTP de manera más segura y no se muestran en la URL. Es adecuado para enviar datos sensibles, como contraseñas o información personal.</li>
+                                </ul>
+
+                            </li>
             			</ul>
         		</p>
     		</article>
 
     		<article id="elementos-basicos">
-        		<h3>3. Elementos Básicos</h3>
+        		<h3>Elementos Básicos</h3>
         		
-			<h4>3.1 Campos de texto</h4>
-        		<p>Se utiliza para ingresar texto:</p>
-        		<pre><code>&lt;input type="text" name="usuario" placeholder="Nombre de usuario"&gt;</code></pre>
+			<p>Los formularios en HTML5 permiten la interacción del usuario a través de diversos elementos. A continuación, se detallan los más comunes:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Elemento</th>
+                    <th>Descripción</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;input type="text"&gt;</code></td>
+                    <td>Campo para ingresar texto corto.</td>
+                    <td><pre><code>&lt;input type="text" name="usuario" placeholder="Nombre de usuario"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="password"&gt;</code></td>
+                    <td>Campo para ingresar contraseñas.</td>
+                    <td><pre><code>&lt;input type="password" name="clave"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="submit"&gt;</code></td>
+                    <td>Botón para enviar el formulario.</td>
+                    <td><pre><code>&lt;input type="submit" value="Enviar"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="reset"&gt;</code></td>
+                    <td>Botón para restablecer los campos del formulario.</td>
+                    <td><pre><code>&lt;input type="reset" value="Limpiar"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="date"&gt;</code></td>
+                    <td>Selector para ingresar fechas.</td>
+                    <td><pre><code>&lt;input type="date" name="fecha"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="color"&gt;</code></td>
+                    <td>Selector para elegir un color.</td>
+                    <td><pre><code>&lt;input type="color" name="color"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="search"&gt;</code></td>
+                    <td>Campo optimizado para búsquedas.</td>
+                    <td><pre><code>&lt;input type="search" name="busqueda"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="file"&gt;</code></td>
+                    <td>Subida de archivos.</td>
+                    <td><pre><code>&lt;input type="file" name="archivo"&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;button&gt;</code></td>
+                    <td>Botón que puede ejecutar acciones definidas por el desarrollador.</td>
+                    <td><pre><code>&lt;button type="button"&gt;Botón&lt;/button&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="radio"&gt;</code></td>
+                    <td>Botón de opción que permite seleccionar una opción entre varias.</td>
+                    <td><pre><code>&lt;input type="radio" name="genero" value="masculino"&gt; Masculino
+&lt;input type="radio" name="genero" value="femenino"&gt; Femenino</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;input type="checkbox"&gt;</code></td>
+                    <td>Casilla que permite seleccionar múltiples opciones.</td>
+                    <td><pre><code>&lt;input type="checkbox" name="intereses" value="deporte"&gt; Deporte
+&lt;input type="checkbox" name="intereses" value="musica"&gt; Música</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;select&gt;</code></td>
+                    <td>Menú desplegable para seleccionar una opción de una lista.</td>
+                    <td>
+    <pre><code>&lt;select name="pais"&gt;
+    &lt;option value="es"&gt;España&lt;/option&gt;
+    &lt;option value="mx"&gt;México&lt;/option&gt;
+    &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+&lt;/select&gt;</code></pre></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;textarea&gt;</code></td>
+                    <td>Área de texto para ingresar contenido más extenso.</td>
+                    <td><pre><code>&lt;textarea name="comentarios" rows="4" cols="50"&gt;&lt;/textarea&gt;</code></pre></td>
+                </tr>
+            </tbody>
+</table>
 
-        		<h4>3.2 Contraseñas</h4>
-       			 <p>Campo para ingresar contraseñas:</p>
-        		<pre><code>&lt;input type="password" name="clave"&gt;</code></pre>
 
-       	
-			<h4>3.3 Botones</h4>
-        		<p>Botones para enviar el formulario o realizar otras acciones:</p>
-        		<pre><code>&lt;input type="submit" value="Enviar"&gt;</code></pre>
-        		<pre><code>&lt;input type="reset" value="Limpiar"&gt;</code></pre>
-        		<pre><code>&lt;button type="button"&gt;Botón&lt;/button&gt;</code></pre>
 
-        		<h4>3.4 Botones de opción (Radio)</h4>
-        		<p>Permiten seleccionar una opción de varias disponibles:</p>
-        		<pre><code>&lt;input type="radio" name="genero" value="masculino"&gt; Masculino
-&lt;input type="radio" name="genero" value="femenino"&gt; Femenino</code></pre>
+        <article id="agrupacion-formularios">
+    <h3>Agrupación en Formularios</h3>
+    <p>HTML proporciona etiquetas especiales para agrupar y estructurar los elementos dentro de un formulario:</p>
+    
+    <h4>Etiqueta &lt;fieldset&gt;</h4>
+    <p>La etiqueta &lt;fieldset&gt; se utiliza para agrupar elementos relacionados dentro de un formulario. Mejora la organización y la accesibilidad.</p>
+    <p><strong>Ejemplo:</strong></p>
+    <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;Información Personal&lt;/legend&gt;
+    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre"&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+&lt;/fieldset&gt;</code></pre>
 
-        		<h4>3.5 Casillas de verificación (Checkbox)</h4>
-        		<p>Permiten seleccionar múltiples opciones:</p>
-       			<pre><code>&lt;input type="checkbox" name="intereses" value="deporte"&gt; Deporte
-&lt;input type="checkbox" name="intereses" value="musica"&gt; Música</code></pre>
+    <h4>Etiqueta &lt;legend&gt;</h4>
+    <p>La etiqueta &lt;legend&gt; se utiliza dentro de un &lt;fieldset&gt; para proporcionar un título o descripción del grupo de campos. Mejora la accesibilidad.</p>
+    <p><strong>Ejemplo:</strong></p>
+    <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;Información de Envío&lt;/legend&gt;
+    &lt;label for="direccion"&gt;Dirección:&lt;/label&gt;
+    &lt;input type="text" id="direccion" name="direccion"&gt;
+    &lt;label for="ciudad"&gt;Ciudad:&lt;/label&gt;
+    &lt;input type="text" id="ciudad" name="ciudad"&gt;
+&lt;/fieldset&gt;</code></pre>
 
-        		<h4>3.6 Menús desplegables (Select)</h4>
-        		<p>Para elegir una opción de una lista:</p>
-        		<pre><code>&lt;select name="pais"&gt;
-    				&lt;option value="es"&gt;España&lt;/option&gt;
-    				&lt;option value="mx"&gt;México&lt;/option&gt;
-    				&lt;option value="ar"&gt;Argentina&lt;/option&gt;
-&lt;/select&gt;
-			</code></pre>
+    <h4>Etiqueta &lt;optgroup&gt;</h4>
+    <p>La etiqueta &lt;optgroup&gt; se usa para agrupar opciones relacionadas dentro de un elemento &lt;select&gt;.</p>
+    <p><strong>Ejemplo:</strong></p>
+    <pre><code>&lt;select name="departamento"&gt;
+    &lt;optgroup label="Ventas"&gt;
+        &lt;option value="ventas1"&gt;Ventas Internacionales&lt;/option&gt;
+        &lt;option value="ventas2"&gt;Ventas Locales&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label="Soporte"&gt;
+        &lt;option value="soporte1"&gt;Soporte Técnico&lt;/option&gt;
+        &lt;option value="soporte2"&gt;Soporte al Cliente&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
 
-        		<h4>3.7 Áreas de texto (Textarea)</h4>
-        		<p>Para ingresar textos largos:</p>
-        		<pre><code>&lt;textarea name="comentarios" rows="4" cols="50"&gt;&lt;/textarea&gt;</code></pre>
-    		</article>
+    <h4>Etiqueta &lt;option&gt;</h4>
+    <p>La etiqueta &lt;option&gt; define las opciones dentro de un menú desplegable (&lt;select&gt;) o un grupo (&lt;optgroup&gt;).</p>
+    <p><strong>Ejemplo:</strong></p>
+    <pre><code>&lt;select name="pais"&gt;
+    &lt;option value="es"&gt;España&lt;/option&gt;
+    &lt;option value="fr"&gt;Francia&lt;/option&gt;
+    &lt;option value="it"&gt;Italia&lt;/option&gt;
+&lt;/select&gt;</code></pre>
 
-    		<article id="elementos-avanzados">
-        		<h3>4. Elementos Avanzados</h3>
-       			
-			<h4>4.1 Selector de fecha</h4>
-        		<pre><code>&lt;input type="date" name="fecha"&gt;</code></pre>
+    <h4>Etiqueta &lt;datalist&gt;</h4>
+    <p>La etiqueta &lt;datalist&gt; proporciona una lista de opciones predefinidas para un campo de entrada (&lt;input&gt;).</p>
+    <p><strong>Ejemplo:</strong></p>
+    <pre><code>&lt;label for="ciudad"&gt;Ciudad:&lt;/label&gt;
+&lt;input list="ciudades" id="ciudad" name="ciudad"&gt;
+&lt;datalist id="ciudades"&gt;
+    &lt;option value="Madrid"&gt;
+    &lt;option value="Barcelona"&gt;
+    &lt;option value="Valencia"&gt;
+&lt;/datalist&gt;</code></pre>
+</article>
 
-        		<h4>4.2 Selector de color</h4>
-        		<pre><code>&lt;input type="color" name="color"&gt;</code></pre>
 
-        		<h4>4.3 Campos de búsqueda</h4>
-        		<pre><code>&lt;input type="search" name="busqueda"&gt;</code></pre>
 
-        		<h4>4.4 Selector de archivos</h4>
-        		<pre><code>&lt;input type="file" name="archivo"&gt;</code></pre>
-    		</article>
 
     		<article id="validacion">
-       			<h3>5. Validación en Formularios</h3>
+       			<h3>Validación en Formularios</h3>
         		<p>HTML5 ofrece validaciones automáticas. Por ejemplo:</p>
         		<pre><code>&lt;input type="email" name="correo" required&gt;</code></pre>
         		<p>
@@ -263,7 +373,7 @@
     		</article>
 
     		<article id="ejercicios">
-        		<h3>6. Ejercicios Prácticos</h3>
+        		<h3>Ejercicios Prácticos</h3>
         		<ul>
             			<li>Crea un formulario de registro con nombre, apellido, correo electrónico, contraseña y confirmación de contraseña.</li>
             			<li>Diseña un formulario de reserva de cita que incluya fecha, hora y una lista desplegable para seleccionar el servicio.</li>
