@@ -952,161 +952,293 @@ body {
 
     <p> La propiedad transition es la clave para crear transiciones. Es una propiedad abreviada que agrupa cuatro subpropiedades:</p>
     <ol>   
-        <li>transition-property: Especifica la propiedad CSS a la que se aplicará la transición (ej: background-color, opacity, transform, width, height, etc.). Se pueden especificar múltiples propiedades separadas por comas (ej: opacity, background-color). Se puede usar la palabra clave all para aplicar la transición a todas las propiedades que sean animables.</li>
-        <li>transition-duration: Especifica la duración de la transición en segundos (s) o milisegundos (ms) (ej: 0.3s, 500ms).</li>
-        <li>transition-timing-function: Define la curva de aceleración de la transición. Controla cómo varía la velocidad de la animación a lo largo del tiempo.</li>
-        <li>transition-delay: Especifica un retraso antes de que comience la transición (ej: 0.1s, 200ms</li>
+        <li><strong>transition-property</strong>: Especifica la propiedad CSS a la que se aplicará la transición (ej: background-color, opacity, transform, width, height, etc.). Se pueden especificar múltiples propiedades separadas por comas (ej: opacity, background-color)</strong>:. Se puede usar la palabra clave all para aplicar la transición a todas las propiedades que sean animables.</li>
+        <li><strong>transition-duration</strong>:: Especifica la duración de la transición en segundos (s) o milisegundos (ms) (ej: 0.3s, 500ms).</li>
+        <li><strong>transition-timing-function</strong>:: Define la curva de aceleración de la transición. Controla cómo varía la velocidad de la animación a lo largo del tiempo.</li>
+        <li><strong>transition-delay</strong>:: Especifica un retraso antes de que comience la transición (ej: 0.1s, 200ms</li>
     </ol>
 
-    <pre>transition: propiedad duración función-de-tiempo retraso;</pre>
+    <article id="ejemplos">
+        <h4>2. Ejemplos de transiciones</h4>
 
-    <h4>Ejemplos:</h4>
-
-    <pre><code>
-        <!DOCTYPE html>
-<html>
-<head>
-<title>Ejemplo de Transición</title>
-<style>
-.caja {
-  width: 100px;
-  height: 100px;
-  background-color: blue;
-  transition: background-color 0.5s ease; /* Transición en background-color */
+        <h4>2.1 Transición simple</h4>
+        <p>Cambio suave del color de fondo al pasar el ratón.</p>
+        <div class="ejemplo-caja ejemplo1">¡Pasa el ratón!</div>
+        <div class="codigo-caja">
+            <pre>
+.ejemplo1 {
+    background-color: #ffcccb;
+    transition: background-color 0.5s ease;
 }
 
-.caja:hover {
-  background-color: red;
+.ejemplo1:hover {
+    background-color: #ff5733;
 }
-</style>
-</head>
-<body>
+            </pre>
+        </div>
 
-<div class="caja"></div>
-
-</body>
-</html>
-
-  </code>  </pre>
-        
-
-    <pre>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Ejemplo de Transiciones con diferentes timing functions</title>
-<style>
-.caja {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
-    background-color: blue;
-    transition-property: width; /* o all para todas las propiedades */
-    transition-duration: 1s;
-}
-.caja:hover{
-    width: 200px;
-}
-#ease{
-    transition-timing-function: ease;
-}
-#linear{
-    transition-timing-function: linear;
-}
-#ease-in{
-    transition-timing-function: ease-in;
-}
-#ease-out{
-    transition-timing-function: ease-out;
-}
-#ease-in-out{
-    transition-timing-function: ease-in-out;
-}
-</style>
-</head>
-<body>
-<div class="caja" id="ease">ease</div>
-<div class="caja" id="linear">linear</div>
-<div class="caja" id="ease-in">ease-in</div>
-<div class="caja" id="ease-out">ease-out</div>
-<div class="caja" id="ease-in-out">ease-in-out</div>
-</body>
-</html>
-
-    </pre>
-
-
-    <pre>
-        <!DOCTYPE html>
-<html>
-<head>
-<title>Ejemplo de Transición con Transform</title>
-<style>
-.caja {
-  width: 100px;
-  height: 100px;
-  background-color: green;
-  transition: transform 0.3s ease-in-out;
+        <h4>2.2 Varias propiedades</h4>
+        <p>Cambio de color y escala al mismo tiempo.</p>
+        <div class="ejemplo-caja ejemplo2">¡Pasa el ratón!</div>
+        <div class="codigo-caja">
+            <pre>
+.ejemplo2 {
+    background-color: #ccffcc;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
 }
 
-.caja:hover {
-  transform: rotate(180deg) scale(1.2); /* Rotación y escalado al pasar el ratón */
+.ejemplo2:hover {
+    background-color: #28a745;
+    transform: scale(1.2);
 }
-</style>
-</head>
-<body>
+            </pre>
+        </div>
 
-<div class="caja"></div>
+        <h4>2.3 Transición con retraso</h4>
+        <p>Retraso antes de aplicar el efecto.</p>
+        <div class="ejemplo-caja ejemplo3">¡Pasa el ratón!</div>
+        <div class="codigo-caja">
+            <pre>
+.ejemplo3 {
+    background-color: #cce7ff;
+    transition: background-color 0.5s ease, transform 0.5s ease 0.2s;
+}
 
-</body>
-</html>
+.ejemplo3:hover {
+    background-color: #007bff;
+    transform: rotate(15deg);
+}
+            </pre>
+        </div>
 
-    </pre>
+        <h4>2.4 Todas las propiedades</h4>
+        <p>Aplica la transición a todas las propiedades definidas.</p>
+        <div class="ejemplo-caja ejemplo4">¡Pasa el ratón!</div>
+        <div class="codigo-caja">
+            <pre>
+.ejemplo4 {
+    background-color: #f9c74f;
+    transition: all 0.5s ease;
+}
+
+.ejemplo4:hover {
+    background-color: #f8961e;
+    transform: scale(1.5) rotate(10deg);
+    border-radius: 50%;
+}
+            </pre>
+        </div>
+    </section>
+
+    <article id="conclusion">
+        <h4>3. Conclusión</h4>
+        <p>Las transiciones en CSS permiten animar cambios en estilos para mejorar la experiencia del usuario. Puedes experimentar con diferentes propiedades y valores para crear efectos dinámicos y atractivos.</p>
+    </article>
+
+
+
     <h3>Animaciones</h3>
-    <p>Las animaciones se definen mediante <code>@keyframes</code>, que describe los cambios en un elemento en diferentes etapas.</p>
-    <pre><code>
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
+   
+        <p>Las animaciones en CSS permiten crear efectos visuales dinámicos mediante el uso de los siguientes elementos:</p>
+        <ul>
+            <li><b>@keyframes</b>: Define los estados o fotogramas de la animación.</li>
+            <li><b>animation-name</b>: Asigna un nombre a la animación.</li>
+            <li><b>animation-duration</b>: Define la duración de la animación.</li>
+            <li><b>animation-timing-function</b>: Controla la velocidad de la animación (ease, linear, etc.).</li>
+            <li><b>animation-delay</b>: Añade un retraso antes de iniciar la animación.</li>
+            <li><b>animation-iteration-count</b>: Especifica cuántas veces se repetirá la animación (infinite para repetir indefinidamente).</li>
+            <li><b>animation-direction</b>: Determina si la animación se reproduce hacia adelante, hacia atrás o alternando (normal,reverse, alternate).</li>
+        </ul>
+    </article>
+
+    <article id="ejemplos">
+        <h4>2. Ejemplos de animaciones</h4>
+
+        <h4>2.1 Movimiento lineal</h4>
+        <p>La caja se mueve horizontalmente y vuelve a su posición inicial.</p>
+        <div class="ejemplo5">Mueve</div>
+        <div class="codigo-caja">
+            <pre>
+    @keyframes mover {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(100px); }
+    100% { transform: translateX(0); }
+}
+
+.ejemplo5 {
+    animation: mover 2s infinite;
+}
+            </pre>
+        </div>
+
+        <h4>2.2 Cambio de color</h4>
+        <p>La caja cambia de color durante la animación.</p>
+        <div class="ejemplo6">Color</div>
+        <div class="codigo-caja">
+            <pre>
+@keyframes cambioColor {
+    0% { background-color: #ffcccb; }
+    50% { background-color: #ff5733; }
+    100% { background-color: #ffcccb; }
+}
+
+.ejemplo6 {
+    width:100px;
+    animation: cambioColor 3s infinite;
+}
+            </pre>
+        </div>
+
+        <h4>2.3 Rotación</h4>
+        <p>La caja gira continuamente sobre su eje.</p>
+        <div class="ejemplo7">Gira</div>
+        <div class="codigo-caja">
+            <pre>
+@keyframes rotar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.ejemplo7 {
+    width:100px;
+    animation: rotar 2s linear infinite;
+}
+            </pre>
+        </div>
+
+        <h4>2.4 Animación combinada</h4>
+        <p>La caja se mueve y cambia de tamaño mientras varía su color.</p>
+        <div class="ejemplo8">Combinada</div>
+        <div class="codigo-caja">
+            <pre>
+@keyframes combinado {
+    0% {
+        transform: translateY(0) scale(1);
+        background-color: #f9c74f;
     }
-    to {
-        transform: translateX(0);
+    50% {
+        transform: translateY(-20px) scale(1.2);
+        background-color: #f8961e;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        background-color: #f9c74f;
     }
 }
 
-.element {
-    animation: slideIn 1s ease-in-out;
+.ejemplo8 {
+    width:100px;
+    animation: combinado 1.5s ease-in-out infinite;
 }
-    </code></pre>
-    <p>Este código mueve el elemento desde fuera de la pantalla hacia su posición original.</p>
+            </pre>
+        </div>
+    </section>
 
-    <h3>Ejercicio</h3>
-    <p>Crea una animación para un cuadro de texto que cambie de color y posición cuando el usuario haga clic en él.</p>
+    <article id="conclusion">
+        <h4>3. Conclusión</h4>
+        <p>Las animaciones en CSS permiten crear efectos dinámicos sin necesidad de JavaScript. Son ideales para mejorar la estética y la interacción en las páginas web.</p>
+    </article>
 </section>
 
 <!-- Sección: Responsive Design con Media Queries -->
-<section id="responsive-design">
-    <h2>Responsive Design con Media Queries</h2>
-    <p>El diseño responsive permite que un sitio web se vea bien en diferentes dispositivos y tamaños de pantalla. Se logra utilizando media queries para aplicar estilos específicos según el tamaño de la pantalla.</p>
-    <pre><code>
+    
+<section id="queries"">
+    <h2> Media Queries </h2>
+    <article id="introduccion">
+        <h3>1. ¿Qué son las Media Queries?</h3>
+        <p>Las <b>Media Queries</b> permiten aplicar diferentes estilos CSS según las características del dispositivo, como:</p>
+        <ul>
+            <li>El ancho o alto de la pantalla.</li>
+            <li>La resolución.</li>
+            <li>La orientación (vertical u horizontal).</li>
+        </ul>
+    </article>
+
+    <article id="sintaxis">
+        <h3>2. Sintaxis de Media Queries</h3>
+        <p>Una Media Query sigue esta estructura:</p>
+        <div class="codigo">
+            <pre>
+@media (condición) {
+    /* Estilos aplicados si se cumple la condición */
+}
+            </pre>
+        </div>
+    </article>
+
+    <article id="ejemplos">
+        <h3>3.Ejemplos de Media Queries</h3>
+
+        <h4>3.1 Adaptar el diseño según el tamaño de pantalla</h4>
+        <p>Ejemplo práctico para cambiar el color y tamaño del texto según el dispositivo.</p>
+        <div class="ejemplo">Este texto cambia según el tamaño de pantalla</div>
+        <div class="codigo">
+            <pre>
+/* Para pantallas pequeñas */
 @media (max-width: 600px) {
-    .container {
-        flex-direction: column;
+    .ejemplo {
+        background-color: #ffcccb;
+        font-size: 14px;
     }
 }
 
-@media (min-width: 601px) {
-    .container {
-        flex-direction: row;
+/* Para pantallas medianas */
+@media (min-width: 601px) and (max-width: 900px) {
+    .ejemplo {
+        background-color: #fdfd96;
+        font-size: 16px;
     }
 }
-    </code></pre>
-    <p>En este ejemplo, los elementos dentro de <a class="resaltar">.container</a> se mostrarán en columna para pantallas pequeñas y en fila para pantallas más grandes.</p>
 
-    <h3>Ejercicio</h3>
-    <p>Desarrolla una página web con un diseño de tres columnas que se convierta en una sola columna en pantallas más pequeñas.</p>
+/* Para pantallas grandes */
+@media (min-width: 901px) {
+    .ejemplo {
+        background-color: #cce7ff;
+        font-size: 18px;
+    }
+}
+            </pre>
+        </div>
+
+        <h4>3.2 Detectar la orientación de la pantalla</h4>
+        <p>Aplica estilos diferentes según si la pantalla está en modo vertical u horizontal.</p>
+        <div class="codigo">
+            <pre>
+/* Modo vertical (portrait) */
+@media (orientation: portrait) {
+    body {
+        background: #f0f8ff;
+    }
+}
+
+/* Modo horizontal (landscape) */
+@media (orientation: landscape) {
+    body {
+        background: #f0fff0;
+    }
+}
+            </pre>
+        </div>
+
+        <h4>3.3 Cambiar estilos según resolución</h4>
+        <p>Ejemplo para pantallas con alta densidad de píxeles (retina).</p>
+        <div class="codigo">
+            <pre>
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        background: #ffe4e1;
+    }
+}
+            </pre>
+        </div>
+    </article>
+
+    <article id="conclusion">
+        <h3>4. Conclusión</h3>
+        <p>Las Media Queries son fundamentales para el diseño web responsivo. Gracias a ellas, podemos adaptar el contenido y el diseño según el tamaño y tipo de dispositivo.</p>
+    </article>
 </section>
-
 <!-- Sección: CSS Grid Layout Avanzado -->
 <section id="css-grid-advanced">
     <h2>CSS Grid Layout Avanzado</h2>

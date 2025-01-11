@@ -245,3 +245,147 @@ table pre{
     background-color: transparent;
     text-align: left;
 }
+
+
+
+/*codigo para los ejemplos de transiciones*/
+
+.ejemplo-caja {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            display: inline-block;
+            border: 2px solid #333;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+
+        /* Ejemplo 1: Transición simple */
+        .ejemplo1 {
+            background-color: #ffcccb;
+            transition: background-color 0.5s ease;
+        }
+
+        .ejemplo1:hover {
+            background-color: #ff5733;
+        }
+
+        /* Ejemplo 2: Varias propiedades */
+        .ejemplo2 {
+            background-color: #ccffcc;
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .ejemplo2:hover {
+            background-color: #28a745;
+            transform: scale(1.2);
+        }
+
+        /* Ejemplo 3: Transición con retraso */
+        .ejemplo3 {
+            background-color: #cce7ff;
+            transition: background-color 0.5s ease, transform 0.5s ease 0.2s;
+        }
+
+        .ejemplo3:hover {
+            background-color: #007bff;
+            transform: rotate(15deg);
+        }
+
+        /* Ejemplo 4: Transición de todas las propiedades */
+        .ejemplo4 {
+            background-color: #f9c74f;
+            transition: all 0.5s ease;
+        }
+
+        .ejemplo4:hover {
+            background-color: #f8961e;
+            transform: scale(1.5) rotate(10deg);
+            border-radius: 50%;
+        }
+
+        .contenedor-ejemplos {
+            margin: 20px 0;
+        }
+
+        .codigo-caja {
+            background: #eeeeee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+
+
+
+/******Estilos para las animaciones******/
+
+.codigo-caja {
+            background: #eeeeee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        /* Ejemplo 5: Movimiento lineal */
+        @keyframes mover {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(100px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Aplicamos la animación a la caja */
+        .ejemplo5 {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            margin: 50px auto;
+            animation: mover 2s infinite; /* Nombre, duración y repetición */
+        }
+
+        /* Ejemplo 6: Cambio de color */
+        @keyframes cambioColor {
+            0% { background-color: #ffcccb; }
+            50% { background-color: #ff5733; }
+            100% { background-color: #ffcccb; }
+        }
+
+        .ejemplo6 {
+            width:100px;
+            animation: cambioColor 3s infinite;
+        }
+
+        /* Ejemplo 3: Rotación */
+        @keyframes rotar {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ejemplo7 {
+            width:100px;
+            background-color: #cce7ff;
+            animation: rotar 2s linear infinite;
+        }
+
+        /* Ejemplo 8: Animación combinada */
+        @keyframes combinado {
+            0% {
+                transform: translateY(0) scale(1);
+                background-color: #f9c74f;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.2);
+                background-color: #f8961e;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                background-color: #f9c74f;
+            }
+        }
+
+        .ejemplo8 {
+            width:100px;
+            animation: combinado 1.5s ease-in-out infinite;
+        }
