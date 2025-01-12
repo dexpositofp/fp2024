@@ -306,6 +306,146 @@ selector {
             </div>
         </section>
 
+
+
+
+
+
+    <section id="pseudoelementos">
+        <article id="intro_pseudoelementos">
+            <h2>Pseudoelementos</h2>
+            <p>
+                Los <span class="highlight">pseudoelementos</span> son una característica de CSS que permite aplicar estilos a partes específicas de un elemento, sin necesidad de modificar el HTML. 
+                A menudo se utilizan para añadir contenido o efectos visuales.
+            </p>
+            <p>Los pseudoelementos se escriben con dos puntos seguidos <strong>::</strong>, aunque algunos navegadores más antiguos también aceptan un solo punto <strong>:</strong>.</p>
+        </article>
+
+        <article>
+            <h3>Pseudoelementos más comunes</h3>
+            <ul>
+                <li><strong>::before</strong> Añade contenido antes del contenido principal de un elemento.</li>
+                <li><strong>::after</strong> Añade contenido después del contenido principal de un elemento.</li>
+                <li><strong>::first-line</strong> Aplica estilos a la primera línea del texto.</li>
+                <li><strong>::first-letter</strong> Aplica estilos a la primera letra de un texto.</li>
+                <li><strong>::placeholder</strong> Aplica estilos al texto de marcador (placeholder) de un campo de formulario.</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Ejemplos Prácticos</h3>
+        
+              <h4>1. Uso de <strong>::before</strong> y <strong>::after</strong></h4>
+             <p>Estos pseudoelementos permiten insertar contenido adicional.</p>
+
+<pre>
+
+/*CSS a aplicar */
+.titulo::before {
+    content: "👉 ";
+    color: #d35400;
+}
+.titulo::after {
+    content: " 👈";
+    color: #2980b9;
+}
+
+
+/* HTML */
+&lt;h2 class="titulo"&gt;Ejemplo&lt;/h2&gt;
+</pre>
+
+<pre>
+<h2 class="titulo">Ejemplo</h2>
+</pre>
+            
+
+
+<style>
+.titulo::before {
+    content: "👉 ";
+    color: #d35400;
+}
+.titulo::after {
+    content: " 👈";
+    color: #2980b9;
+}
+</style>
+
+  
+
+        
+            <h4>2. Aplicando estilos a la primera letra</h4>
+            <p>El pseudoelemento <strong>::first-letter</strong> se utiliza para aplicar estilos destacados.</p>
+            <pre>
+/* CSS a aplicar */
+.texto::first-letter {
+    font-size: 2em;
+    color: #8e44ad;
+    font-weight: bold;
+}
+
+/* HTML */
+&lt;p class="texto"&gt;Este es un ejemplo de pseudoelemento.&lt;/p&gt;
+
+
+            </pre>
+<pre>
+<style>
+.texto::first-letter {
+    font-size: 2em;
+    color: #8e44ad;
+    font-weight: bold;
+}
+</style> 
+<p class="texto">Este es un ejemplo de pseudoelemento.</p>
+</pre>
+
+        
+            <h4>3. Aplicando estilos a la primera línea</h4>
+            <p>El pseudoelemento <strong>::first-line</strong> permite estilizar la primera línea de texto.</p>
+            <pre>
+/* Código CSS a aplicar */
+
+.parrafo::first-line {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* HTML */
+&lt;p class="parrafo"&gt;La primera línea de este párrafo tiene un estilo diferente.&lt;/p&gt;
+
+            </pre>
+
+   <pre>
+<p class="parrafo">La primera línea de este párrafo tiene un estilo diferente.</p>
+
+<style>
+.parrafo::first-line {
+    font-weight: bold;
+    color: #e74c3c;
+}
+</style>
+            </pre>
+    </article>
+
+        
+
+        <article>
+            <h3>Ejercicio</h3	>
+            <p>Prueba a crear un diseño en el que:</p>
+            <ul>
+                <li>La primera letra de cada párrafo sea más grande y tenga un color diferente.</li>
+                <li>Un ícono decorativo se añada antes de los títulos principales.</li>
+                <li>Se aplique un subrayado animado a los enlaces al pasar el ratón.</li>
+            </ul>
+        </article>
+        
+        </section>
+
+
+
+
         <section id="contexto-css">
             <h2>Definiciones en Función del Contexto</h2>
             <p>Las definiciones en función del contexto permiten aplicar estilos basados en la posición de los elementos dentro de la estructura HTML.</p>
@@ -708,9 +848,7 @@ h2 + p {
     <li>Usa <span class="resaltar">CSS Grid</span> para layouts complejos, como el diseño general de una página, una galería de imágenes, o cualquier estructura que necesite manejar filas y columnas de manera más controlada.</li>
   </ul>
 
-  <h3>Conclusión</h3>
-
-  <p>El posicionamiento en CSS ha evolucionado mucho desde el uso simple de <span class="resaltar">position</span>. Ahora, técnicas como <span class="resaltar">Flexbox</span> y <span class="resaltar">CSS Grid</span> nos permiten crear diseños más complejos y responsivos de manera más eficiente. Es importante dominar estas técnicas para tener más control sobre el diseño de nuestras páginas y adaptarlas a diferentes dispositivos.</p>
+  
 </section>
 
 
@@ -1031,10 +1169,7 @@ body {
         </div>
     </section>
 
-    <article id="conclusion">
-        <h4>3. Conclusión</h4>
-        <p>Las transiciones en CSS permiten animar cambios en estilos para mejorar la experiencia del usuario. Puedes experimentar con diferentes propiedades y valores para crear efectos dinámicos y atractivos.</p>
-    </article>
+    
 
 
 
@@ -1135,10 +1270,7 @@ body {
         </div>
     </section>
 
-    <article id="conclusion">
-        <h4>3. Conclusión</h4>
-        <p>Las animaciones en CSS permiten crear efectos dinámicos sin necesidad de JavaScript. Son ideales para mejorar la estética y la interacción en las páginas web.</p>
-    </article>
+    
 </section>
 
 <!-- Sección: Responsive Design con Media Queries -->
@@ -1234,10 +1366,7 @@ body {
         </div>
     </article>
 
-    <article id="conclusion">
-        <h3>4. Conclusión</h3>
-        <p>Las Media Queries son fundamentales para el diseño web responsivo. Gracias a ellas, podemos adaptar el contenido y el diseño según el tamaño y tipo de dispositivo.</p>
-    </article>
+   
 </section>
 <!-- Sección: CSS Grid Layout Avanzado -->
 <section id="css-grid-advanced">
