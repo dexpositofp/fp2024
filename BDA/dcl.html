@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad en bases de datos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="arriba">
+        <h1>Bases de datos</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./almacenamiento.html">Almacenamiento</a></li>
+                <li><a href="./logico.html">Diseño lógico</a></li>
+            <!--    <li><a href="./fisico.html">Diseño físico</a></li>
+                <li><a href="./ddl.html">DDL</a></li>
+                <li><a href="./dml.html">DML</a></li>-->
+                <li><a href="./dcl.html">DCL TCL</a></li>
+               <!-- <li><a href="./utilidades.html">Utilidades</a></li>
+                <li><a href="./plsql.html">PL/SQL</a></li>
+                <li><a href="./nosql.html">NoSQL</a></li>-->
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <section id="introduccion">
+    <h2>Seguridad en Bases de Datos</h2>
+
+    <p>Las bases de datos almacenan información crítica para las organizaciones, por lo que su seguridad es esencial para garantizar la <span class="resaltar">confidencialidad</span>, <span class="resaltar">integridad</span> y <span class="resaltar">disponibilidad</span> de los datos.</p>
+
+    <h3>Importancia de la Seguridad en Bases de Datos</h3>
+    <ul>
+        <li><span class="resaltar">Confidencialidad</span>: Solo las personas autorizadas deben acceder a la información.</li>
+        <li><span class="resaltar">Integridad</span>: Los datos deben mantenerse precisos y no alterarse sin permiso.</li>
+        <li><span class="resaltar">Disponibilidad</span>: La información debe estar accesible cuando se necesite.</li>
+    </ul>
+
+    <p>Una brecha en la seguridad puede tener consecuencias graves, como pérdidas económicas, daños a la reputación y sanciones legales. la seguridad de bases de datos implica herramientas y medidas para proteger la información contra accesos no autorizados.</p>
+
+    <h3>Desafíos en la Seguridad de Bases de Datos</h3>
+    <ul>
+        <li><span class="resaltar">Amenazas Internas</span>: Usuarios con acceso legítimo que pueden comprometer la seguridad, ya sea de forma intencionada o accidental.</li>
+        <li><span class="resaltar">Ataques Externos</span>: Ciberataques que buscan explotar vulnerabilidades para acceder o manipular datos.</li>
+        <li><span class="resaltar">Errores de Configuración</span>: Implementaciones incorrectas o configuraciones inseguras que pueden abrir la puerta a atacantes.</li>
+    </ul>
+
+    <p>La protección de los datos es clave para evitar filtraciones y garantizar la privacidad digital.</p>
+
+    <h3>Relación entre Aplicaciones Web y Bases de Datos</h3>
+    <p>Las aplicaciones web sirven como intermediarias entre los usuarios y las bases de datos. Una vulnerabilidad en la aplicación puede ser utilizada por atacantes para acceder o modificar datos almacenados.</p>
+    
+    <p>Por ello, es esencial implementar medidas de seguridad tanto en la aplicación como en la base de datos, asegurando una protección completa.</p>
+</section>     
+<section id="vistas-bases-datos">
+    <h2>Vistas en Bases de Datos</h2>
+
+    <p>Las <span class="resaltar">vistas</span> son una herramienta fundamental en bases de datos relacionales, permitiendo estructurar la información de manera flexible y segura.</p> 
+    <p>Una vista es una <span class="resaltar">consulta almacenada</span> que permite representar datos de una o varias tablas sin necesidad de duplicarlos.</p>
+
+    <h3>¿Por qué utilizar vistas?</h3>
+    <p>Las vistas proporcionan múltiples ventajas en la gestión de bases de datos:</p>
+    <ul>
+        <li><span class="resaltar">Seguridad</span>: Permiten restringir el acceso a ciertas columnas o filas, ocultando datos sensibles a usuarios sin privilegios.</li>
+        <li><span class="resaltar">Simplicidad</span>: Facilitan consultas complejas, reduciendo la necesidad de escribir SQL repetitivo.</li>
+        <li><span class="resaltar">Mantenimiento</span>: Ayudan a mantener la coherencia en los datos, ya que pueden reflejar cambios en las tablas sin modificar las consultas que las utilizan.</li>
+        <li><span class="resaltar">Optimización</span>: Algunas bases de datos optimizan vistas materializadas para mejorar el rendimiento en consultas frecuentes.</li>
+    </ul>
+
+    <h3>Creación de Vistas en SQL</h3>
+    <p>Para crear una vista en SQL, se utiliza la sentencia <strong>CREATE VIEW</strong>. A continuación, se muestra un ejemplo de una vista que muestra información de clientes junto con sus pedidos:</p>
+    
+    <pre>
+        CREATE VIEW VistaClientesPedidos AS
+        SELECT c.nombre_cliente, c.telefono, p.codigo_pedido, p.fecha_pedido, p.estado
+        FROM cliente c
+        JOIN pedido p ON c.codigo_cliente = p.codigo_cliente;
+    </pre>
+
+    <p>Esta vista permite acceder a información clave sin necesidad de realizar la consulta manualmente cada vez.</p>
+
+    <h3>Modificación de Vistas</h3>
+    <p>Las vistas pueden actualizarse utilizando la sentencia <strong>ALTER VIEW</strong>. Por ejemplo, si queremos incluir la cantidad total de cada pedido, podríamos modificar nuestra vista de la siguiente manera:</p>
+    
+    <pre>
+        ALTER VIEW VistaClientesPedidos AS
+        SELECT c.nombre_cliente, c.telefono, p.codigo_pedido, p.fecha_pedido, p.estado, 
+               SUM(dp.cantidad * dp.precio_unidad) AS total_pedido
+        FROM cliente c
+        JOIN pedido p ON c.codigo_cliente = p.codigo_cliente
+        JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido
+        GROUP BY c.nombre_cliente, c.telefono, p.codigo_pedido, p.fecha_pedido, p.estado;
+    </pre>
+
+    <h3>Eliminación de Vistas</h3>
+    <p>Si una vista ya no es necesaria, puede eliminarse con la sentencia <strong>DROP VIEW</strong >:</p>
+    
+    <pre>
+        DROP VIEW VistaClientesPedidos;
+    </pre>
+
+    <h3>Vistas Materializadas</h3>
+    <p>Algunas bases de datos permiten la creación de <span class="resaltar">vistas materializadas</span>, que almacenan físicamente los resultados de la consulta. Estas vistas mejoran el rendimiento en consultas frecuentes, pero requieren actualización manual o automática para reflejar cambios en los datos.</p>
+
+</section>
+
+<section id="dcl-sql">
+    <h2>Lenguaje de Control de Datos (DCL) en SQL</h2>
+
+    <p>El <span class="resaltar">Lenguaje de Control de Datos (DCL)</span> en SQL se utiliza para gestionar los permisos y el acceso a los datos dentro de un sistema de bases de datos. DCL permite conceder y revocar permisos sobre diferentes objetos como tablas, vistas o procedimientos almacenados.</p>
+
+    <h3>Principales Sentencias de DCL</h3>
+
+    <p>Existen dos sentencias fundamentales en DCL:</p>
+
+    <ul>
+        <li><span class="resaltar">GRANT</span>: Otorga permisos a un usuario o rol.</li>
+        <li><span class="resaltar">REVOKE</span>: Revoca los permisos previamente otorgados.</li>
+    </ul>
+
+    <h3>Concesión de Permisos con GRANT</h3>
+    <p>La sentencia <span class="resaltar">GRANT</span> permite asignar permisos a usuarios específicos. La sintaxis básica es la siguiente:</p>
+
+    <pre>
+        GRANT privilegios ON objeto TO usuario [WITH GRANT OPTION];
+    </pre>
+
+    <p>Ejemplo: Otorgar permisos de selección e inserción sobre la tabla <span class="resaltar">cliente</span> al usuario <span class="resaltar">usuario1</span>:</p>
+
+    <pre>
+        GRANT SELECT, INSERT ON cliente TO usuario1;
+    </pre>
+
+    <p>Si se desea permitir que el usuario pueda a su vez otorgar estos permisos a otros, se añade la opción <span class="resaltar">WITH GRANT OPTION</span>:</p>
+
+    <pre>
+        GRANT SELECT, INSERT ON cliente TO usuario1 WITH GRANT OPTION;
+    </pre>
+
+    <h3>Revocación de Permisos con REVOKE</h3>
+    <p>Para eliminar permisos previamente concedidos, se utiliza la sentencia <span class="resaltar">REVOKE</span>:</p>
+
+    <pre>
+        REVOKE privilegios ON objeto FROM usuario;
+    </pre>
+
+    <p>Ejemplo: Revocar los permisos de selección e inserción al usuario <span class="resaltar">usuario1</span>:</p>
+
+    <pre>
+        REVOKE SELECT, INSERT ON cliente FROM usuario1;
+    </pre>
+
+    <h3>Diccionario de Datos en MySQL</h3>
+    <p>El <span class="resaltar">diccionario de datos</span> en MySQL almacena la información sobre la estructura y los permisos de la base de datos. En versiones modernas de MySQL, la información sobre usuarios, permisos y objetos de la base de datos se encuentra en las siguientes tablas del esquema mysql:</p>
+
+    <ul>
+        <li><span class="resaltar">mysql.user</span>: Contiene información sobre los usuarios y sus privilegios globales.</li>
+        <li><span class="resaltar">mysql.db</span>: Almacena los privilegios específicos de cada base de datos.</li>
+        <li><span class="resaltar">mysql.tables_priv</span>: Contiene los permisos sobre tablas específicas.</li>
+        <li><span class="resaltar">mysql.columns_priv</span>: Gestiona los permisos sobre columnas individuales.</li>
+    </ul>
+
+    <p>Para consultar los permisos de un usuario, se puede ejecutar:</p>
+
+    <pre>
+        SELECT * FROM mysql.user WHERE user = 'usuario1';
+    </pre>
+
+    <h3>Estructura de Permisos en MySQL</h3>
+    <p>En MySQL, los permisos pueden asignarse en diferentes niveles:</p>
+
+    <ul>
+        <li><span class="resaltar">Nivel Global</span>: Se otorgan a todos los objetos de todas las bases de datos.</li>
+        <li><span class="resaltar">Nivel de Base de Datos</span>: Se aplican a una base de datos específica.</li>
+        <li><span class="resaltar">Nivel de Tabla</span>: Se conceden a una tabla en particular.</li>
+        <li><span class="resaltar">Nivel de Columna</span>: Se asignan a columnas específicas dentro de una tabla.</li>
+        <li><span class="resaltar">Nivel de Procedimiento</span>: Se usan para procedimientos almacenados y funciones.</li>
+    </ul>
+
+    <h3>Gestión de Usuarios y Roles</h3>
+    <p>En MySQL, los permisos pueden asignarse tanto a usuarios individuales como a <span class="resaltar">roles</span>, facilitando la administración de privilegios. Un rol agrupa permisos y puede asignarse a múltiples usuarios.</p>
+
+    <h4>Creación de Usuarios</h4>
+    <p>Para crear un usuario en MySQL, se utiliza la siguiente sintaxis:</p>
+
+    <pre>
+        CREATE USER 'usuario1'@'localhost' IDENTIFIED BY 'contraseña';
+    </pre>
+
+    <h4>Creación de Roles</h4>
+    <p>Los roles permiten definir permisos agrupados:</p>
+
+    <pre>
+        CREATE ROLE gestor_clientes;
+        GRANT SELECT, INSERT, UPDATE ON cliente TO gestor_clientes;
+        GRANT gestor_clientes TO usuario1;
+    </pre>
+
+    <h4>Verificación de Permisos</h4>
+    <p>Para comprobar los permisos de un usuario en MySQL, se puede usar:</p>
+
+    <pre>
+        SHOW GRANTS FOR 'usuario1'@'localhost';
+    </pre>
+
+    <h3>Consideraciones de Seguridad</h3>
+    <p>Es fundamental seguir buenas prácticas en la gestión de permisos:</p>
+    <ul>
+        <li>Aplicar el principio de <span class="resaltar">mínimos privilegios</span> (dar solo los permisos estrictamente necesarios).</li>
+        <li>Utilizar <span class="resaltar">roles</span> para facilitar la gestión de permisos.</li>
+        <li>Evitar conceder privilegios peligrosos como <span class="resaltar">GRANT ALL PRIVILEGES</span> salvo en casos estrictamente necesarios.</li>
+    </ul>
+
+</section>
+
+<section id="tcl-sql">
+    <h2>Lenguaje de Control de Transacciones (TCL)</h2>
+
+    <p>El <span class="resaltar">Lenguaje de Control de Transacciones (TCL)</span> se usa para gestionar transacciones en bases de datos. Las transacciones permiten agrupar múltiples operaciones SQL en una única unidad lógica de trabajo, garantizando la integridad de los datos en caso de fallos.</p>
+
+    <h3>Conceptos Claves de las Transacciones</h3>
+    <p>Una <span class="resaltar">transacción</span> es un conjunto de operaciones SQL que se ejecutan como una unidad indivisible. Una transacción debe cumplir las propiedades **ACID**:</p>
+
+    <ul>
+        <li><span class="resaltar">Atomicidad</span>: Todas las operaciones de una transacción se ejecutan completamente o no se ejecuta ninguna.</li>
+        <li><span class="resaltar">Consistencia</span>: La base de datos debe permanecer en un estado válido antes y después de la transacción.</li>
+        <li><span class="resaltar">Aislamiento</span>: Las transacciones concurrentes no deben interferir entre sí.</li>
+        <li><span class="resaltar">Durabilidad</span>: Los cambios confirmados en una transacción deben persistir incluso en caso de fallo.</li>
+    </ul>
+
+    <h3>Control de Transacciones en MySQL</h3>
+    <p>En MySQL, las transacciones se gestionan mediante las siguientes sentencias TCL:</p>
+
+    <ul>
+        <li><span class="resaltar">START TRANSACTION</span>: Inicia una nueva transacción.</li>
+        <li><span class="resaltar">COMMIT</span>: Confirma los cambios realizados en la transacción.</li>
+        <li><span class="resaltar">ROLLBACK</span>: Revierte los cambios realizados en la transacción.</li>
+        <li><span class="resaltar">SAVEPOINT</span>: Define un punto intermedio dentro de una transacción.</li>
+        <li><span class="resaltar">RELEASE SAVEPOINT</span>: Elimina un punto de guardado.</li>
+    </ul>
+
+    <h3>Ejemplo de Transacción en MySQL</h3>
+    <p>Supongamos que queremos transferir dinero entre dos clientes en una base de datos bancaria:</p>
+
+    <pre>
+        START TRANSACTION;
+        UPDATE cuentas SET saldo = saldo - 500 WHERE id_cuenta = 1;
+        UPDATE cuentas SET saldo = saldo + 500 WHERE id_cuenta = 2;
+        COMMIT;
+    </pre>
+
+    <p>Si ocurre un error en alguna operación, podemos deshacer la transacción:</p>
+
+    <pre>
+        START TRANSACTION;
+        UPDATE cuentas SET saldo = saldo - 500 WHERE id_cuenta = 1;
+        UPDATE cuentas SET saldo = saldo + 500 WHERE id_cuenta = 2;
+        ROLLBACK;
+    </pre>
+
+    <h3>Uso de SAVEPOINT</h3>
+    <p>Los <span class="resaltar">SAVEPOINT</span> permiten definir puntos intermedios en una transacción para deshacer solo una parte de los cambios.</p>
+
+    <pre>
+        START TRANSACTION;
+        UPDATE cuentas SET saldo = saldo - 500 WHERE id_cuenta = 1;
+        SAVEPOINT parcial;
+        UPDATE cuentas SET saldo = saldo + 500 WHERE id_cuenta = 2;
+        ROLLBACK TO parcial;  -- Deshacer solo la segunda operación
+        COMMIT;
+    </pre>
+
+    <h3>Variables en MySQL para Control de Transacciones</h3>
+    <p>En MySQL, existen varias **variables** internas que permiten gestionar transacciones:</p>
+
+    <ul>
+        <li><span class="resaltar">autocommit</span>: Controla si las transacciones se confirman automáticamente.</li>
+        <li><span class="resaltar">transaction_isolation</span>: Define el nivel de aislamiento de las transacciones.</li>
+        <li><span class="resaltar">innodb_flush_log_at_trx_commit</span>: Determina cuándo se guardan los cambios en el log de transacciones.</li>
+    </ul>
+
+    <h4>Ejemplo de Configuración</h4>
+    <p>Para deshabilitar el autocommit y gestionar manualmente las transacciones:</p>
+
+    <pre>
+        SET autocommit = 0;
+        START TRANSACTION;
+        -- Operaciones SQL
+        COMMIT;
+    </pre>
+
+    <h3>Niveles de Aislamiento en MySQL</h3>
+    <p>Los niveles de aislamiento definen el grado de visibilidad de los cambios en una transacción respecto a otras transacciones concurrentes.</p>
+
+    <ul>
+        <li><span class="resaltar">READ UNCOMMITTED</span>: Permite leer cambios no confirmados.</li>
+        <li><span class="resaltar">READ COMMITTED</span>: Solo permite leer datos confirmados.</li>
+        <li><span class="resaltar">REPEATABLE READ</span>: Garantiza que las lecturas dentro de una transacción sean consistentes.</li>
+        <li><span class="resaltar">SERIALIZABLE</span>: Evita completamente condiciones de carrera.</li>
+    </ul>
+
+    <p>Para establecer el nivel de aislamiento en MySQL:</p>
+
+    <pre>
+        SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+    </pre>
+
+    <h3>Gestión de Errores en Transacciones</h3>
+    <p>Para capturar errores en una transacción, se puede usar <span class="resaltar">SHOW ERRORS</span>:</p>
+
+    <pre>
+        START TRANSACTION;
+        UPDATE cuentas SET saldo = saldo - 500 WHERE id_cuenta = 1;
+        IF ROW_COUNT() = 0 THEN
+            ROLLBACK;
+        ELSE
+            COMMIT;
+        END IF;
+    </pre>
+
+    <h3>Consideraciones Finales</h3>
+    <ul>
+        <li>Utilizar <span class="resaltar">transacciones</span> para garantizar la integridad de los datos en operaciones críticas.</li>
+        <li>Configurar correctamente el <span class="resaltar">nivel de aislamiento</span> según las necesidades del sistema.</li>
+        <li>Controlar el comportamiento de <span class="resaltar">autocommit</span> para evitar confirmaciones accidentales.</li>
+    </ul>
+
+</section>
+
+<section id="copias-seguridad">
+    <h2>Copias de Seguridad en Bases de Datos</h2>
+
+    <h3>Introducción a las Copias de Seguridad</h3>
+    <p>Las <span class="resaltar">copias de seguridad</span> son esenciales para la protección de datos en cualquier sistema informático. Su objetivo principal es garantizar la recuperación de la información en caso de fallos, ataques o errores humanos.</p>
+
+    <h4>¿Por qué son necesarias?</h4>
+    <ul>
+        <li>Recuperación ante <span class="resaltar">fallos del sistema</span> (errores de hardware o software).</li>
+        <li>Protección contra <span class="resaltar">ataques cibernéticos</span> como ransomware.</li>
+        <li>Corrección de <span class="resaltar">errores humanos</span> (borrado accidental de datos).</li>
+        <li>Garantía de <span class="resaltar">cumplimiento normativo</span> en sectores regulados.</li>
+    </ul>
+
+    <h4>Tipos de Copias de Seguridad</h4>
+    <ul>
+        <li><span class="resaltar">Copia Completa</span>: Se almacena toda la información.</li>
+        <li><span class="resaltar">Copia Incremental</span>: Solo guarda los cambios desde la última copia.</li>
+        <li><span class="resaltar">Copia Diferencial</span>: Guarda los cambios desde la última copia completa.</li>
+        <li><span class="resaltar">Copia en Espejo</span>: Réplica exacta en tiempo real.</li>
+    </ul>
+
+    <h3>Estrategias de Copia de Seguridad en Bases de Datos</h3>
+    <p>Para bases de datos, las estrategias deben ser más estrictas debido a la **consistencia e integridad de los datos**.</p>
+
+    <h4>El método 3-2-1-1-0</h4>
+    <p>Es una estrategia recomendada para asegurar la disponibilidad de datos:</p>
+    <ul>
+        <li><span class="resaltar">3 copias</span>: Se mantienen tres copias de los datos (original + 2 copias).</li>
+        <li><span class="resaltar">2 formatos</span>: Almacenar en dos tipos de medios distintos (disco, cinta, nube).</li>
+        <li><span class="resaltar">1 copia externa</span>: Guardar una copia fuera de la organización.</li>
+        <li><span class="resaltar">1 copia offline</span>: Evitar que un ataque pueda afectar todas las copias.</li>
+        <li><span class="resaltar">0 errores</span>: Verificar la integridad de las copias periódicamente.</li>
+    </ul>
+
+    <h3>Copias de Seguridad en MySQL</h3>
+    <p>MySQL permite realizar copias de seguridad con diferentes métodos:</p>
+
+    <h4>Métodos de Copia de Seguridad</h4>
+    <ul>
+        <li><span class="resaltar">Backup lógico</span>: Copia los datos en formato SQL mediante <span class="resaltar">mysqldump</span>.</li>
+        <li><span class="resaltar">Backup físico</span>: Copia los archivos del sistema de almacenamiento.</li>
+        <li><span class="resaltar">Replication</span>: Mantener servidores sincronizados como respaldo.</li>
+    </ul>
+
+    <h4>Ejemplo: Copia de Seguridad con mysqldump</h4>
+    <pre>
+        mysqldump -u usuario -p --databases jardineria > backup.sql
+    </pre>
+
+    <h4>Restaurar una Copia de Seguridad</h4>
+    <pre>
+        mysql -u usuario -p jardineria < backup.sql
+    </pre>
+
+    <h4>Copia de Seguridad Incremental con Binary Logs</h4>
+    <p>Si se tienen habilitados los <span class="resaltar">binlogs</span>, se pueden recuperar cambios específicos:</p>
+    <pre>
+        mysqlbinlog binlog.000001 | mysql -u usuario -p jardineria
+    </pre>
+
+    <h3>Recomendaciones Finales</h3>
+    <ul>
+        <li>Definir una <span class="resaltar">estrategia</span> de copias adaptada a la criticidad de los datos.</li>
+        <li>Automatizar copias de seguridad con <span class="resaltar">cron jobs</span> o herramientas especializadas.</li>
+        <li>Probar regularmente la <span class="resaltar">recuperación</span> de copias de seguridad.</li>
+        <li>Usar copias cifradas si se manejan datos sensibles.</li>
+        <li>Controlar el acceso a los backups para evitar accesos no autorizados.</li>
+    </ul>
+
+</section>
+
+
+<section id="seguridad-web">
+    <h2>Seguridad de Datos en Aplicaciones Web</h2>
+
+    <h3>Principales Amenazas a los Datos</h3>
+    <p>Las aplicaciones web están expuestas a múltiples ataques que pueden comprometer la integridad, disponibilidad y confidencialidad de los datos almacenados en bases de datos.</p>
+
+    <h4>Amenazas más comunes:</h4>
+    <ul>
+        <li><span class="resaltar">Inyección SQL</span>: Un atacante introduce código SQL malicioso en formularios o parámetros de URL para manipular la base de datos.</li>
+        <li><span class="resaltar">Cross-Site Scripting (XSS)</span>: Permite a atacantes inyectar scripts en páginas web vistas por otros usuarios.</li>
+        <li><span class="resaltar">Cross-Site Request Forgery (CSRF)</span>: Un atacante engaña al usuario para ejecutar acciones no autorizadas en una aplicación web.</li>
+        <li><span class="resaltar">Fuga de información</span>: Exposición accidental de datos sensibles en mensajes de error o respuestas de la API.</li>
+        <li><span class="resaltar">Ataques de fuerza bruta</span>: Intentos automatizados de adivinar credenciales de acceso.</li>
+        <li><span class="resaltar">Malas configuraciones de seguridad</span>: Permisos incorrectos en bases de datos, usuarios con privilegios excesivos, etc.</li>
+    </ul>
+
+    <h3>Estrategias para Proteger la Base de Datos en Aplicaciones Web</h3>
+
+    <h4>✅ Protección contra Inyección SQL</h4>
+    <ul>
+        <li>Utilizar <span class="resaltar">consultas preparadas</span> en lugar de concatenar datos en SQL.</li>
+        <li>Escapar y validar entradas de usuario antes de ejecutarlas.</li>
+        <li>Restringir los permisos de las cuentas de base de datos utilizadas por la aplicación.</li>
+    </ul>
+
+    <h4>✅ Protección contra XSS</h4>
+    <ul>
+        <li>Sanitizar cualquier entrada de usuario antes de mostrarla en la web.</li>
+        <li>Implementar <span class="resaltar">Content Security Policy (CSP)</span> para restringir el uso de scripts.</li>
+        <li>Usar frameworks seguros que minimicen la exposición a XSS (React, Angular, etc.).</li>
+    </ul>
+
+    <h4>✅ Protección contra CSRF</h4>
+    <ul>
+        <li>Utilizar <span class="resaltar">tokens CSRF</span> en formularios y peticiones sensibles.</li>
+        <li>Restringir las cookies con la opción <span class="resaltar">SameSite=strict</span>.</li>
+        <li>Implementar autenticación basada en sesiones seguras.</li>
+    </ul>
+
+    <h4>✅ Protección contra Fugas de Información</h4>
+    <ul>
+        <li>No mostrar mensajes de error detallados en producción.</li>
+        <li>Configurar logs seguros sin almacenar datos sensibles en texto plano.</li>
+        <li>Utilizar cifrado en campos críticos de la base de datos.</li>
+    </ul>
+
+    <h4>✅ Protección contra Ataques de Fuerza Bruta</h4>
+    <ul>
+        <li>Implementar <span class="resaltar">bloqueo de cuenta</span> tras varios intentos fallidos.</li>
+        <li>Usar <span class="resaltar">autenticación multifactor</span> (MFA) para accesos críticos.</li>
+        <li>Registrar intentos de acceso y analizar actividad sospechosa.</li>
+    </ul>
+
+    <h4>✅ Buenas Prácticas en la Configuración de Bases de Datos</h4>
+    <ul>
+        <li>Asignar permisos <span class="resaltar">mínimos necesarios</span> a cada usuario.</li>
+        <li>Utilizar <span class="resaltar">cifrado</span> para datos sensibles como contraseñas o información de pagos.</li>
+        <li>Habilitar <span class="resaltar">logs de auditoría</span> para detectar accesos no autorizados.</li>
+        <li>Actualizar regularmente el SGBD para evitar vulnerabilidades conocidas.</li>
+    </ul>
+
+</section>
+
+
+
+        <a href="#arriba" class="back-to-top">  ↑  </a> 
+
+
+
+
+    </main>
+
+    <footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+</body>
+</html>
+
