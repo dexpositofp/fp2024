@@ -272,41 +272,56 @@
     </pre>
 
     <h3>Variables en MySQL para Control de Transacciones</h3>
-    <p>En MySQL, existen varias **variables** internas que permiten gestionar transacciones:</p>
+    <p>En MySQL, las variables de sistema se utilizan para configurar el comportamiento del servidor y se almacenan en la memoria del sistema.</p>
+        <h3>Tipos de Variables</h3>
+        <ul>
+            <li><span class="resaltar">Globales</span>: Afectan a todas las conexiones y sesiones activas en el servidor.</li>
+            <li><span class="resaltar">De sesión</span>: Afectan solo a la sesión actual del usuario.</li>
+        </ul>
+        <h3>Consulta de Variables</h3>
+        <p>Para consultar una variable global o de sesión se usa:</p>
+        <pre>
+            SHOW VARIABLES LIKE 'autocommit';
+            SELECT @@global.autocommit; -- Consulta la variable global
+            SELECT @@session.autocommit; -- Consulta la variable de sesión
+        </pre>
+        <h3>Modificación de Variables</h3>
+        <p>Las variables pueden modificarse de la siguiente manera:</p>
+        <pre>
+            SET GLOBAL autocommit = 0;
+            SET SESSION autocommit = 1;
+        </pre>
+        <p>Si una variable tiene valores diferentes en el ámbito global y de sesión, prevalece el valor de sesión para la conexión en uso.</p>
 
-    <ul>
-        <li><span class="resaltar">autocommit</span>: Controla si las transacciones se confirman automáticamente.</li>
-        <li><span class="resaltar">transaction_isolation</span>: Define el nivel de aislamiento de las transacciones.</li>
-        <li><span class="resaltar">innodb_flush_log_at_trx_commit</span>: Determina cuándo se guardan los cambios en el log de transacciones.</li>
-    </ul>
+   
+    <section id="acceso_concurrente">
+        <h3>Acceso Concurrente y sus Problemas</h3>
+        <p>El acceso concurrente se refiere a la posibilidad de que múltiples usuarios accedan y modifiquen la base de datos al mismo tiempo.</p>
+        <h4>Problemas del Acceso Concurrente</h4>
+        <ul>
+            <li><span class="resaltar">Lectura sucia</span>: Ocurre cuando una transacción lee datos de otra transacción que aún no se ha confirmado.</li>
+            <li><span class="resaltar">Lectura no repetible</span>: Se da cuando una transacción lee un mismo dato dos veces y obtiene valores distintos debido a una actualización concurrente.</li>
+            <li><span class="resaltar">Lectura fantasma</span>: Sucede cuando una transacción ejecuta la misma consulta varias veces y obtiene diferentes resultados debido a la inserción o eliminación de registros por otra transacción.</li>
+        </ul>
+    </section>
 
-    <h4>Ejemplo de Configuración</h4>
-    <p>Para deshabilitar el autocommit y gestionar manualmente las transacciones:</p>
+    <section id="niveles_aislamiento">
+        <h3>Niveles de Aislamiento en MySQL</h3>
+        <p>Para evitar los problemas anteriores, MySQL ofrece distintos niveles de aislamiento de transacciones:</p>
+        <ul>
+            <li><span class="resaltar">READ UNCOMMITTED</span>: No evita ninguno de los problemas de acceso concurrente.</li>
+            <li><span class="resaltar">READ COMMITTED</span>: Evita lecturas sucias, pero permite lecturas no repetibles y fantasmas.</li>
+            <li><span class="resaltar">REPEATABLE READ</span>: Evita lecturas sucias y no repetibles, pero no evita fantasmas.</li>
+            <li><span class="resaltar">SERIALIZABLE</span>: El nivel más estricto, evita todos los problemas de concurrencia.</li>
+        </ul>
+        <h4>Cambio de Nivel de Aislamiento</h4>
+        <pre>
+            SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+            SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+        </pre>
+    </section>
 
-    <pre>
-        SET autocommit = 0;
-        START TRANSACTION;
-        -- Operaciones SQL
-        COMMIT;
-    </pre>
-
-    <h3>Niveles de Aislamiento en MySQL</h3>
-    <p>Los niveles de aislamiento definen el grado de visibilidad de los cambios en una transacción respecto a otras transacciones concurrentes.</p>
-
-    <ul>
-        <li><span class="resaltar">READ UNCOMMITTED</span>: Permite leer cambios no confirmados.</li>
-        <li><span class="resaltar">READ COMMITTED</span>: Solo permite leer datos confirmados.</li>
-        <li><span class="resaltar">REPEATABLE READ</span>: Garantiza que las lecturas dentro de una transacción sean consistentes.</li>
-        <li><span class="resaltar">SERIALIZABLE</span>: Evita completamente condiciones de carrera.</li>
-    </ul>
-
-    <p>Para establecer el nivel de aislamiento en MySQL:</p>
-
-    <pre>
-        SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-    </pre>
-
-    <h3>Gestión de Errores en Transacciones</h3>
+    <h4>Gestión de Errores en Transacciones</h4>
     <p>Para capturar errores en una transacción, se puede usar <span class="resaltar">SHOW ERRORS</span>:</p>
 
     <pre>
