@@ -8,143 +8,181 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="arriba">
-        <h1>Lenguaje de Marcas</h1>
-        <nav>
-            <ul>
-                <li><a href="./index.html">Presentación</a></li>
-                <li><a href="./lmarcas.html">L.Marcas</a></li>
-                <li><a href="./html.html">HTML</a></li>
-                <li><a href="./css.html">CSS</a></li>
-                <li><a href="./js.html">JavaScript</a></li>
-                <li><a href="./thymeleaf.html">Thymeleaf</a></li>
-            </ul>
-        </nav>
-    </header>
-   <main>
-        <section id="introduccion">
-            <h2>Introducción a Thymeleaf</h2>
-            <p>Thymeleaf es un motor de plantillas para Java que permite generar páginas HTML dinámicas en aplicaciones web basadas en Spring Boot.</p>
-        </section>
+<header id="arriba">
+    <h1>Lenguaje de Marcas</h1>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Presentación</a></li>
+            <li><a href="./lmarcas.html">L.Marcas</a></li>
+            <li><a href="./html.html">HTML</a></li>
+            <li><a href="./css.html">CSS</a></li>
+            <li><a href="./js.html">JavaScript</a></li>
+            <li><a href="./thymeleaf.html">Thymeleaf</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <section id="instalacion">
-            <h2>Configuración de Thymeleaf en Spring Boot</h2>
-            <p>Para utilizar Thymeleaf en Spring Boot, añade la siguiente dependencia en <span class="resaltar">pom.xml</span>:</p>
-            <pre><code>
-&lt;dependency&gt;
+<main>
+    <section id="introduccion">
+        <h2>Introducción a Thymeleaf</h2>
+        <p>Thymeleaf es un motor de plantillas para Java que permite generar páginas HTML dinámicas en aplicaciones web basadas en Spring Boot. Su principal ventaja es que combina HTML legible con la lógica necesaria para mostrar datos en tiempo real.</p>
+    </section>
+
+    <section id="instalacion">
+        <h2>Configuración de Thymeleaf en Spring Boot</h2>
+        <p>Para usar Thymeleaf en un proyecto Spring Boot, añade esta dependencia en tu archivo <strong>pom.xml</strong>:</p>
+        <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
 &lt;/dependency&gt;
-            </code></pre>
-        </section>
+        </code></pre>
+    </section>
 
-        <section id="uso-basico">
-            <h2>Uso básico de Thymeleaf</h2>
+    <section id="flujo">
+        <h2>¿Cómo se conectan las capas hasta llegar a la plantilla?</h2>
+        <ul>
+            <li><strong>Entidad o Modelo:</strong> representa una tabla de la base de datos como una clase Java (ej: Producto).</li>
+            <li><strong>DAO:</strong> se encarga de acceder a los datos con SQL o JDBC.</li>
+            <li><strong>Servicio:</strong> contiene la lógica de negocio (puede aplicar filtros, cálculos, etc.).</li>
+            <li><strong>Controlador:</strong> recibe la solicitud del navegador, llama al servicio y pasa los datos al modelo.</li>
+            <li><strong>Thymeleaf:</strong> es la plantilla HTML que se rellena con los datos recibidos del controlador.</li>
+        </ul>
+    </section>
 
-            <h3>Comparación entre HTML estático y Thymeleaf</h3>
-            <p>Aquí tienes un ejemplo de una página <span class="resaltar">HTML estática</span>:</p>
-            <pre><code>
-&lt;h1&gt;Bienvenido a nuestra tienda&lt;/h1&gt;
+    <section id="uso-basico">
+        <h2>Uso básico de Thymeleaf</h2>
+        <p>HTML estático:</p>
+        <pre><code>&lt;h1&gt;Bienvenido a nuestra tienda&lt;/h1&gt;
 &lt;p&gt;Usuario: Juan Pérez&lt;/p&gt;
-&lt;p&gt;Saldo disponible: $100&lt;/p&gt;
-            </code></pre>
+&lt;p&gt;Saldo disponible: $100&lt;/p&gt;</code></pre>
 
-            <p>Ahora veamos cómo se convierte en <span class="resaltar">Thymeleaf</span>:</p>
-            <pre><code>
-&lt;h1&gt;Bienvenido a nuestra tienda&lt;/h1&gt;
+        <p>Con Thymeleaf:</p>
+        <pre><code>&lt;h1&gt;Bienvenido a nuestra tienda&lt;/h1&gt;
 &lt;p th:text="'Usuario: ' + ${usuario}"&gt;Usuario&lt;/p&gt;
-&lt;p th:text="'Saldo disponible: $' + ${saldo}"&gt;Saldo&lt;/p&gt;
-            </code></pre>
+&lt;p th:text="'Saldo disponible: $' + ${saldo}"&gt;Saldo&lt;/p&gt;</code></pre>
 
-            <p>Si en el controlador tenemos:</p>
-            <pre><code>
-@GetMapping("/")
+        <p>Controlador asociado:</p>
+        <pre><code>@GetMapping("/")
 public String home(Model model) {
     model.addAttribute("usuario", "Juan Pérez");
     model.addAttribute("saldo", 100);
     return "index";
 }
-            </code></pre>
-        </section>
+        </code></pre>
+    </section>
 
-        <section id="variables">
-            <h2>Variables en Thymeleaf</h2>
-
-            <h3>Uso de Variables</h3>
-            <p>Las variables en Thymeleaf permiten mostrar datos dinámicos en la plantilla:</p>
-            <pre><code>
-&lt;p th:text="${nombre}"&gt;Nombre del usuario&lt;/p&gt;
-            </code></pre>
-
-            <h3>Propiedades de Objetos</h3>
-            <p>Podemos acceder a atributos de objetos enviados desde el controlador:</p>
-            <pre><code>
+    <section id="variables">
+        <h2>Variables en Thymeleaf</h2>
+        <p>Podemos mostrar variables simples o atributos de objetos:</p>
+        <pre><code>&lt;p th:text="${nombre}"&gt;Nombre del usuario&lt;/p&gt;
 &lt;p th:text="${usuario.nombre}"&gt;Nombre&lt;/p&gt;
 &lt;p th:text="${usuario.email}"&gt;Email&lt;/p&gt;
-            </code></pre>
-        </section>
+        </code></pre>
+    </section>
 
-        <section id="condiciones">
-            <h2>Condiciones en Thymeleaf</h2>
+    <section id="condiciones">
+        <h2>Condiciones en Thymeleaf</h2>
+        <p>Mostrar contenido según una condición:</p>
+        <pre><code>&lt;p th:if="${saldo > 0}"&gt;Saldo disponible&lt;/p&gt;
+&lt;p th:unless="${saldo > 0}"&gt;Sin saldo disponible&lt;/p&gt;</code></pre>
 
-            <h3>Evaluación de condiciones con <span class="resaltar">th:if</span></h3>
-            <p>Podemos mostrar o esconder elementos según condiciones:</p>
-            <pre><code>
-&lt;p th:if="${saldo > 0}"&gt;Saldo disponible&lt;/p&gt;
-&lt;p th:unless="${saldo > 0}"&gt;Sin saldo disponible&lt;/p&gt;
-            </code></pre>
-
-            <h3>Uso de <span class="resaltar">th:switch</span></h3>
-            <pre><code>
-&lt;div th:switch="${rol}"&gt;
+        <p>Condicional múltiple con <strong>th:switch</strong>:</p>
+        <pre><code>&lt;div th:switch="${rol}"&gt;
     &lt;p th:case="'admin'"&gt;Eres administrador&lt;/p&gt;
     &lt;p th:case="'user'"&gt;Eres usuario&lt;/p&gt;
     &lt;p th:case="*"&gt;Rol desconocido&lt;/p&gt;
-&lt;/div&gt;
-            </code></pre>
-        </section>
+&lt;/div&gt;</code></pre>
+    </section>
 
-        <section id="iteraciones">
-            <h2>Iteraciones en Thymeleaf</h2>
+    <section id="bucles">
+        <h2>Bucles en Thymeleaf</h2>
+        <p>Para recorrer listas usamos <strong>th:each</strong>:</p>
+        <pre><code>&lt;ul&gt;
+    &lt;li th:each="producto : ${productos}" th:text="${producto.nombre}"&gt;Nombre&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 
-            <h3>Uso de <span class="resaltar">th:each</span> para recorrer listas</h3>
-            <pre><code>
-&lt;ul&gt;
-    &lt;li th:each="producto : ${productos}" th:text="${producto}"&gt;Ejemplo de producto&lt;/li&gt;
-&lt;/ul&gt;
-            </code></pre>
-
-            <h3>Índices y contadores en bucles</h3>
-            <pre><code>
-&lt;ul&gt;
+        <p>Con índice:</p>
+        <pre><code>&lt;ul&gt;
     &lt;li th:each="producto, stat : ${productos}"&gt;
-        Producto #[[${stat.index}]]: [[${producto}]]
+        Producto #[[${stat.index}]]: [[${producto.nombre}]]
     &lt;/li&gt;
-&lt;/ul&gt;
-            </code></pre>
-        </section>
+&lt;/ul&gt;</code></pre>
+    </section>
 
-        <section id="extra">
-            <h2>Otros conceptos importantes en Thymeleaf</h2>
+    <section id="fragmentos">
+        <h2>Uso de fragmentos: cabecera y pie comunes</h2>
+        <p>Podemos reutilizar partes del HTML, como la cabecera y el pie, usando fragmentos.</p>
 
-            <h3>Operadores</h3>
+        <h3>Definición del fragmento</h3>
+        <pre><code>&lt;header th:fragment="cabecera"&gt;
+    &lt;h1&gt;Mi Tienda Online&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a th:href="@{/}"&gt;Inicio&lt;/a&gt;
+        &lt;a th:href="@{/productos}"&gt;Productos&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+        </code></pre>
+
+        <h3>Uso del fragmento en otras páginas</h3>
+        <pre><code>&lt;body&gt;
+    &lt;div th:replace="fragments/header :: cabecera"&gt;&lt;/div&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Productos destacados&lt;/h2&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+        </code></pre>
+    </section>
+
+    <section id="estructura-carpetas">
+    <h2>Estructura de carpetas en un proyecto Spring Boot con Thymeleaf</h2>
+
+    <p>Un proyecto típico de Spring Boot, organizado por capas y usando Thymeleaf, suele tener esta estructura:</p>
+
+    <pre><code>src/
+ └── main/
+     ├── java/
+     │    └── com/miempresa/miproyecto/
+     │         ├── controller/        # Controladores (manejan las rutas)
+     │         ├── service/           # Servicios (lógica de negocio)
+     │         ├── model/             # Entidades (clases como Alumno, Producto, etc.)
+     │         └── dao/               # Acceso a datos (consultas JDBC, interfaces DAO)
+     │
+     └── resources/
+          ├── static/                # Recursos estáticos: CSS, imágenes, JS
+          ├── templates/             # Plantillas Thymeleaf (.html)
+          │    ├── fragments/        # Fragmentos reutilizables: header.html, footer.html, etc.
+          │    ├── alumnos.html      # Páginas individuales de la aplicación
+          │    └── index.html
+          └── application.properties # Configuración del proyecto
+    </code></pre>
+
+    <h3>📁 Explicación de carpetas importantes</h3>
+    <ul>
+        <li><strong>controller/</strong> → Clases con <strong>@Controller</strong> que gestionan las peticiones web y pasan datos al modelo.</li>
+        <li><strong>service/</strong> → Contiene la lógica de negocio. Cada clase se anota con <strong>@Service</strong>.</li>
+        <li><strong>model/</strong> → Clases que representan datos (como <strong>Alumno.java</strong>, <strong>Producto.java</strong>).</li>
+        <li><strong>dao/</strong> → Interfaces y clases que se encargan de consultar la base de datos (implementadas manualmente con JDBC).</li>
+        <li><strong>templates/</strong> → Plantillas Thymeleaf donde:
             <ul>
-                <li><strong>+ (concatenación):</strong> <code>'Hola ' + ${nombre}</code></li>
-                <li><strong>Comparación:</strong> <code>${precio > 100}</code></li>
-                <li><strong>Lógicos:</strong> <code>${activo && saldo > 0}</code></li>
+                <li>Los archivos `.html` representan vistas (como <strong>alumnos.html</strong>, <strong>index.html</strong>.</li>
+                <li>El subdirectorio <strong>fragments/</strong> contiene partes reutilizables como el <strong>header</strong>, <strong>footer</strong> o menús.</li>
             </ul>
+        </li>
+        <li><strong>static/</strong> → Archivos estáticos públicos: hojas de estilo CSS, imágenes, JavaScript, fuentes, etc.</li>
+        <li><strong>application.properties</strong> → Archivo de configuración de la app (conexión a base de datos, idioma, etc.).</li>
+    </ul>
 
-          
-        </section>
+   
+</section>
 
-        
-      <a href="#arriba" class="back-to-top">  ↑  </a>
-    </main>
-    <footer>
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
-            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
-        </a>
-    </footer>
+    <a href="#arriba" class="back-to-top">↑</a>
+</main>
+
+<footer>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+    </a>
+</footer>
 </body>
 </html>
 
