@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño lógico de bases de datos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header común para todas las páginas -->
+    <header id="arriba">
+        <h1>Bases de datos</h1>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Presentación</a></li>
+                <li><a href="./almacenamiento.html">Almacenamiento</a></li>
+                <li><a href="./logico.html">Diseño lógico</a></li>
+                <!--<li><a href="./fisico.html">Diseño físico</a></li>
+                <li><a href="./ddl.html">DDL</a></li>
+                <li><a href="./dml.html">DML</a></li> -->
+                <li><a href="./dcl.html">DCL TCL</a></li>
+                 <li><a href="./persistencia.html">Persistencia en Spring</a></li>
+              <!--  <li><a href="./utilidades.html">Utilidades</a></li>
+                <li><a href="./plsql.html">PL/SQL</a></li>
+                <li><a href="./nosql.html">NoSQL</a></li>-->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+<section id="introduccion-persistencia">
+            <h2>¿Qué es la capa de persistencia?</h2>
+            <p>La <span class="resaltar">capa de persistencia</span> es la parte del proyecto que se encarga de <strong>guardar y recuperar información</strong> de la base de datos. Cuando nuestra aplicación necesita mostrar una lista de elementos, guardar uno nuevo o modificar información, esta capa se encarga de comunicarse con la base de datos para hacerlo posible.</p>
+        </section>
+
+        <section id="estructura-persistencia">
+            <h2>¿Cómo podríamos organizar esta capa?</h2>
+            <p>En proyectos organizados, es habitual dividir la persistencia en varias carpetas, donde cada una cumple una función específica. Así, se mejora la claridad y se facilita el mantenimiento.</p>
+            <pre><code>
+persistence/
+├── dao/                  → Interfaces que definen qué operaciones se pueden hacer
+│   └── impl/jdbc/        → Implementaciones reales con consultas SQL
+├── repository/           → Conecta el dominio con los DAOs
+├── rowmapper/            → Convierte filas de la base de datos en objetos Java
+├── database/             → Configura la conexión a la base de datos
+            </code></pre>
+        </section>
+
+        <section id="relacion-otras-capas">
+    <h2>Relación con otras capas</h2>
+    <p>La capa de persistencia no funciona sola. Está conectada con otras capas del proyecto, como el servicio o el controlador. Cada una cumple una función específica, y juntas forman una cadena que lleva la información desde la base de datos hasta la interfaz web.</p>
+    <p>Cuando un usuario realiza una acción en la página (por ejemplo, ver una lista de películas), esta petición:</p>
+    <ul>
+        <li>Llega al <strong>controlador</strong>, que se encarga de gestionarla.</li>
+        <li>El controlador llama al <strong>servicio</strong>, que es quien define la lógica de la aplicación.</li>
+        <li>El servicio usa la <strong>interfaz del repositorio</strong> para solicitar los datos necesarios.</li>
+        <li>El repositorio está conectado con el <strong>DAO</strong>, que ejecuta las consultas SQL.</li>
+        <li>Los datos que se recuperan se convierten en objetos Java mediante un <span class="resaltar">RowMapper</span>.</li>
+        <li>Finalmente, esos datos vuelven al servicio, que los entrega al controlador para que los muestre.</li>
+    </ul>
+</section>
+
+        <section id="inversion-dependencias">
+            <h2>La inversión de dependencias</h2>
+            <p>Cuando un proyecto crece, necesitamos evitar que todas las partes estén fuertemente conectadas entre sí. Para ello usamos el principio de <span class="resaltar">inversión de dependencias</span>.</p>
+            <p>Imagina que cada aparato eléctrico tuviera que fabricar su propia energía. Sería caótico, ¿verdad? En lugar de eso, lo conectamos a un enchufe. En programación hacemos algo similar: <strong>las clases no deben crear directamente lo que necesitan</strong>; lo piden a través de una interfaz. Así, las partes importantes del código dependen de <em>qué se hace</em>, no de <em>cómo se hace</em>.</p>
+        </section>
+
+        <section id="flujo-completo">
+            <h2>Flujo completo en la capa de persistencia</h2>
+            <p>Vamos a ver qué ocurre cuando el usuario quiere ver una lista de películas:</p>
+            <ul>
+                <li>El <span class="resaltar">controlador</span> recibe la petición.</li>
+                <li>Llama al <span class="resaltar">servicio</span>.</li>
+                <li>El servicio llama a la <span class="resaltar">interfaz del repositorio</span> (por ejemplo, <span class="resaltar">PeliculaRepository</span>).</li>
+                <li>Una clase <strong>implementa esa interfaz</strong> y utiliza un <span class="resaltar">DAO</span>.</li>
+                <li>El DAO ejecuta la <strong>consulta SQL</strong>.</li>
+                <li>Un <span class="resaltar">RowMapper</strong> convierte cada fila en un objeto <span class="resaltar">Pelicula</strong>.</li>
+                <li>Los resultados vuelven hacia arriba para mostrarse en la web.</li>
+            </ul>
+        </section>
+
+        <section id="ejemplo-pelicula">
+            <h2>Ejemplo práctico con la entidad Película</h2>
+
+            <h3>1. Entidad Pelicula</h3>
+            <pre><code>
+public class Pelicula {
+    private int id;
+    private String titulo;
+    private String director;
+    private int duracion;
+
+    // Constructor, getters y setters
+}
+            </code></pre>
+
+            <h3>2. Interfaz del Repositorio</h3>
+            <pre><code>
+public interface PeliculaRepository {
+    List&lt;Pelicula&gt; findAll();
+    Pelicula findById(int id);
+}
+            </code></pre>
+
+            <h3>3. Interfaz del DAO</h3>
+            <pre><code>
+public interface PeliculaDao {
+    List&lt;Pelicula&gt; findAll();
+    Pelicula findById(int id);
+}
+            </code></pre>
+
+            <h3>4. Implementación del DAO (JDBC)</h3>
+            <pre><code>
+public class PeliculaDaoJdbc implements PeliculaDao {
+
+    private final DatabaseConnection connection = DatabaseConnection.getInstance();
+    private final PeliculaRowMapper rowMapper = new PeliculaRowMapper();
+
+    public List&lt;Pelicula&gt; findAll() {
+        String sql = "SELECT * FROM pelicula";
+        // Ejecutar SQL y usar rowMapper
+    }
+
+    public Pelicula findById(int id) {
+        String sql = "SELECT * FROM pelicula WHERE id = ?";
+        // Ejecutar SQL con id y usar rowMapper
+    }
+}
+            </code></pre>
+
+            <h3>5. RowMapper</h3>
+            <pre><code>
+public class PeliculaRowMapper {
+    public Pelicula mapRow(ResultSet rs) throws SQLException {
+        return new Pelicula(
+            rs.getInt("id"),
+            rs.getString("titulo"),
+            rs.getString("director"),
+            rs.getInt("duracion")
+        );
+    }
+}
+            </code></pre>
+
+            <h3>6. Implementación del Repositorio</h3>
+            <pre><code>
+public class PeliculaRepositoryImpl implements PeliculaRepository {
+
+    private final PeliculaDao peliculaDao;
+
+    public PeliculaRepositoryImpl(PeliculaDao peliculaDao) {
+        this.peliculaDao = peliculaDao;
+    }
+
+    public List&lt;Pelicula&gt; findAll() {
+        return peliculaDao.findAll();
+    }
+
+    public Pelicula findById(int id) {
+        return peliculaDao.findById(id);
+    }
+}
+            </code></pre>
+        </section>
+
+        <section id="conclusion-persistencia">
+    <h2>Visión general</h2>
+    <p>Después de ver cómo se estructura y funciona la capa de persistencia en un proyecto con Spring, podemos sacar una idea clara de por qué se organiza así.</p>
+
+    <p>Gracias al uso del principio de <span class="resaltar">Inversión de Control (IoC)</span>, evitamos que unas clases estén directamente conectadas con otras. En lugar de eso, <strong>usamos interfaces</strong> para definir qué se quiere hacer, y dejamos que otras clases se encarguen de cómo se hace.</p>
+
+    <p>Esto tiene muchas ventajas:</p>
+    <ul>
+        <li>El código es más <strong>flexible</strong> y más fácil de modificar.</li>
+        <li>Podemos cambiar la base de datos o la forma de acceder a ella sin tocar el resto del proyecto.</li>
+        <li>Es más <strong>fácil de probar</strong> y de mantener.</li>
+        <li>La lógica del programa (la parte importante) no depende de los detalles técnicos.</li>
+    </ul>
+
+    <p>La <span class="resaltar">capa de dominio</span> se ocupa de definir la lógica y las reglas del programa (por ejemplo, cómo se gestionan las películas). Ahí es donde creamos las interfaces, como <span class="resaltar">PeliculaRepository</span>, que definen qué operaciones podemos hacer.</p>
+
+    <p>Después, esas interfaces se implementan en la capa de persistencia, usando un DAO y SQL real. Así conseguimos separar claramente cada parte del proyecto.</p>
+
+    <h3>Resumen visual del flujo</h3>
+    <pre><code>
+Controlador
+   ↓
+Servicio (usa interfaz del dominio)
+   ↓
+Repositorio (interfaz en dominio)
+   ↓
+RepositorioImpl (en persistencia)
+   ↓
+DAO (interfaz)
+   ↓
+DAOJdbc (implementación con SQL)
+    </code></pre>
+
+    <p>Y por último, todo esto se puede conectar de dos formas:</p>
+    <ul>
+        <li>Usando <strong>Spring</strong>, con anotaciones como <span class="resaltar">@Autowired</span> y <span class="resaltar">@Repository</span>.</li>
+        <li>O de forma <strong>manual</strong>, como se hace en este proyecto, usando clases contenedor que crean las dependencias paso a paso.</li>
+    </ul>
+
+    <p>Con esta estructura, el proyecto queda limpio, ordenado y preparado para crecer sin problemas.</p>
+</section>
+
+
+        <a href="#arriba" class="back-to-top">↑</a>
+    </main>
+
+    <footer>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+        </a>
+    </footer>
+</body>
+</html>
