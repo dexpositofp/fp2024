@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL/SQL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="arriba">
+    <h1>Bases de datos</h1>
+    <nav>
+        <ul>
+            <li><a href="./index.html">Presentación</a></li>
+            <li><a href="./almacenamiento.html">Almacenamiento</a></li>
+            <li><a href="./logico.html">Diseño lógico</a></li>
+            <li><a href="./dcl.html">DCL TCL</a></li>
+            <li><a href="./plsql.html">PL/SQL</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section>
+    <h2>Introducción a PL/SQL</h2>
+    <p>El PL/SQL es un lenguaje de programación de bases de datos. Este lenguaje permite incorporar todas las características propias de los lenguajes de tercera generación: variables, estructura modular (procedimientos y funciones), estructuras de control (condicionales, bucles y demás estructuras), control de errores, y una total integración en el entorno Oracle. PL/SQL soporta todos los comandos de consulta y manipulación de datos.</p>
+    <p>Los programas realizados en PL/SQL se almacenan como cualquier otro objeto en la base de datos. Como si fueran cualquier otro objeto. Estos programas se ejecutan en el servidor, suponiendo una disminución del tráfico de red y un ahorro de recursos.</p>
+    <p>Con PL/SQL vamos a poder programar:</p>
+    <ul>
+        <li>Procedimientos almacenados</li>
+        <li>Funciones</li>
+        <li>Triggers</li>
+        <li>Scripts</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Primeros pasos con PL/SQL</h2>
+    <ul>
+        <li>El PL/SQL no es CASE-SENSITIVE, es decir, no diferencia mayúsculas de minúsculas como otros lenguajes de programación como C o Java. Sin embargo, ORACLE sí lo es en las búsquedas de texto.</li>
+        <li>IDENTIFICADORES: Se utilizan para nombrar los objetos en los programas PL/SQL como constantes, cursores, variables, excepciones, etc.</li>
+        <li>Deben cumplir las siguientes características:
+            <ul>
+                <li>Pueden tener entre 1 y 30 caracteres de longitud.</li>
+                <li>El primer carácter debe ser una letra.</li>
+                <li>Los restantes caracteres deben ser alfanuméricos o signos admitidos (letras, dígitos, almohadilla, subguión o signo del dólar).</li>
+            </ul>
+        </li>
+        <li>Las instrucciones PL/SQL terminan con un punto y coma (;), excepto algunas instrucciones como BEGIN, DECLARE, etc.</li>
+        <li>Los comentarios:
+            <ul>
+                <li>de una línea se inician con <code>--</code></li>
+                <li>los de varias líneas inician con <code>/*</code> y terminan con <code>*/</code></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Bloques PL/SQL</h2>
+    <p>El bloque es la estructura básica que sigue un programa PL/SQL. En los bloques podemos diferenciar tres partes:</p>
+    <pre>
+[DECLARE
+    Declaración de variables] /*Parte declarativa*/
+BEGIN
+    Sentencias SQL y PL/SQL /*Parte de ejecución*/
+[EXCEPTION
+    Manejadores de excepciones] /*Parte de excepciones*/
+END;
+    </pre>
+    <p>En PL/SQL se pueden escribir cuatro tipos de bloques de código:</p>
+    <ul>
+        <li>Bloques anónimos</li>
+        <li>Procedimientos</li>
+        <li>Funciones</li>
+        <li>Triggers</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Tipos de datos PL/SQL</h2>
+    <p>Las variables y constantes almacenan diferentes tipos de datos, similares a los soportados por SQL.</p>
+    <ul>
+        <li><strong>Carácter:</strong> CHAR(n), VARCHAR2(n), LONG(n)</li>
+        <li><strong>Numéricos:</strong> NUMBER(P,E), PLS_INTEGER, FLOAT(n)</li>
+        <li><strong>Fecha / Hora:</strong> DATE, TIMESTAMP, INTERVAL</li>
+        <li><strong>Booleano:</strong> BOOLEAN</li>
+        <li><strong>Otros:</strong> RAW(n), LONG RAW, BLOB, CLOB, ROWID, BFILE</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Atributos de tipo: %TYPE y %ROWTYPE</h2>
+    <p>Estos atributos permiten declarar variables que adopten automáticamente el tipo de datos de columnas de una tabla o vista.</p>
+
+    <h3>%TYPE</h3>
+    <p>Se usa para declarar una variable con el mismo tipo que una columna de una tabla.</p>
+    <pre>
+-- Supongamos que existe una tabla PRODUCTOS con una columna PRECIO
+DECLARE
+    v_precio PRODUCTOS.PRECIO%TYPE;
+BEGIN
+    v_precio := 19.99;
+    DBMS_OUTPUT.PUT_LINE('Precio: ' || v_precio);
+END;
+    </pre>
+
+    <h3>%ROWTYPE</h3>
+    <p>Se usa para declarar una variable que representa toda una fila de una tabla, con una variable por cada columna.</p>
+    <pre>
+-- Supongamos que existe una tabla EMPLEADOS con varias columnas
+DECLARE
+    v_empleado EMPLEADOS%ROWTYPE;
+BEGIN
+    SELECT * INTO v_empleado FROM EMPLEADOS WHERE ID = 1;
+    DBMS_OUTPUT.PUT_LINE('Nombre: ' || v_empleado.NOMBRE);
+END;
+    </pre>
+    <p>Es muy útil cuando necesitamos trabajar con registros completos de tablas.</p>
+</section>
+
+
+<section>
+    <h2>Declaración de variables y constantes</h2>
+    <pre>
+precio NUMBER (6,2):=0;
+salario NUMBER (10,2);
+ciudad VARCHAR2(20) NOT NULL DEFAULT 'Barcelona';
+departamento CHAR(15) DEFAULT 'Ventas';
+
+pvp producto.precio%TYPE;
+persona trabajadores%ROWTYPE;
+
+iva CONSTANT NUMBER(4,2) := 21;
+    </pre>
+</section>
+
+<section>
+    <h2>Interacción con el usuario</h2>
+    <p>Para visualizar datos:</p>
+    <pre>DBMS_OUTPUT.PUT_LINE(&lt;expresión&gt;);</pre>
+    <p>Para recoger valores:</p>
+    <pre>
+SET SERVEROUTPUT ON;
+DECLARE
+edad BINARY_INTEGER := &edad;
+nombre VARCHAR2(20) := '&nombre';
+BEGIN
+    dbms_output.put_line('Hola ' || nombre);
+    dbms_output.put_line('Tienes ' || edad || ' años');
+END;
+    </pre>
+    <p>Evitar mensajes de verificación:</p>
+    <code>SET VERIFY OFF</code>
+</section>
+
+<section>
+    <h2>Estructuras de control</h2>
+    <h3>IF simple</h3>
+    <pre>
+IF condición THEN
+    instrucciones;
+END IF;
+    </pre>
+
+    <h3>IF-ELSE</h3>
+    <pre>
+IF condición THEN
+    instrucciones;
+ELSE
+    instrucciones;
+END IF;
+    </pre>
+
+    <h3>IF múltiple</h3>
+    <pre>
+IF condición1 THEN
+    instrucciones;
+ELSIF condición2 THEN
+    instrucciones;
+ELSE
+    instrucciones;
+END IF;
+    </pre>
+
+    <h3>Ejemplo con IF</h3>
+    <pre>
+SET SERVEROUTPUT ON;
+SET VERIFY OFF;
+accept numero prompt 'Escribe un número: ';
+DECLARE
+numero BINARY_INTEGER := &numero;
+BEGIN
+IF (numero>=0) THEN
+    dbms_output.put_line('Es positivo ' || numero);
+ELSE
+    dbms_output.put_line('Es negativo ' || numero);
+END IF;
+END;
+    </pre>
+
+    <h3>CASE</h3>
+    <pre>
+DECLARE
+salario NUMBER(6,2);
+departamento VARCHAR2(20) := '&departamento';
+BEGIN
+CASE departamento
+WHEN 'ventas' THEN salario:=1300;
+WHEN 'comercial' THEN salario:=1200;
+ELSE salario:=1000;
+END CASE;
+dbms_output.put_line('Salario: ' || salario);
+END;
+    </pre>
+</section>
+
+<section>
+    <h2>📝 Ejercicios propuestos</h2>
+    <ol>
+        <li>
+            Crea un bloque PL/SQL que declare una constante con el valor del IVA (21%) y calcule el precio final de un producto a partir de un precio base introducido por el usuario.
+        </li>
+        <li>
+            Crea un bloque que pida al usuario su edad y muestre un mensaje indicando si es mayor de edad o no.
+        </li>
+        <li>
+            Declara una variable usando <strong>TYPE</strong> para copiar el tipo de una columna de una tabla de tu base de datos, asígnale un valor y muéstralo con <strong>DBMS_OUTPUT.PUT_LINE</strong>.
+        </li>
+        <li>
+            Usa un bucle <strong>FOR</strong> para mostrar los 10 primeros números pares.
+        </li>
+        <li>
+            Declara una variable de tipo <strong>%ROWTYPE</strong> para una tabla con varias columnas, realiza una consulta <strong>SELECT INTO</strong> y muestra por consola el contenido de al menos dos campos.
+        </li>
+    </ol>
+</section>
+
+<a href="#arriba" class="back-to-top">↑</a>
+
+
+
+</main>
+<footer>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Licencia Creative Commons">
+    </a>
+</footer>
+</body>
+</html>
