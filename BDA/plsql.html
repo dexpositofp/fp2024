@@ -236,6 +236,132 @@ END;
     </ol>
 </section>
 
+<section>
+<h2>Bucles en PL/SQL</h2>
+<p>Un bucle es una estructura de control que permite ejecutar un conjunto de instrucciones de forma repetitiva hasta que se cumpla una condición. Son muy útiles para automatizar procesos repetitivos.</p>
+<p>PL/SQL dispone de tres tipos principales de bucles:</p>
+<h3>LOOP</h3>
+<p>Es el bucle más básico. Se ejecuta indefinidamente y debe contener una condición explícita de salida con <strong>EXIT</strong> o <strong>EXIT WHEN</strong>. Es ideal cuando queremos tener un control total sobre cuándo se debe salir del bucle.</p>
+<pre><code>DECLARE
+  i NUMBER := 1;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('Valor: ' || i);
+    i := i + 1;
+    EXIT WHEN i &gt; 5;
+  END LOOP;
+END;
+/
+</code></pre>
+<h3>WHILE LOOP</h3>
+<p>Evalúa la condición antes de ejecutar el bloque. Si la condición es falsa desde el inicio, el bloque no se ejecuta. Es útil cuando no sabemos cuántas iteraciones se van a realizar, pero depende de una condición dinámica.</p>
+<pre><code>DECLARE
+  i NUMBER := 1;
+BEGIN
+  WHILE i &lt;= 5 LOOP
+    DBMS_OUTPUT.PUT_LINE('Contador: ' || i);
+    i := i + 1;
+  END LOOP;
+END;
+/
+</code></pre>
+<h3>FOR LOOP</h3>
+<p>Recorre automáticamente un rango de valores. Es el bucle más compacto y adecuado cuando conocemos el número exacto de iteraciones. La variable de control se crea y destruye automáticamente dentro del bucle.</p>
+<pre><code>BEGIN
+  FOR i IN 1..5 LOOP
+    DBMS_OUTPUT.PUT_LINE('Iteración: ' || i);
+  END LOOP;
+END;
+/
+</code></pre>
+<h4>Resumen de uso:</h4>
+<ul>
+<li><strong>LOOP:</strong> Para iteraciones donde se necesita control manual y condicional.</li>
+<li><strong>WHILE:</strong> Para condiciones que pueden no cumplirse desde el principio.</li>
+<li><strong>FOR:</strong> Para bucles con rangos definidos de antemano.</li>
+</ul>
+</section>
+<section>
+<h2>Cursores en PL/SQL</h2>
+<p>Los cursores son estructuras que nos permiten recorrer, fila a fila, el resultado de una consulta SQL. Son muy útiles cuando trabajamos con múltiples filas y necesitamos procesarlas individualmente en PL/SQL.</p>
+<h3>Tipos de cursores</h3>
+<ul>
+<li><strong>Cursores implícitos:</strong> PL/SQL los gestiona automáticamente con instrucciones como <strong>SELECT INTO</strong>.</li>
+<li><strong>Cursores explícitos:</strong> Declarados por el programador, permiten mayor control.</li>
+</ul>
+<h3>Operaciones fundamentales con cursores explícitos</h3>
+<ul>
+<li><strong>OPEN</strong>: ejecuta la consulta y abre el cursor.</li>
+<li><strong>FETCH</strong>: recupera una fila del resultado y la guarda en variables.</li>
+<li><strong>CLOSE</strong>: cierra el cursor y libera recursos.</li>
+</ul>
+<p>Ejemplo con control manual:</p>
+<pre><code>DECLARE
+  CURSOR cur_emp IS SELECT nombre, salario FROM empleados;
+  v_nom empleados.nombre%TYPE;
+  v_sal empleados.salario%TYPE;
+BEGIN
+  OPEN cur_emp;
+  LOOP
+    FETCH cur_emp INTO v_nom, v_sal;
+    EXIT WHEN cur_emp%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE(v_nom || ': ' || v_sal);
+  END LOOP;
+  CLOSE cur_emp;
+END;
+/
+</code></pre>
+<h3>Cursores con FOR</h3>
+<p>PL/SQL gestiona automáticamente apertura, lectura y cierre. Ideal para procesos simples.</p>
+<pre><code>BEGIN
+  FOR emp IN (SELECT nombre, salario FROM empleados) LOOP
+    DBMS_OUTPUT.PUT_LINE(emp.nombre || ': ' || emp.salario);
+  END LOOP;
+END;
+/
+</code></pre>
+<h3>Relación con excepciones</h3>
+<p>Cuando usamos <strong>SELECT INTO</strong> directamente, se lanzan excepciones si no se encuentra ninguna fila (<strong>NO_DATA_FOUND</strong>) o si se encuentran múltiples (<strong>TOO_MANY_ROWS</strong>). Con cursores, usamos los atributos <strong>%FOUND</strong>, <strong>%NOTFOUND</strong> y <strong>%ROWCOUNT</strong> para controlar el flujo sin necesidad de excepciones.</p>
+<p>Ejemplo con SELECT INTO:</p>
+<pre><code>BEGIN
+  SELECT nombre INTO v_nombre FROM empleados WHERE id = 999;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('No se encontró ningún empleado.');
+END;
+/
+</code></pre>
+</section>
+<section>
+<h2>Procedimientos y Funciones</h2>
+<p>Los procedimientos y funciones permiten encapsular bloques de código reutilizables. Son fundamentales para organizar el código y separar responsabilidades.</p>
+<h3>Procedimientos</h3>
+<p>Un procedimiento ejecuta acciones, pero no devuelve directamente un valor. Puede recibir parámetros de entrada y salida.</p>
+<pre><code>CREATE OR REPLACE PROCEDURE saludar(nombre IN VARCHAR2) IS
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Hola, ' || nombre);
+END;
+/
+BEGIN
+  saludar('Ana');
+END;
+/
+</code></pre>
+<h3>Funciones</h3>
+<p>Una función realiza cálculos y devuelve un valor. Puede ser usada en expresiones SQL, SELECT, etc.</p>
+<pre><code>CREATE OR REPLACE FUNCTION doble(n IN NUMBER) RETURN NUMBER IS
+BEGIN
+  RETURN n * 2;
+END;
+/
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Doble de 5: ' || doble(5));
+END;
+/
+</code></pre>
+
+</section>
+
 <a href="#arriba" class="back-to-top">↑</a>
 
 
