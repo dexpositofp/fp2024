@@ -22,158 +22,436 @@
     </header>
 
    <main>
-    <section>
-        <h2>Introduction to Python</h2>
-        <p>Python is a high-level programming language designed to be easy to read and simple to write. It is widely used in different fields, including web development, artificial intelligence, data science, and automation.</p>
+ <!-- INTRODUCTION -->
+<section id="introduction">
+  <h2>What is programming?</h2>
+  <p>Programming means telling a computer exactly what to do, step by step. It’s like writing a set of instructions or a recipe for a robot to follow.</p>
+  <p>With programming, you can:</p>
+  <ul>
+    <li>Display text, messages, and images</li>
+    <li>Ask the user questions</li>
+    <li>Make decisions</li>
+    <li>Repeat actions automatically</li>
+    <li>Create games, apps, websites, and more</li>
+  </ul>
+</section>
 
-        <h3>Why Use Python?</h3>
-        <ul>
-            <li><strong>Simple and Readable:</strong> Uses clear and straightforward syntax.</li>
-            <li><strong>Cross-Platform:</strong> Runs on Windows, Mac, and Linux without modifications.</li>
-            <li><strong>Extensive Libraries:</strong> Thousands of prebuilt libraries simplify coding.</li>
-            <li><strong>Community Support:</strong> Large global community provides learning resources.</li>
-        </ul>
-    </section>
+<!-- WHY PYTHON -->
+<section id="why-python">
+  <h2>Why is Python such a great language?</h2>
 
-    <section>
-        <h2>Basic Syntax and Indentation</h2>
-        <p>Python does not use curly braces ({ }) like other languages. Instead, it relies on indentation to define code blocks.</p>
+  <h3>Python Is Easy to Use</h3>
+  <p>Python is one of the easiest programming languages to learn. It has simple rules and clear structure — it looks a lot like English. Some people call it “programming at the speed of thought.” It helps you work faster and more easily than other languages like Java or C#.</p>
 
-        <h3>Example:</h3>
-        <pre><code>
-if True:
-    print("This is inside the block")
-print("This is outside the block")
-        </code></pre>
+  <h3>Python Is Powerful</h3>
+  <p>Python is not just easy — it's also powerful. You can create full applications, games, interfaces, or work with files and data. Major companies like Google, NASA, and Microsoft use Python in real projects. Game studios like EA and Disney use it too!</p>
 
-        <p><strong>Note:</strong> Proper indentation is crucial in Python. Incorrect indentation will cause an error.</p>
-    </section>
+  <h3>Python Supports Object-Oriented Programming</h3>
+  <p>OOP (object-oriented programming) is a way of organizing code for big projects. In Python, OOP is optional — you can use it when you need it. That means small programs stay simple, and big ones stay organized.</p>
 
-    <section>
-        <h2>Data Types in Python</h2>
-        <p>Python supports various data types:</p>
-        <ul>
-            <li><strong>Integers (int)</strong>: Whole numbers (e.g., 5, -3, 100)</li>
-            <li><strong>Floating-point (float)</strong>: Decimal numbers (e.g., 3.14, -0.01, 2.0)</li>
-            <li><strong>Strings (str)</strong>: Text data (e.g., "Hello, world!")</li>
-            <li><strong>Lists (list)</strong>: Ordered collection (e.g., [1, 2, 3])</li>
-            <li><strong>Tuples (tuple)</strong>: Immutable collection (e.g., (1, 2, 3))</li>
-            <li><strong>Dictionaries (dict)</strong>: Key-value pairs (e.g., {"name": "Alice", "age": 25})</li>
-        </ul>
-    </section>
+  <h3>Python Can Work with Other Languages</h3>
+  <p>You can combine Python with other languages like C, C++, or Java. This helps you take advantage of the speed of those languages, while keeping the simplicity of Python.</p>
 
-    <section>
-        <h2>Conditional Statements</h2>
-        <p>Python uses <strong>if</strong>, <strong>elif</strong>, and <strong>else</strong> to control the flow of execution.</p>
+  <h3>Python Runs Everywhere</h3>
+  <p>Python runs on Windows, Mac, Linux — and even on supercomputers! Python programs are platform-independent, which means you can send your code to a friend on another system, and it will still work (if they have Python installed).</p>
 
-        <h3>Example:</h3>
-        <pre><code>
-x = 10
+  <h3>Python Has a Friendly Community</h3>
+  <p>Python has one of the most supportive communities. Beginners can ask for help on the <a href="http://mail.python.org/mailman/listinfo/tutor" target="_blank">Python Tutor mailing list</a> and many forums online. It’s a great place to learn and grow.</p>
 
-if x > 5:
-    print("x is greater than 5")
-elif x == 5:
-    print("x is exactly 5")
+  <h3>Python Is Free and Open Source</h3>
+  <p>Python is completely free to use, copy, modify, and even sell. It follows the open-source model — one of the reasons why it’s so popular worldwide.</p>
+</section>
+
+<!-- VARIABLES -->
+<section id="variables-explained">
+  <h2>What is a variable?</h2>
+  <p>A variable is like a labeled box. You can put information inside — like a name, color, or number — and reuse it later in your program.</p>
+
+  <h3>Example:</h3>
+  <div class="codigo">
+    <pre><code>
+name = "Alice"
+print("Hello, my name is", name)
+    </code></pre>
+  </div>
+
+  <p>Here, the variable <strong>name</strong> stores the text <strong>"Alice"</strong>, which is then used in the message.</p>
+</section>
+
+<!-- DATA TYPES -->
+<section id="data-types">
+  <h2>What are data types in Python?</h2>
+  <p>Every value in Python has a data type. This means Python knows what kind of thing it is: a word, a number, true or false, or something else.</p>
+
+  <h3>str → Strings (text)</h3>
+  <p>Strings are words or any text. They go inside quotes.</p>
+  <div class="codigo"><pre><code>
+name = "Mario"
+animal = "🐶"
+message = "I love pizza!"
+  </code></pre></div>
+
+  <h3>int → Integers (whole numbers)</h3>
+  <div class="codigo"><pre><code>
+age = 16
+score = 100
+  </code></pre></div>
+
+  <h3>float → Decimal numbers</h3>
+  <div class="codigo"><pre><code>
+price = 3.99
+temperature = 21.5
+  </code></pre></div>
+
+  <h3>bool → True or False</h3>
+  <div class="codigo"><pre><code>
+is_hungry = True
+is_raining = False
+  </code></pre></div>
+
+  <h3>None→ No value</h3>
+  <div class="codigo"><pre><code>
+result = None
+  </code></pre></div>
+
+  <p>You can check a value’s type with <strong>type()</strong>:</p>
+  <div class="codigo"><pre><code>
+print(type("Hello"))  # str
+print(type(5))        # int
+print(type(2.5))      # float
+print(type(True))     # bool
+  </code></pre></div>
+</section>
+
+<section id="conditions-explained">
+  <h2>Conditions</h2>
+
+  <p>A condition lets a program make decisions. Just like people say "If it's raining, take an umbrella", programs also say: "If something is true, do this".</p>
+
+  <p>A condition checks whether something is <strong>True</strong> or <strong>False</strong>. We use the <strong>if</strong> statement to run code only when a condition is true.</p>
+
+  <h3>Simple condition</h3>
+  <p>Only runs when the condition is true:</p>
+  <div class="codigo">
+    <pre><code>
+is_raining = True
+
+if is_raining:
+    print("Don't forget an umbrella!")
+print("See you soon.")
+    </code></pre>
+  </div>
+
+  <p><strong>Explanation:</strong> Only the indented line after <strong>if</strong> runs when the condition is true. Indentation is very important!</p>
+
+ 
+
+  <h3>Using input with a condition</h3>
+  <div class="codigo">
+    <pre><code>
+positive_num = int(input("Enter a positive number: "))
+
+if positive_num < 0:
+    print("Negative input set to 0")
+    positive_num = 0
+
+print("Final value:", positive_num)
+    </code></pre>
+  </div>
+ 
+
+  <h3>If - else structure</h3>
+  <p>What if you want to do something when the condition is false? Use <strong>else</strong>.</p>
+  <div class="codigo">
+    <pre><code>
+distance = 0.7
+
+if distance < 1:
+    print("Let's walk!")
 else:
-    print("x is less than 5")
-        </code></pre>
+    print("Let's drive.")
+    </code></pre>
+  </div>
+  <p>Only one of the two blocks will run.</p>
 
-        <h3>Types of Conditions:</h3>
-        <ul>
-            <li><strong>Comparison:</strong>==, !=, &gt;,&lt;</li>
-            <li><strong>Logical:</strong> and, or, not</li>
-        </ul>
-    </section>
+ 
 
-    <section>
-        <h2>Loops in Python</h2>
-        <p>Loops allow repeated execution of code blocks.</p>
+  <h3>Nested if statements</h3>
+  <p>We can also place <strong>if</strong> statements inside others. This is called nesting and helps us organize decisions.</p>
 
-        <h3>For Loop</h3>
-        <p>Used when the number of iterations is known.</p>
-        <pre><code>
-for i in range(5):
-    print(i)  # Outputs 0, 1, 2, 3, 4
-        </code></pre>
+  <div class="codigo">
+    <pre><code>
+if game == 1:
+    if players < 2:
+        print("Not enough players")
+    elif players > 4:
+        print("Too many players")
+    else:
+        print("Ready to start")
 
-        <h3>While Loop</h3>
-        <p>Used when iterations depend on a condition.</p>
-        <pre><code>
-x = 0
-while x < 5:
-    print(x)
-    x += 1
-        </code></pre>
-    </section>
+elif game == 2:
+    if players < 3:
+        print("Not enough players")
+    elif players > 6:
+        print("Too many players")
+    else:
+        print("Ready to start")
+    </code></pre>
+  </div>
 
-    <section>
-        <h2>Functions</h2>
-        <p>Functions allow code reuse and organization.</p>
+  <p>Using <strong>elif</strong> helps avoid repetition and makes code easier to read.</p>
 
-        <h3>Defining a Function</h3>
-        <pre><code>
+ 
+</section>
+
+<section id="loops-explained">
+  <h2>Loops</h2>
+
+  <p>A <strong>loop</strong> is a block of code that runs repeatedly while a condition is true. It helps automate tasks that need to happen multiple times.</p>
+
+  <p><strong>Examples:</strong></p>
+  <ul>
+    <li>Check if a phone is idle and then lock it</li>
+    <li>Print all names in a student list</li>
+    <li>Count numbers, repeat messages, etc.</li>
+  </ul>
+
+  <h3>Types of loops in Python:</h3>
+  <ul>
+    <li><strong>while</strong> loop → Repeats while a condition is true</li>
+    <li><strong>for</strong> loop → Repeats for each item in a list or range</li>
+  </ul>
+
+ 
+  <h3>While loop</h3>
+  <p>A <strong>while</strong> loop runs a block of code as long as the condition is <strong>True</strong>.</p>
+
+  <div class="codigo">
+    <pre><code>
+count = 1
+
+while count <= 3:
+    print("Count:", count)
+    count += 1
+    </code></pre>
+  </div>
+
+  <p>Output:</p>
+  <ul>
+    <li>Count: 1</li>
+    <li>Count: 2</li>
+    <li>Count: 3</li>
+  </ul>
+
+  <h4>Counting with a step:</h4>
+  <p>We can count and check for even numbers using a step:</p>
+
+  <div class="codigo">
+    <pre><code>
+i = 1
+
+while i <= 20:
+    if i % 2 == 0:
+        print(i)
+    i += 1
+    </code></pre>
+  </div>
+
+ 
+
+  <h3>For loop</h3>
+  <p>A <strong>for</strong> loop goes through each item in a sequence like a list or a range.</p>
+
+  <div class="codigo">
+    <pre><code>
+names = ["Alice", "Bob", "Charlie"]
+
+for name in names:
+    print("Hello,", name)
+    </code></pre>
+  </div>
+
+  <h4>Using range() to count</h4>
+  <p><strong>range()</strong> generates a sequence of numbers:</p>
+
+  <ul>
+    <li><strong>range(end)</strong> → 0 to end (exclusive)</li>
+    <li><strong>range(start, end)</strong> → start to end (exclusive)</li>
+    <li><strong>range(start, end, step)</strong> → step size included</li>
+  </ul>
+
+  <div class="codigo">
+    <pre><code>
+for i in range(4):
+    print(i)
+# Output: 0, 1, 2, 3
+
+for i in range(2, 6):
+    print(i)
+# Output: 2, 3, 4, 5
+
+for i in range(1, 10, 2):
+    print(i)
+# Output: 1, 3, 5, 7, 9
+    </code></pre>
+  </div>
+
+
+  <h3>Break statement</h3>
+  <p><strong>break</strong> stops the loop early if a condition is met.</p>
+
+  <div class="codigo">
+    <pre><code>
+user_string = "This is a string."
+
+for i in range(len(user_string)):
+    if user_string[i] == 'a':
+        print("Found at index:", i)
+        break
+    </code></pre>
+  </div>
+
+  <h3>Continue statement</h3>
+  <p><strong>continue</strong> skips the current loop and goes to the next iteration.</p>
+
+  <div class="codigo">
+    <pre><code>
+for i in range(6):
+    if i == 3:
+        continue
+    print(i)
+    </code></pre>
+  </div>
+
+</section>
+
+<section id="functions">
+  <h2>Functions</h2>
+
+  <p>Functions are the next step toward writing clean, reusable, and organized code. If you find yourself repeating the same instructions, you can turn them into a function!</p>
+
+  <p>A <strong>function</strong> is a named block of code that performs a task. You define it once, and you can use (or <em>call</em>) it many times.</p>
+
+  <h3>🛠 Built-in functions</h3>
+  <p>Python already has many functions you can use:</p>
+  <ul>
+    <li><strong>print()</strong> → Shows something on screen</li>
+    <li><strong>input()</strong> → Asks the user for information</li>
+    <li><strong>len()</strong> → Tells you the length of a string</li>
+    <li><strong>type()</strong> → Tells you the type of data</li>
+  </ul>
+
+  <div class="codigo">
+    <pre><code>
+name = input("What is your name? ")
+print("Hello,", name)
+print("Your name has", len(name), "letters")
+    </code></pre>
+  </div>
+
+
+
+  <h3>Defining your own function</h3>
+  <p>You create a function using <strong>def</strong> followed by the function name and <strong>()</strong>. The code block must be indented.</p>
+
+  <div class="codigo">
+    <pre><code>
+def greet():
+    """Greets the user."""
+    print("Hi there!")
+    print("Welcome to Python")
+
+greet()
+greet()
+    </code></pre>
+  </div>
+
+  <p>This function prints two lines every time it is called.</p>
+
+  <h3>Parameters</h3>
+  <p>You can pass values to your function using <strong>parameters</strong>:</p>
+
+  <div class="codigo">
+    <pre><code>
 def greet(name):
-    return f"Hello, {name}!"
+    print("Hello,", name)
 
-print(greet("Alice"))
-        </code></pre>
+greet("Ana")
+greet("Javi")
+    </code></pre>
+  </div>
 
-        <h3>Types of Functions:</h3>
-        <ul>
-            <li><strong>With Parameters:</strong> Accepts input values.</li>
-            <li><strong>With Return Values:</strong> Outputs a result.</li>
-            <li><strong>Anonymous (Lambda):</strong> A compact one-line function.</li>
-        </ul>
-    </section>
 
-    <section>
-        <h2>Object-Oriented Programming (OOP)</h2>
-        <p>Python supports OOP principles such as classes and objects.</p>
-        <pre><code>
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+  <h3>Returning values</h3>
+  <p>Functions can also <strong>return</strong> results for you to use later.</p>
 
-    def greet(self):
-        print(f"Hello, my name is {self.name}")
+  <div class="codigo">
+    <pre><code>
+def add(a, b):
+    return a + b
 
-p1 = Person("Alice", 25)
-p1.greet()
-        </code></pre>
-    </section>
+total = add(5, 3)
+print("Total:", total)
+    </code></pre>
+  </div>
 
-    <section>
-        <h2>File Handling</h2>
-        <p>Python allows reading and writing files.</p>
-        <pre><code>
-# Writing to a file
-with open("example.txt", "w") as file:
-    file.write("Hello, World!")
 
-# Reading from a file
-with open("example.txt", "r") as file:
-    content = file.read()
-    print(content)
-        </code></pre>
-    </section>
+  <h3>Full function structure</h3>
+  <p>A complete function usually looks like this:</p>
 
-    <section>
-        <h2>Exercises</h2>
-        <h3>Basic Exercises</h3>
-        <ul>
-            <li>Create a Python script that prints "Hello, Python!"</li>
-            <li>Write a function that calculates the factorial of a number.</li>
-            <li>Write a program that checks if a number is even or odd.</li>
-        </ul>
+  <div class="codigo">
+    <pre><code>
+def function_name(parameters):
+    """This is a docstring: explains what the function does."""
+    # statements
+    return something
+    </code></pre>
+  </div>
 
-        <h3>Advanced Exercises</h3>
-        <ul>
-            <li>Develop a simple calculator using Python functions.</li>
-            <li>Create a class that represents a bank account with deposit and withdraw methods.</li>
-            <li>Write a Python script that reads a file and counts the number of words.</li>
-        </ul>
-    </section>
+  <p>You must <strong>define</strong> a function before using it.</p>
+
+
+
+  <h3>Why use functions?</h3>
+  <ul>
+    <li><strong>Modularity:</strong> Group related code together</li>
+    <li><strong>Reusability:</strong> Call the function as many times as needed</li>
+    <li><strong>Teamwork:</strong> Share functions with others</li>
+    <li><strong>Maintainability:</strong> Easier to update one function than fix many places</li>
+  </ul>
+
+
+  <h3>🔀 Control flow and functions</h3>
+  <p>Control flow is the path the program follows. Normally, Python reads code line by line.</p>
+  <p>When Python finds a <strong>function call</strong>, it jumps to the function, runs it, and then returns to where it left off.</p>
+
+  <div class="codigo">
+    <pre><code>
+def show_message():
+    print("Hello from inside the function!")
+
+print("Start")
+show_message()
+print("End")
+    </code></pre>
+  </div>
+
+  <p><strong>Output:</strong></p>
+  <ul>
+    <li>Start</li>
+    <li>Hello from inside the function!</li>
+    <li>End</li>
+  </ul>
+
+ 
+</section>
+
+
+
+<a href="#top" class="back-to-top">↑</a>
+</main>
+
+
         <a href="#top" class="back-to-top">↑</a>
     </main>
     <footer>
