@@ -23,92 +23,676 @@
         </nav>
     </header>
     <main>
-	<section id="introduccion-javascript">
-            <h2>Arquitecturas y Tecnologías</h2>
-            
-            <h3>¿Qué es JavaScript?</h3>
-            <p>JavaScript es un lenguaje de programación de alto nivel y dinámico, utilizado principalmente para el desarrollo de aplicaciones web interactivas. Es un lenguaje interpretado, lo que significa que no necesita ser compilado antes de ejecutarse. JavaScript es el único lenguaje que puede ejecutarse de manera nativa en todos los navegadores web modernos, lo que lo convierte en una herramienta esencial para el desarrollo web.</p>
+<section class="bloque">
+    <h2>¿Qué es JavaScript?</h2>
+    <p>JavaScript es un lenguaje de programación que se utiliza principalmente para añadir interactividad a las páginas web. Gracias a él, podemos hacer que los elementos cambien, aparezcan mensajes, animaciones, formularios dinámicos y mucho más.</p>
+    <p>Es un lenguaje <strong>interpretado</strong>, lo que significa que no es necesario compilarlo: el navegador lo lee y ejecuta directamente.</p>
+    <p>Aunque su nombre lo parezca, <strong>JavaScript no tiene relación con Java</strong>. Son lenguajes distintos. El nombre se debe a una decisión comercial.</p>
+  </section>
 
-            <h3>¿Qué puede hacer JavaScript en el navegador?</h3>
-            <p>JavaScript permite a los desarrolladores web crear páginas dinámicas e interactivas. Algunas de las capacidades de JavaScript incluyen:</p>
-            <ul>
-                <li>Manipulación del DOM (Document Object Model) para modificar la estructura del documento HTML en tiempo real.</li>
-                <li>Validación de formularios y datos de entrada del usuario.</li>
-                <li>Creación de animaciones y efectos visuales.</li>
-                <li>Interacción con APIs web para cargar datos dinámicamente (por ejemplo, mediante AJAX).</li>
-                <li>Gestión de eventos, como clics del ratón o pulsaciones de teclas.</li>
-            </ul>
+  <section class="bloque">
+    <h2 class="subtitulo">¿Cómo incluir JavaScript en una página web?</h2>
 
-            <h3>¿Qué NO PUEDE hacer JavaScript en el navegador?</h3>
-            <p>Si bien JavaScript es muy versátil, también tiene limitaciones importantes en el contexto del navegador:</p>
-            <ul>
-                <li>No puede acceder directamente al sistema de archivos del usuario (excepto a través de ciertas APIs específicas y controladas, como File API).</li>
-                <li>No puede realizar operaciones de red a nivel bajo (por ejemplo, manipulación de sockets).</li>
-                <li>No puede acceder directamente a los dispositivos de hardware del sistema (como cámaras o micrófonos), salvo mediante permisos específicos y con el uso de APIs especializadas.</li>
-                <li>No tiene acceso a otras pestañas o ventanas del navegador por razones de seguridad (con ciertas excepciones, como el uso de postMessage).</li>
-            </ul>
+    <article class="subbloque">
+      <h3>Código dentro del mismo documento HTML</h3>
+      <pre class="bloque-codigo"><code>&lt;script type="text/javascript"&gt;
+  alert("Un mensaje de prueba");
+&lt;/script&gt;</code></pre>
+    </article>
 
-            <h3>¿Qué hace que JavaScript sea único?</h3>
-            <p>JavaScript tiene varias características que lo hacen único:</p>
-            <ul>
-                <li><strong>Interpretado:</strong> No requiere un proceso de compilación; el código se ejecuta directamente en el navegador.</li>
-                <li><strong>Dinámico:</strong> Las variables no están tipadas explícitamente, lo que significa que pueden cambiar de tipo en tiempo de ejecución.</li>
-                <li><strong>Orientado a objetos basado en prototipos:</strong> JavaScript utiliza prototipos en lugar de clases tradicionales para la herencia.</li>
-                <li><strong>Event-driven:</strong> JavaScript puede responder a eventos, lo que es crucial para crear interfaces de usuario interactivas.</li>
-            </ul>
+    <article class="subbloque">
+      <h3>Código JavaScript en un archivo externo</h3>
+      <pre class="bloque-codigo"><code>// archivo llamado codigo.js
+alert("Un mensaje de prueba");
 
-            <h3>Lenguajes "sobre" JavaScript</h3>
-            <p>Existen varios lenguajes que se compilan o transpilan a JavaScript, agregando funcionalidades adicionales o una sintaxis más amigable. Algunos ejemplos incluyen:</p>
-            <ul>
-                <li><strong>TypeScript:</strong> Un superconjunto de JavaScript que añade tipos estáticos.</li>
-                <li><strong>CoffeeScript:</strong> Un lenguaje que compila a JavaScript y ofrece una sintaxis más concisa.</li>
-                <li><strong>Babel:</strong> Un compilador que permite escribir código JavaScript moderno y lo transpila a una versión compatible con navegadores más antiguos.</li>
-            </ul>
+&lt;script type="text/javascript" src="/js/codigo.js"&gt;&lt;/script&gt;</code></pre>
+    </article>
 
-            <h3>Resumen de Características de JavaScript</h3>
-            <p>JavaScript es versátil, dinámico y una parte esencial del desarrollo web moderno. Su capacidad para interactuar con el DOM, manejar eventos y comunicarse con servidores lo hace indispensable para crear aplicaciones web ricas e interactivas.</p>
+    <article class="subbloque">
+      <h3>Código JavaScript en los elementos HTML</h3>
+      <pre class="bloque-codigo"><code>&lt;p onclick="alert('Un mensaje de prueba')"&gt;Haz clic aquí&lt;/p&gt;</code></pre>
+    </article>
 
-            <h3>Especificación del Lenguaje</h3>
-	    <p>JavaScript está estandarizado bajo la especificación ECMAScript (ES). Las versiones más recientes de ECMAScript han introducido muchas características nuevas, como <a class="resaltar">let</a> y <a class="resaltar">const</a>, clases, y funciones flecha.</p>
+    <article class="subbloque">
+      <h3>¿Y si JavaScript está desactivado?</h3>
+      <pre class="bloque-codigo"><code>&lt;noscript&gt;
+  &lt;p&gt;Este sitio necesita JavaScript para funcionar correctamente.&lt;/p&gt;
+&lt;/noscript&gt;</code></pre>
+    </article>
+  </section>
 
-            <h3>Manuales de Referencia</h3>
-            <p>Algunos recursos clave para aprender y consultar JavaScript son:</p>
-            <ul>
-                <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank">MDN Web Docs</a>: Completa referencia de JavaScript.</li>
-                <li><a href="https://www.javascript.com/" target="_blank">JavaScript.com</a>: Tutoriales y recursos para principiantes.</li>
-                <li><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank">ECMA-262</a>: Especificación oficial del lenguaje ECMAScript.</li>
-            </ul>
+  <section class="bloque">
+    <h2>Sintaxis básica de JavaScript</h2>
 
-            <h3>Editores de Código: IDE y Editores Ligeros</h3>
-            <p>Al desarrollar con JavaScript, es importante elegir un editor de código adecuado. Algunas opciones populares incluyen:</p>
-            <ul>
-                <li><strong>Visual Studio Code (VS Code):</strong> Un editor gratuito y de código abierto con una gran cantidad de extensiones.</li>
-                <li><strong>Sublime Text:</strong> Un editor ligero y rápido, muy popular entre desarrolladores web.</li>
-                <li><strong>WebStorm:</strong> Un IDE completo con herramientas avanzadas para JavaScript.</li>
-            </ul>
+    <ul>
+      <li><strong>Espacios y saltos de línea:</strong> Puedes usarlos para hacer tu código más legible.</li>
+      <li><strong>Mayúsculas y minúsculas:</strong> <strong>nombre</strong> y <strong>Nombre</strong> son variables distintas.</li>
+      <li><strong>Tipos de datos dinámicos:</strong> Las variables pueden cambiar de tipo según el valor.</li>
+      <li><strong>Punto y coma:</strong> Aunque no es obligatorio, se recomienda.</li>
+      <li><strong>Comentarios:</strong> Explican el código sin ejecutarse.</li>
+    </ul>
 
-            <h3>Herramientas de Desarrollo (Developer Console)</h3>
-            <p>La consola de desarrollo del navegador es una herramienta poderosa para depurar y probar código JavaScript en tiempo real. Puedes acceder a ella con las teclas F12 o Ctrl+Shift+I en la mayoría de los navegadores. Algunas de sus funciones incluyen:</p>
-            <ul>
-                <li>Inspección de elementos del DOM.</li>
-                <li>Registro y depuración de mensajes y errores de JavaScript.</li>
-                <li>Prueba de scripts y expresión de código en la consola.</li>
-                <li>Análisis de la red y el rendimiento del sitio web.</li>
-            </ul>
+    <article class="subbloque">
+      <h3>Comentarios</h3>
+      <pre class="bloque-codigo"><code>// Esto es un comentario de una sola línea
 
-            <h3>Ejercicios</h3>
-            <ol>
-                <li>Investiga y escribe un resumen sobre las diferencias entre <a class="resaltar">var</a>, <a class="resaltar">let</a> y <a class="resaltar">const</a> en JavaScript.</li>
-                <li>Crea un archivo HTML simple y añade un script JavaScript que cambie el texto de un párrafo cuando se haga clic en un botón.</li>
-                <li>Utiliza la consola de desarrollo del navegador para probar diferentes expresiones JavaScript y explorar las herramientas disponibles.</li>
-            </ol>
+/*
+  Esto es un comentario
+  de varias líneas
+*/</code></pre>
+    </article>
 
-            <h3>Recursos Adicionales</h3>
-            <ul>
-                <li><a href="https://eloquentjavascript.net/" target="_blank">Eloquent JavaScript</a>: Un libro gratuito y completo sobre JavaScript.</li>
-                <li><a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a>: Una guía moderna y detallada sobre JavaScript.</li>
-            </ul>
-        </section>
+    <article class="subbloque">
+      <h3>Tu primer script</h3>
+      <pre class="bloque-codigo"><code>&lt;script&gt;
+  alert("Hola Mundo!");
+&lt;/script&gt;</code></pre>
+    </article>
+  </section>
+
+  <section class="bloque">
+    <h2>Programación básica</h2>
+    <p>Antes de comenzar a desarrollar aplicaciones con JavaScript, es fundamental conocer los elementos básicos del lenguaje. Si ya sabes programar en otros lenguajes, esto te servirá para familiarizarte con su sintaxis. Si no, esta sección será tu punto de partida.</p>
+
+    <h3 class="subtitulo">Variables</h3>
+    <p>Una variable es un contenedor donde almacenamos datos. Nos permite reutilizar información y realizar operaciones con ella.</p>
+
+    <h3 class="subtitulo">¿Cómo se declara una variable?</h3>
+  <p>Usamos la palabra clave <strong>let</strong> para declarar una variable. Esto le dice al navegador que queremos reservar un espacio en memoria para guardar un valor.</p>
+  
+  <pre class="bloque-codigo"><code>let mensaje = "Hola mundo";</code></pre>
+  
+  <p>En este ejemplo, <strong>mensaje</strong> es el nombre de la variable, y <strong>"Hola mundo"</strong> es el valor que guarda. También podemos declarar una variable y asignarle el valor más adelante:</p>
+  
+  <pre class="bloque-codigo"><code>let edad;
+edad = 25;</code></pre>
+
+  <p><strong>⚠️ Consejo:</strong> Aunque es posible declarar variables sin usar <strong>let</strong> (por ejemplo, <strong>nombre = "Juan"</strong>), no es recomendable. Siempre usa <strong>let</strong> para evitar errores inesperados.</p>
+
+  <h4>Reglas para nombrar variables</h4>
+  <ul>
+    <li>El nombre puede incluir letras, números, <strong>_</strong> y <strong>$</strong>, pero no puede comenzar por un número.</li>
+    <li>JavaScript distingue entre mayúsculas y minúsculas: <strong>usuario</strong> y <strong>Usuario</strong> son variables distintas.</li>
+    <li>Evita usar palabras reservadas como <strong>let</strong>, <strong>if</strong> o <strong>function</strong>.</li>
+  </ul>
+
+  <h3 class="subtitulo">Tipos de datos</h3>
+  <p>Las variables en JavaScript pueden almacenar diferentes tipos de valores. Vamos a ver los más comunes:</p>
+
+  <article class="subbloque">
+    <h3>Números</h3>
+    <p>Sirven para trabajar con datos numéricos, tanto enteros como decimales.</p>
+    <pre class="bloque-codigo"><code>let iva = 21;
+let total = 99.95;</code></pre>
+    <p><strong>Nota:</strong> en JavaScript los decimales usan <strong>punto</strong>, no coma.</p>
+  </article>
+
+  <article class="subbloque">
+    <h3>Cadenas de texto (strings)</h3>
+    <p>Una cadena es un conjunto de caracteres, como una palabra o una frase. Se escribe entre comillas simples o dobles.</p>
+    <pre class="bloque-codigo"><code>let saludo = "¡Hola!";
+let letra = 'a';</code></pre>
+
+    <p>Si el texto incluye comillas, puedes usar una de estas estrategias:</p>
+    <pre class="bloque-codigo"><code>let texto1 = "Ella dijo: 'Hola'";
+let texto2 = 'Él contestó: "Hola"';</code></pre>
+
+    <p>Para incluir símbolos especiales dentro de una cadena, usamos el <strong>carácter de escape</strong> <strong>\</strong>:</p>
+    <ul>
+      <li><strong>\n</strong> → salto de línea</li>
+      <li><strong>\t</strong> → tabulación</li>
+      <li><strong>\\</strong> → barra invertida</li>
+    </ul>
+    <pre class="bloque-codigo"><code>let mensaje = "Primera línea\nSegunda línea";</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Booleanos</h3>
+    <p>Solo pueden almacenar dos valores: <strong>true</strong> (verdadero) o <strong>false</strong> (falso). Se usan para tomar decisiones lógicas.</p>
+    <pre class="bloque-codigo"><code>let esMayor = true;
+let tienePermiso = false;</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Arrays</h3>
+    <p>Un array es como una <strong>lista de datos</strong>. Puede contener varios elementos dentro de una sola variable.</p>
+    <pre class="bloque-codigo"><code>let dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];</code></pre>
+    <p>Se accede a cada elemento por su posición (empezando desde el <strong>0</strong>):</p>
+    <pre class="bloque-codigo"><code>let primero = dias[0]; // "Lunes"
+let tercero = dias[2]; // "Miércoles"</code></pre>
+    <p>También puedes modificar un valor así:</p>
+    <pre class="bloque-codigo"><code>dias[1] = "Martes cambiado";</code></pre>
+  </article>
+</section>
+
+
+
+<section class="bloque">
+  <h2 class="titulo-seccion">Operadores en JavaScript</h2>
+  <p>En JavaScript, los <strong>operadores</strong> nos permiten hacer operaciones con variables y valores. Podemos usarlos para realizar cálculos matemáticos, asignar valores, comparar datos o tomar decisiones.</p>
+
+  <article class="subbloque">
+    <h3>Operador de asignación (<strong>=</strong>)</h3>
+    <p>Este operador se utiliza para guardar un valor en una variable. Lo que está a la derecha se asigna a la variable de la izquierda.</p>
+    <pre class="bloque-codigo"><code>let edad = 25;
+let nombre = "Laura";</code></pre>
+    <p>También podemos asignar el valor de una variable a otra:</p>
+    <pre class="bloque-codigo"><code>let numero1 = 5;
+let numero2 = numero1; // ahora numero2 también vale 5</code></pre>
+    <p><strong>Importante:</strong> no confundas este operador con el de comparación (<strong>==</strong>), que veremos más adelante.</p>
+  </article>
+
+  <article class="subbloque">
+    <h3>Operadores matemáticos</h3>
+    <p>Sirven para realizar operaciones aritméticas básicas.</p>
+    <ul>
+      <li><strong>+</strong> suma</li>
+      <li><strong>-</strong> resta</li>
+      <li><strong>*</strong> multiplicación</li>
+      <li><strong>/</strong> división</li>
+    </ul>
+    <pre class="bloque-codigo"><code>let a = 10;
+let b = 4;
+let suma = a + b;        // 14
+let resta = a - b;       // 6
+let producto = a * b;    // 40
+let division = a / b;    // 2.5</code></pre>
+
+    <h4>Operador módulo (<strong>%</strong>)</h4>
+    <p>Devuelve el <strong>resto</strong> de una división. Es muy útil, por ejemplo, para saber si un número es par o impar.</p>
+    <pre class="bloque-codigo"><code>let resultado = 10 % 3; // resultado = 1</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Operadores combinados con asignación</h3>
+    <p>Permiten actualizar el valor de una variable de forma más breve.</p>
+    <ul>
+      <li><strong>+=</strong> suma y asigna</li>
+      <li><strong>-=</strong> resta y asigna</li>
+      <li><strong>*=</strong> multiplica y asigna</li>
+      <li><strong>/=</strong> divide y asigna</li>
+      <li><strong>%=</strong> módulo y asigna</li>
+    </ul>
+    <pre class="bloque-codigo"><code>let x = 5;
+x += 3; // x ahora vale 8
+x *= 2; // x ahora vale 16</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Operadores de incremento y decremento</h3>
+    <p>Sirven para aumentar o reducir en una unidad el valor de una variable.</p>
+    <pre class="bloque-codigo"><code>let numero = 5;
+numero++; // suma 1 → ahora vale 6
+numero--; // resta 1 → ahora vale 5</code></pre>
+
+    <p>Pueden usarse antes (<strong>++x</strong>) o después (<strong>x++</strong>) de la variable. El orden afecta si se usan dentro de una operación:</p>
+    <pre class="bloque-codigo"><code>let a = 5;
+let resultado1 = ++a; // primero suma, luego usa → resultado1 = 6
+
+let b = 5;
+let resultado2 = b++; // primero usa, luego suma → resultado2 = 5 (b vale 6)</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Operadores lógicos</h3>
+    <p>Se usan para combinar condiciones y obtener valores <strong>true</strong> o <strong>false</strong>.</p>
+
+    <h4><strong>Negación (!)</strong></h4>
+    <p>Invierte el valor lógico: si es <strong>true</strong>, lo convierte en <strong>false</strong> y viceversa.</p>
+    <pre class="bloque-codigo"><code>let activo = true;
+let inactivo = !activo; // false</code></pre>
+
+    <h4><strong>AND lógico (&&)</strong></h4>
+    <p>Devuelve <strong>true</strong> solo si ambas condiciones se cumplen.</p>
+    <pre class="bloque-codigo"><code>let tieneEdad = true;
+let tieneDNI = true;
+let puedeEntrar = tieneEdad && tieneDNI; // true</code></pre>
+
+    <h4><strong>OR lógico (||)</strong></h4>
+    <p>Devuelve <strong>true</strong> si al menos una condición se cumple.</p>
+    <pre class="bloque-codigo"><code>let tieneEntrada = false;
+let esInvitado = true;
+let accede = tieneEntrada || esInvitado; // true</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Operadores de comparación</h3>
+    <p>Sirven para comparar dos valores. El resultado siempre será <strong>true</strong> o <strong>false</strong>.</p>
+    <ul>
+      <li><strong>==</strong> igual que (sin tener en cuenta el tipo)</li>
+      <li><strong>===</strong> igual que (comparando también el tipo)</li>
+      <li><strong>!=</strong> distinto</li>
+      <li><strong>&gt;</strong> mayor que</li>
+      <li><strong>&gt;=</strong> mayor o igual que</li>
+      <li><strong>&lt;</strong> menor que</li>
+      <li><strong>&lt;=</strong> menor o igual que</li>
+    </ul>
+
+    <pre class="bloque-codigo"><code>let a = 5;
+let b = "5";
+
+a == b      // true (compara solo el valor)
+a === b     // false (compara valor y tipo)
+a != b      // false
+a !== b     // true</code></pre>
+
+    <h4>Comparación de cadenas</h4>
+    <p>JavaScript compara letra a letra. Ten en cuenta que <strong>A &lt; a</strong> porque las mayúsculas van antes que las minúsculas.</p>
+    <pre class="bloque-codigo"><code>"hola" == "hola"   // true
+"adios" < "hola"   // true
+"Zorro" > "oso"    // false</code></pre>
+  </article>
+</section>
+
+<section class="bloque">
+  <h2 class="titulo-seccion">Estructuras de Control</h2>
+  <p>En la mayoría de los programas, no basta con ejecutar instrucciones una detrás de otra. Muchas veces necesitamos <strong>tomar decisiones</strong> o <strong>repetir acciones</strong> según una condición. Para eso existen las estructuras de control.</p>
+
+  <article class="subbloque">
+    <h3>Condicional <strong>if</strong></h3>
+    <p>Permite ejecutar un bloque de código solo si se cumple una condición.</p>
+    <pre class="bloque-codigo"><code>if (condición) {
+  // instrucciones que se ejecutan si la condición es verdadera
+}</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>let edad = 20;
+if (edad >= 18) {
+  alert("Eres mayor de edad");
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3><strong>if...else</strong></h3>
+    <p>Se utiliza para ejecutar un bloque de código si la condición se cumple y otro bloque si no se cumple.</p>
+    <pre class="bloque-codigo"><code>if (condición) {
+  // si la condición es verdadera
+} else {
+  // si la condición es falsa
+}</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>let usuario = "";
+if (usuario == "") {
+  alert("Por favor, introduce tu nombre");
+} else {
+  alert("¡Bienvenido, " + usuario + "!");
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3><strong>if...else if...else</strong></h3>
+    <p>Permite comprobar múltiples condiciones de forma encadenada.</p>
+    <pre class="bloque-codigo"><code>if (condición1) {
+  // instrucciones
+} else if (condición2) {
+  // otras instrucciones
+} else {
+  // instrucciones por defecto
+}</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>let nota = 7;
+if (nota < 5) {
+  alert("Insuficiente");
+} else if (nota < 7) {
+  alert("Aprobado");
+} else if (nota < 9) {
+  alert("Notable");
+} else {
+  alert("Sobresaliente");
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Condicional <strong>switch</strong></h3>
+    <p>Es útil cuando queremos comparar una misma variable con varios valores posibles. Es más limpio que muchos <strong>if...else</strong>.</p>
+    <pre class="bloque-codigo"><code>switch (variable) {
+  case valor1:
+    // instrucciones
+    break;
+  case valor2:
+    // instrucciones
+    break;
+  default:
+    // instrucciones si ningún caso coincide
+    break;
+}</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>let dia = "lunes";
+
+switch (dia) {
+  case "lunes":
+    alert("Comienza la semana");
+    break;
+  case "viernes":
+    alert("¡Por fin es viernes!");
+    break;
+  default:
+    alert("Día normal");
+    break;
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Bucle <strong>for</strong></h3>
+    <p>Sirve para repetir instrucciones un número determinado de veces. Necesita tres partes: inicialización, condición y actualización.</p>
+    <pre class="bloque-codigo"><code>for (inicio; condición; incremento) {
+  // instrucciones
+}</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>for (let i = 0; i < 5; i++) {
+  console.log("Vuelta número " + i);
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Bucle <strong>for...in</strong></h3>
+    <p>Permite recorrer todos los elementos de un array u objeto.</p>
+    <pre class="bloque-codigo"><code>let frutas = ["manzana", "naranja", "plátano"];
+
+for (let indice in frutas) {
+  console.log(frutas[indice]);
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Bucle <strong>while</strong></h3>
+    <p>Repite un bloque de instrucciones mientras se cumpla la condición. Puede ejecutarse 0 o más veces.</p>
+    <pre class="bloque-codigo"><code>while (condición) {
+  // instrucciones
+}</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>let i = 0;
+while (i < 3) {
+  console.log("i vale " + i);
+  i++;
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Bucle <strong>do...while</strong></h3>
+    <p>Funciona como <strong>while</strong>, pero garantiza al menos una ejecución del bloque.</p>
+    <pre class="bloque-codigo"><code>do {
+  // instrucciones
+} while (condición);</code></pre>
+    <p>Ejemplo:</p>
+    <pre class="bloque-codigo"><code>let respuesta;
+do {
+  respuesta = prompt("¿Quieres continuar?");
+} while (respuesta !== "no");</code></pre>
+  </article>
+</section>
+
+<section class="bloque">
+  <h2 class="titulo-seccion">Funciones en JavaScript</h2>
+  <p>En JavaScript, una función es un bloque de código reutilizable que puede recibir parámetros y opcionalmente devolver un valor. Las funciones permiten modularizar la lógica de un programa.</p>
+
+  <article class="subbloque">
+    <h3>Declaración de funciones</h3>
+    <p>Se utiliza la palabra clave <strong>function</strong>, seguida del nombre, una lista de parámetros entre paréntesis y el cuerpo entre llaves.</p>
+
+    <pre class="bloque-codigo"><code>function saludar(nombre) {
+  return "Hola, " + nombre + "!";
+}</code></pre>
+
+    <p>La función puede invocarse como:</p>
+    <pre class="bloque-codigo"><code>let mensaje = saludar("Lucía");
+console.log(mensaje);</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Funciones sin valor de retorno</h3>
+    <p>Si no se especifica un <strong>return</strong>, la función devuelve <strong>undefined</strong>. Este tipo de funciones se usa para ejecutar instrucciones sin necesidad de devolver resultado.</p>
+
+    <pre class="bloque-codigo"><code>function mostrarAviso() {
+  alert("Acción realizada correctamente.");
+}</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Parámetros y argumentos</h3>
+    <p>Los <strong>parámetros</strong> se definen en la declaración. Los valores concretos se pasan como <strong>argumentos</strong> al llamar a la función.</p>
+
+    <pre class="bloque-codigo"><code>function calcularArea(base, altura) {
+  return (base * altura) / 2;
+}
+
+let area = calcularArea(10, 5);</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Parámetros con valor por defecto</h3>
+    <p>JavaScript permite asignar valores por defecto a los parámetros desde <strong>ES6</strong>.</p>
+
+    <pre class="bloque-codigo"><code>function saludar(nombre = "usuario") {
+  console.log("Hola, " + nombre);
+}
+
+saludar();        // Hola, usuario
+saludar("María"); // Hola, María</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Funciones como expresiones</h3>
+    <p>También se pueden definir como expresiones y asignarlas a variables:</p>
+
+    <pre class="bloque-codigo"><code>const multiplicar = function(a, b) {
+  return a * b;
+};</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Arrow functions</h3>
+    <p>Sintaxis más concisa introducida en <strong>ES6</strong>:</p>
+
+    <pre class="bloque-codigo"><code>const saludar = (nombre) => "Hola, " + nombre;
+
+const cuadrado = x => x * x; // Con un solo parámetro y una única expresión</code></pre>
+  </article>
+</section>
+
+<section class="bloque">
+  <h2 class="titulo-seccion">El DOM en JavaScript</h2>
+  <p>El <strong>DOM (Document Object Model)</strong> es una representación jerárquica de una página web en forma de árbol. JavaScript permite acceder, modificar y manipular cualquier parte del documento HTML a través de este modelo.</p>
+
+  <article class="subbloque">
+    <h3>Acceso a elementos</h3>
+    <p>JavaScript proporciona varios métodos para acceder a los elementos del documento:</p>
+
+    <ul>
+      <li><strong>getElementById</strong>: Accede a un elemento por su atributo <strong>id</strong>.</li>
+      <li><strong>getElementsByClassName</strong>: Devuelve una colección de elementos con una clase determinada.</li>
+      <li><strong>getElementsByTagName</strong>: Selecciona todos los elementos con una etiqueta específica.</li>
+      <li><strong>querySelector</strong> y <strong>querySelectorAll</strong>: Permiten seleccionar elementos usando selectores CSS.</li>
+    </ul>
+
+    <pre class="bloque-codigo"><code>let encabezado = document.getElementById("titulo");
+let items = document.querySelectorAll(".item");
+let parrafos = document.getElementsByTagName("p");</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Modificación de contenido</h3>
+    <p>Una vez obtenido el elemento, se pueden modificar sus propiedades:</p>
+
+    <pre class="bloque-codigo"><code>// Cambiar el texto
+encabezado.textContent = "Título actualizado";
+
+// Modificar el contenido HTML interno
+encabezado.innerHTML = "&lt;em&gt;Nuevo&lt;/em&gt; título";</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Modificación de estilos</h3>
+    <p>Se puede acceder a las propiedades CSS mediante <strong>.style</strong>:</p>
+
+    <pre class="bloque-codigo"><code>encabezado.style.color = "blue";
+encabezado.style.fontSize = "24px";</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Gestión de clases</h3>
+    <p>Para añadir, quitar o comprobar clases en un elemento, se utiliza <strong>classList</strong>:</p>
+
+    <pre class="bloque-codigo"><code>encabezado.classList.add("resaltado");
+encabezado.classList.remove("resaltado");
+encabezado.classList.toggle("activo");</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Creación y eliminación de elementos</h3>
+    <p>También se pueden crear elementos nuevos o eliminar existentes:</p>
+
+    <pre class="bloque-codigo"><code>let nuevoParrafo = document.createElement("p");
+nuevoParrafo.textContent = "Este es un párrafo nuevo";
+
+document.body.appendChild(nuevoParrafo);
+
+document.body.removeChild(nuevoParrafo);</code></pre>
+  </article>
+</section>
+
+<section class="bloque">
+  <h2 class="titulo-seccion">El DOM en JavaScript</h2>
+  <p>El <strong>DOM (Document Object Model)</strong> representa la estructura de un documento HTML como un árbol de nodos. Cada elemento, atributo o texto del HTML se convierte en un nodo al que podemos acceder y manipular desde JavaScript.</p>
+
+  <figure style="text-align: center; margin-bottom: 1.5em;">
+    <img src="./img/dom2.png" alt="Árbol DOM representando un documento HTML" style="max-width: 100%; height: auto;">
+    <figcaption>Figura1: Representación jerárquica del DOM.</figcaption>
+  </figure>
+
+  <p>En este diagrama podemos ver cómo el documento se organiza en niveles. El nodo raíz <strong>document</strong> contiene un elemento <strong>html</strong>, que a su vez contiene <strong>head</strong> y <strong>body</strong>. Cada uno de estos contiene sus propios nodos hijos, formando una estructura en forma de árbol.</p>
+
+  <article class="subbloque">
+    <h3>Acceso a elementos</h3>
+    <p>JavaScript proporciona varios métodos para acceder a los elementos del documento:</p>
+    <ul>
+      <li><strong>getElementById</strong>: Accede a un elemento por su atributo <strong>id</strong>.</li>
+      <li><strong>getElementsByClassName</strong>: Devuelve una colección de elementos con una clase determinada.</li>
+      <li><strong>getElementsByTagName</strong>: Selecciona todos los elementos con una etiqueta específica.</li>
+      <li><strong>querySelector</strong> y <strong>querySelectorAll</strong>: Permiten seleccionar elementos usando selectores CSS.</li>
+    </ul>
+
+    <pre class="bloque-codigo"><code>let titulo = document.getElementById("titulo");
+let items = document.querySelectorAll(".item");
+let parrafos = document.getElementsByTagName("p");</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Modificación de contenido</h3>
+    <p>Una vez obtenido el elemento, se pueden modificar sus propiedades:</p>
+
+    <pre class="bloque-codigo"><code>// Cambiar el texto
+titulo.textContent = "Título actualizado";
+
+// Modificar el contenido HTML interno
+titulo.innerHTML = "&lt;em&gt;Nuevo&lt;/em&gt; título";</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Modificación de estilos</h3>
+    <p>Se puede acceder a las propiedades CSS mediante <strong>.style</strong>:</p>
+
+    <pre class="bloque-codigo"><code>titulo.style.color = "blue";
+titulo.style.fontSize = "24px";</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Gestión de clases</h3>
+    <p>Para añadir, quitar o comprobar clases en un elemento, se utiliza <strong>classList</strong>:</p>
+
+    <pre class="bloque-codigo"><code>titulo.classList.add("resaltado");
+titulo.classList.remove("resaltado");
+titulo.classList.toggle("activo");</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Creación y eliminación de elementos</h3>
+    <p>También se pueden crear elementos nuevos o eliminar existentes:</p>
+
+    <pre class="bloque-codigo"><code>let nuevoParrafo = document.createElement("p");
+nuevoParrafo.textContent = "Este es un párrafo nuevo";
+
+document.body.appendChild(nuevoParrafo);
+
+document.body.removeChild(nuevoParrafo);</code></pre>
+  </article>
+</section>
+
+<section class="bloque">
+  <h2 class="titulo-seccion">Eventos en JavaScript</h2>
+  <p>En JavaScript, los <strong>eventos</strong> son mecanismos que permiten reaccionar a las acciones del usuario o del navegador (clics, movimientos del ratón, carga de la página, pulsaciones de teclas, etc.).</p>
+
+  <article class="subbloque">
+    <h3>¿Qué es un Event Listener?</h3>
+    <p>Un <strong>event listener</strong> es una función que se ejecuta automáticamente cuando ocurre un evento específico en un elemento HTML. En JavaScript, el método <strong>addEventListener()</strong> se usa para asociar un evento con una función que lo gestionará.</p>
+
+    <p>Su estructura básica es:</p>
+
+    <pre class="bloque-codigo"><code>elemento.addEventListener("evento", funcionManejadora);</code></pre>
+
+    <p>Ejemplo práctico:</p>
+
+    <pre class="bloque-codigo"><code>let boton = document.getElementById("miBoton");
+
+boton.addEventListener("click", function() {
+  alert("Has hecho clic en el botón");
+});</code></pre>
+
+    <p>En este caso:</p>
+    <ul>
+      <li><strong>miBoton</strong> es el ID del elemento HTML (por ejemplo, un &lt;button&gt;).</li>
+      <li><strong>click</strong> es el nombre del evento que queremos escuchar.</li>
+      <li><strong>function() { ... }</strong> es la función manejadora que se ejecuta cuando ocurre el evento.</li>
+    </ul>
+  </article>
+
+  <article class="subbloque">
+    <h3>Eventos más utilizados</h3>
+    <p>A continuación, se presenta una selección de eventos comunes en JavaScript, con ejemplos de uso para cada uno:</p>
+
+    <ul>
+      <li><strong>click</strong>: se activa al hacer clic en un elemento.</li>
+      <li><strong>dblclick</strong>: se activa al hacer doble clic.</li>
+      <li><strong>mouseover</strong>: se activa cuando el puntero entra en el elemento.</li>
+      <li><strong>mouseout</strong>: se activa cuando el puntero sale del elemento.</li>
+      <li><strong>keydown</strong>: se activa al pulsar una tecla.</li>
+      <li><strong>keyup</strong>: se activa al soltar una tecla.</li>
+      <li><strong>change</strong>: se activa cuando cambia el valor de un input, select, etc.</li>
+      <li><strong>submit</strong>: se activa al enviar un formulario.</li>
+      <li><strong>load</strong>: se activa cuando la página o imagen ha cargado completamente.</li>
+    </ul>
+
+    <pre class="bloque-codigo"><code>// Cambiar color de fondo al pasar el ratón
+document.getElementById("caja").addEventListener("mouseover", function() {
+  this.style.backgroundColor = "lightblue";
+});</code></pre>
+
+    <pre class="bloque-codigo"><code>// Detectar una tecla pulsada
+document.addEventListener("keydown", function(evento) {
+  console.log("Tecla pulsada: " + evento.key);
+});</code></pre>
+
+    <pre class="bloque-codigo"><code>// Validar formulario al enviarlo
+document.getElementById("formulario").addEventListener("submit", function(e) {
+  e.preventDefault(); // Evita el envío real
+  alert("Formulario enviado correctamente (simulado).");
+});</code></pre>
+  </article>
+
+  <article class="subbloque">
+    <h3>Funciones manejadoras nombradas</h3>
+    <p>Es una buena práctica definir funciones manejadoras con nombre, especialmente si se reutilizan o se necesitan eliminar más tarde.</p>
+
+    <pre class="bloque-codigo"><code>function saludarUsuario() {
+  alert("¡Bienvenido!");
+}
+
+document.getElementById("botonSaludo").addEventListener("click", saludarUsuario);</code></pre>
+  </article>
+
+  
+</section>
+
+
 	<a href="#arriba" class="back-to-top">  ↑  </a>
 
     
