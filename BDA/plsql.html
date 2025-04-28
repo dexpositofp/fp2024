@@ -362,6 +362,95 @@ END;
 
 </section>
 
+<h2>Triggers en PL/SQL</h2>
+<p>
+    Un <strong>trigger</strong> (o disparador) es un bloque de código PL/SQL que se ejecuta de forma <strong>automática</strong> cuando ocurre un evento concreto sobre una tabla o vista. Este evento puede ser una operación de <strong>INSERT</strong>, <strong>UPDATE</strong> o <strong>DELETE</strong>.
+  </p>
+<p>
+    Los triggers se utilizan para <strong>automatizar tareas</strong>, <strong>implementar reglas de negocio</strong> o <strong>mantener la integridad de los datos</strong> sin necesidad de que el usuario o desarrollador los invoque explícitamente.
+  </p>
+<h3>¿Cuándo se ejecutan?</h3>
+<ul>
+<li><strong>BEFORE:</strong> antes de que se realice la operación sobre los datos.</li>
+<li><strong>AFTER:</strong> después de que se haya realizado la operación.</li>
+</ul>
+<h3>¿Sobre qué operaciones pueden actuar?</h3>
+<ul>
+<li><strong>INSERT</strong>: cuando se insertan nuevos registros.</li>
+<li><strong>UPDATE</strong>: cuando se modifican registros existentes.</li>
+<li><strong>DELETE</strong>: cuando se eliminan registros.</li>
+</ul>
+<h3>¿Qué tipos de triggers existen?</h3>
+<ul>
+<li><strong>Row-level (por fila):</strong> se ejecutan una vez por cada fila afectada (<strong>FOR EACH ROW</strong>).</li>
+<li><strong>Statement-level (por sentencia):</strong> se ejecutan una sola vez, aunque la operación afecte a múltiples filas.</li>
+</ul>
+<h3>¿Por qué usar triggers?</h3>
+<ul>
+<li>Para <strong>validar datos</strong> antes de que se inserten o modifiquen.</li>
+<li>Para <strong>registrar cambios</strong> automáticamente (auditoría).</li>
+<li>Para <strong>actualizar o sincronizar</strong> datos en otras tablas.</li>
+<li>Para <strong>impedir ciertas operaciones</strong> no deseadas.</li>
+</ul>
+<h3>Sintaxis general</h3>
+<pre><strong>CREATE OR REPLACE TRIGGER nombre_trigger
+{BEFORE | AFTER} {INSERT | UPDATE | DELETE}
+ON nombre_tabla
+[FOR EACH ROW]
+DECLARE
+  -- Declaraciones opcionales
+BEGIN
+  -- Código PL/SQL que se ejecuta automáticamente
+END;
+/
+</strong></pre>
+<h3>Variables especiales en triggers de fila</h3>
+<ul>
+<li><strong>:OLD</strong>: contiene los valores anteriores de la fila (antes del cambio).</li>
+<li><strong>:NEW</strong>: contiene los valores nuevos que se quieren insertar o actualizar.</li>
+</ul>
+<h3>Ejemplo 1: Impedir que se reduzca el salario</h3>
+<p>Trigger que evita que se actualice un salario si el nuevo valor es inferior al anterior.</p>
+<pre><strong>CREATE OR REPLACE TRIGGER trg_no_salario_menor
+BEFORE UPDATE OF salary ON employees
+FOR EACH ROW
+BEGIN
+  IF :NEW.salary &lt; :OLD.salary THEN
+    RAISE_APPLICATION_ERROR(-20001, 'No se permite reducir el salario.');
+  END IF;
+END;
+/
+</strong></pre>
+<h3>Ejemplo 2: Registrar auditoría de eliminación</h3>
+<p>Creamos una tabla auxiliar <strong>empleados_borrados</strong> y usamos un trigger para registrar automáticamente los datos de cualquier empleado que sea eliminado.</p>
+<pre><strong>CREATE TABLE empleados_borrados (
+  id NUMBER,
+  nombre VARCHAR2(100),
+  fecha_borrado DATE
+);
+
+CREATE OR REPLACE TRIGGER trg_auditoria_borrado
+AFTER DELETE ON employees
+FOR EACH ROW
+BEGIN
+  INSERT INTO empleados_borrados(id, nombre, fecha_borrado)
+  VALUES (:OLD.employee_id, :OLD.first_name || ' ' || :OLD.last_name, SYSDATE);
+END;
+/
+</strong></pre>
+<h3>Ejemplo 3: Ajustar salario al cambiar el puesto</h3>
+<p>Si se cambia el <strong>job_id</strong> de un empleado, el trigger ajusta su salario automáticamente en un 5%.</p>
+<pre><strong>CREATE OR REPLACE TRIGGER trg_bonus_por_puesto
+BEFORE UPDATE OF job_id ON employees
+FOR EACH ROW
+BEGIN
+  :NEW.salary := :NEW.salary * 1.05;
+END;
+/
+</strong></pre>
+
+</section>
+
 <a href="#arriba" class="back-to-top">↑</a>
 
 

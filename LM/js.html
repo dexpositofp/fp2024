@@ -64,14 +64,6 @@ alert("Un mensaje de prueba");
   <section class="bloque">
     <h2>Sintaxis básica de JavaScript</h2>
 
-    <ul>
-      <li><strong>Espacios y saltos de línea:</strong> Puedes usarlos para hacer tu código más legible.</li>
-      <li><strong>Mayúsculas y minúsculas:</strong> <strong>nombre</strong> y <strong>Nombre</strong> son variables distintas.</li>
-      <li><strong>Tipos de datos dinámicos:</strong> Las variables pueden cambiar de tipo según el valor.</li>
-      <li><strong>Punto y coma:</strong> Aunque no es obligatorio, se recomienda.</li>
-      <li><strong>Comentarios:</strong> Explican el código sin ejecutarse.</li>
-    </ul>
-
     <article class="subbloque">
       <h3>Comentarios</h3>
       <pre class="bloque-codigo"><code>// Esto es un comentario de una sola línea
@@ -107,7 +99,6 @@ alert("Un mensaje de prueba");
   <pre class="bloque-codigo"><code>let edad;
 edad = 25;</code></pre>
 
-  <p><strong>⚠️ Consejo:</strong> Aunque es posible declarar variables sin usar <strong>let</strong> (por ejemplo, <strong>nombre = "Juan"</strong>), no es recomendable. Siempre usa <strong>let</strong> para evitar errores inesperados.</p>
 
   <h4>Reglas para nombrar variables</h4>
   <ul>
@@ -458,97 +449,10 @@ console.log(mensaje);</code></pre>
 let area = calcularArea(10, 5);</code></pre>
   </article>
 
-  <article class="subbloque">
-    <h3>Parámetros con valor por defecto</h3>
-    <p>JavaScript permite asignar valores por defecto a los parámetros desde <strong>ES6</strong>.</p>
 
-    <pre class="bloque-codigo"><code>function saludar(nombre = "usuario") {
-  console.log("Hola, " + nombre);
-}
-
-saludar();        // Hola, usuario
-saludar("María"); // Hola, María</code></pre>
-  </article>
-
-  <article class="subbloque">
-    <h3>Funciones como expresiones</h3>
-    <p>También se pueden definir como expresiones y asignarlas a variables:</p>
-
-    <pre class="bloque-codigo"><code>const multiplicar = function(a, b) {
-  return a * b;
-};</code></pre>
-  </article>
-
-  <article class="subbloque">
-    <h3>Arrow functions</h3>
-    <p>Sintaxis más concisa introducida en <strong>ES6</strong>:</p>
-
-    <pre class="bloque-codigo"><code>const saludar = (nombre) => "Hola, " + nombre;
-
-const cuadrado = x => x * x; // Con un solo parámetro y una única expresión</code></pre>
-  </article>
 </section>
 
-<section class="bloque">
-  <h2 class="titulo-seccion">El DOM en JavaScript</h2>
-  <p>El <strong>DOM (Document Object Model)</strong> es una representación jerárquica de una página web en forma de árbol. JavaScript permite acceder, modificar y manipular cualquier parte del documento HTML a través de este modelo.</p>
 
-  <article class="subbloque">
-    <h3>Acceso a elementos</h3>
-    <p>JavaScript proporciona varios métodos para acceder a los elementos del documento:</p>
-
-    <ul>
-      <li><strong>getElementById</strong>: Accede a un elemento por su atributo <strong>id</strong>.</li>
-      <li><strong>getElementsByClassName</strong>: Devuelve una colección de elementos con una clase determinada.</li>
-      <li><strong>getElementsByTagName</strong>: Selecciona todos los elementos con una etiqueta específica.</li>
-      <li><strong>querySelector</strong> y <strong>querySelectorAll</strong>: Permiten seleccionar elementos usando selectores CSS.</li>
-    </ul>
-
-    <pre class="bloque-codigo"><code>let encabezado = document.getElementById("titulo");
-let items = document.querySelectorAll(".item");
-let parrafos = document.getElementsByTagName("p");</code></pre>
-  </article>
-
-  <article class="subbloque">
-    <h3>Modificación de contenido</h3>
-    <p>Una vez obtenido el elemento, se pueden modificar sus propiedades:</p>
-
-    <pre class="bloque-codigo"><code>// Cambiar el texto
-encabezado.textContent = "Título actualizado";
-
-// Modificar el contenido HTML interno
-encabezado.innerHTML = "&lt;em&gt;Nuevo&lt;/em&gt; título";</code></pre>
-  </article>
-
-  <article class="subbloque">
-    <h3>Modificación de estilos</h3>
-    <p>Se puede acceder a las propiedades CSS mediante <strong>.style</strong>:</p>
-
-    <pre class="bloque-codigo"><code>encabezado.style.color = "blue";
-encabezado.style.fontSize = "24px";</code></pre>
-  </article>
-
-  <article class="subbloque">
-    <h3>Gestión de clases</h3>
-    <p>Para añadir, quitar o comprobar clases en un elemento, se utiliza <strong>classList</strong>:</p>
-
-    <pre class="bloque-codigo"><code>encabezado.classList.add("resaltado");
-encabezado.classList.remove("resaltado");
-encabezado.classList.toggle("activo");</code></pre>
-  </article>
-
-  <article class="subbloque">
-    <h3>Creación y eliminación de elementos</h3>
-    <p>También se pueden crear elementos nuevos o eliminar existentes:</p>
-
-    <pre class="bloque-codigo"><code>let nuevoParrafo = document.createElement("p");
-nuevoParrafo.textContent = "Este es un párrafo nuevo";
-
-document.body.appendChild(nuevoParrafo);
-
-document.body.removeChild(nuevoParrafo);</code></pre>
-  </article>
-</section>
 
 <section class="bloque">
   <h2 class="titulo-seccion">El DOM en JavaScript</h2>
